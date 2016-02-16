@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<!-- IOS 상태바 색상 설정 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- IOS 상태바 색상 설정 -->
+<title>웰컴론 ㅣ 계약서 미리보기</title>
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/welcome.css">
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body class="sub2">
+<div id="wrap">
+	<!-- header -->
+	<header id="header">
+		<h1 class="txt-out">웰컴론</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>계약서 미리보기</h2>
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:void(0);" class="back-to"><span></span>이전</a>
+		<script src="../../js/menu.js"></script> 
+		<!-- //menu -->
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>		
+		<!-- step area -->
+		<section class="step-area">
+			<h1 class="hidden">전자계약 단계 정보</h1>		
+			<ul>
+				<li ><p><span>1</span>대출정보<br />확인 및<br />약관동의</p><span class="arrow"></span></li>
+				<li><p><span>2</span>계약정보<br />확인</p><span class="arrow"></span></li>
+				<li class="on"><p><span>3</span>전자서명</p><span class="arrow"></span></li>
+				<li><p><span>4</span>계약완료</p></li>
+			</ul>		
+		</section>
+		<!-- //step area -->
+		<div class="width-pd">
+			<p class="sub-txt mgB10">전자서명을 진행하여 주십시오.</p>
+		</div>
+		<section class="step-con width-pd">			
+			<h1 class="hidden">계약서 뷰어 </h1>			
+			<!-- 계약서 뷰어 -->
+			<div class="previewBox">
+				<ul class="previewControl">
+					<li id="pageInfo">1/21</li>
+					<li id="prevBtn"><input type="button" value="이전" onclick="prevPage()" class="control btn-pre"  /></li>
+					<li id="nextBtn"><input type="button" value="다음" onclick="nextPage()" class="control btn-next"  /></li>
+					<li id="zoomOutBtn"><input type="button" value="축소" onclick="zoomOut()" class="control zoomOut" /></li>
+					<li id="zoomInBtn"><input type="button" value="확대" onclick="zoomIn()" class="control zoomIn" /></li>					
+				</ul>			
+				<div class="previewImg">
+					<div id="imgDiv">
+						<div id="viewerScroller">
+							<ul id="scrollList">
+								<li><img src="../images/img_doc_preview.png" alt="전자문서" width="294" /></li>
+							</ul>
+						</div>					
+					</div>
+				</div>
+			</div>
+			<!-- //계약서 뷰어 -->
+			<div>
+				<a href="javascript:void(0);" class="btn_big_orange mgT15">전자서명하기</a>
+			</div>
+		</section>
+	</section>
+	<!-- //content -->
+</div>
+<div id="mask"></div>
+</body>
+</html>

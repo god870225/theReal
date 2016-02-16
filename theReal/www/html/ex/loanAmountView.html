@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<!-- IOS 상태바 색상 설정 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- IOS 상태바 색상 설정 -->
+<title>웰컴론 ㅣ 대출한도조회</title>
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/welcome.css">
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body class="sub">
+<div id="wrap">
+	<!-- header -->
+	<header id="header" class="loan-color">
+		<h1 class="txt-out">웰컴론</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>대출한도조회</h2>
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:void(0);" class="back-to"><span></span>이전</a>
+		<script src="../js/menu.js"></script> 
+		<!-- //menu -->
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>		
+		<section class="step-con">
+			<header class="loan-amount">
+				<h1 class="hidden">대출한도조회</h1>
+				<h2>대출한도조회에서는 개인정보 입력없이<br /> 간편하게 대출가능금액을 확인할 수 있습니다.</h2>
+				<p><span>정확한 대출가능금액은 아니므로 자세한 사항은 고객센터에 문의하여 주시기 바랍니다.<a href="javascript:void(0);" class="btn-cs">고객센터</a></span></p>
+			</header>
+			<!-- 개인정보입력 -->
+			<div class="certificate-box no-sh">
+				<table>
+					<caption>개인정보입력</caption>
+					<colgroup>
+						<col width="70px" />
+						<col width="*" />	
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row"><label for="userName">이름</label></th>
+						<td><input type="text" name="userName" id="userName" style="width:100%;" title="이름입력" class="input" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="phoneNum">전화번호</label></th>
+						<td>
+							<select name="phoneNum" id="phoneNum" title="휴대전화 통신사 선택" style="width:32%" class="select">
+								<option value="">선택</option>
+								<option value="010">010</option>
+							</select>
+							<input type="text" maxlength="4" style="width:31.3%" title="휴대전화 두번째자리" class="input" />
+							<input type="text" maxlength="4" style="width:31.7%" title="휴대전화 뒷자리" class="input" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="userJob">직업</label></th>
+						<td>
+							<select name="userJob" id="userJob" style="width:100%;" title="직업선택" class="select">
+								<option value="">선택하세요</option>
+								<option value="회사원">회사원</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="annuIncome">연소득</label></th>
+						<td><input type="text" name="annuIncome" id="annuIncome" style="width:100%;" title="연소득입력" class="input" /></td>
+					</tr>
+					</tbody>
+				</table>				
+			</div>
+			<!-- //개인정보입력 -->
+			<!-- 조회결과 -->
+			<section>
+				<h1 class="sub-con-tit">조회결과</h1>
+				<table class="loan-amount">
+					<caption>조회 금액</caption>
+					<colgroup>
+						<col width="100px" />
+						<col width="*" />
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row">대출가능금액</th>
+						<td  class="txt-right"><strong>3,000,000</strong> 원</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<!-- //조회결과 -->			
+			<!-- 약관동의 영역 -->
+			<div class="width-pd2 box-col-gray">													
+				<!-- termAll -->
+				<section class="round-box-ws terms">
+					<h1>개인정보수집이용동의<a href="javascript:void(0);" class="btn-view2">내용보기</a></h1>
+					<div class="block"><!--  [개발시 전체약관보기일때 변경]<div class="block"> -->
+						<div class="agree-box2 line-t">
+							<dl>
+								<dt>필수적 동의사항</dt>
+								<dd>									
+										<label><input type="radio" id="yak1_1" name="yak1" class="radio"> 동의함</label>
+										<label><input type="radio" id="yak1_2" name="yak1" class="radio"> 동의안함</label>									
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</section>
+				<!-- //termAll -->
+			</div>
+			<!-- //약관동의 영역 -->			
+			<div class="btn-area lineT txt-center">
+				<a href="javascript:void(0);" class="btn_big_orange">조회하기</a>
+			</div>			
+		</section>		
+	</section>
+	<!-- //content -->
+</div>
+<div id="mask"></div>
+</body>
+</html>

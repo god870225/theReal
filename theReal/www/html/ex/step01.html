@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>웰컴론 ㅣ 전자계약 목록조회 </title>
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/welcome.css">
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../js/html5shiv.js"></script>
+<![endif]-->
+<script type="text/javascript" >
+$(function(){
+	 //toggle
+	$(".loan-list li  > a").click(function(){ 
+		$(".loan-list li").removeClass("on");
+		$(this).parent().addClass("on");
+		$(".dropboad").hide();
+		return false;
+	});
+});
+</script>
+</head>
+<body class="sub">
+<div id="wrap">
+	<!-- header -->
+	<header id="header">
+		<h1 class="txt-out">웰컴론</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>전자계약 목록조회</h2>
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:void(0);" class="back-to"><span></span>이전</a>
+		<script src="../../js/menu.js"></script> 
+		<!-- //menu -->
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>		
+		<!-- step area -->
+		<section class="step-area">
+			<h1 class="hidden">전자계약 단계 정보</h1>		
+			<ul>
+				<li class="on"><p><span>1</span>대출정보<br />확인 및<br />약관동의</p><span class="arrow"></span></li>
+				<li><p><span>2</span>계약정보<br />확인</p><span class="arrow"></span></li>
+				<li><p><span>3</span>전자서명</p><span class="arrow"></span></li>
+				<li><p><span>4</span>계약완료</p></li>
+			</ul>		
+		</section>
+		<!-- //step area -->
+		<section class="step-con">
+			<h1 class="hidden">대출정보확인 및 약관동의</h1>
+			<!-- 대출정보 -->
+			<div class="width-pd2 box-col-gray">
+				<div class="round-box-w">
+					<table class="board-view wid-full round5">
+						<caption>개인정보 확인</caption>
+						<colgroup>
+							<col width="90px" />
+							<col width="*" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row" >성명</th>
+								<td>홍길동</td>
+							</tr>
+							<tr>
+								<th scope="row" class="no-line-bottom">주민번호</th>
+								<td class="no-line-bottom">8001010-*******</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="sub-txt">계약을 진행 할 대출건을 선택하여 주십시오.</p>
+			</div>
+			<!-- //대출정보 -->
+			<!-- 대출 목록 -->
+			<ul class="loan-list mgB20">
+				<li class="on">
+					<a href="javascript:void(0);">
+						대출일자 : 2015-01-15<br />
+						대출번호 : A6900030448879
+					</a>
+					<!-- 대출정보 자세히 보기 영역 -->
+					<div class="dropboad">
+						<div class="on-bd">					
+							<table class="board-view wid-full">
+								<caption>대출정보 확인</caption>
+								<colgroup>
+									<col width="110px" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row" >대출한도</th>
+										<td class="right">3,000,000원</td>
+									</tr>
+									<tr>
+										<th scope="row" >대출금액</th>
+										<td class="right">3,000,000원</td>
+									</tr>
+									<tr>
+										<th scope="row" >대출일자</th>
+										<td class="right">2015-01-28</td>
+									</tr>
+									<tr>
+										<th scope="row" >만기일자</th>
+										<td class="right">2018-01-28</td>
+									</tr>
+									<tr>
+										<th scope="row">정상/연체금리</th>
+										<td class="right">28.9% / 34.9%</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 약관동의 영역 -->
+						<div class="width-pd2 box-col-gray">													
+							<!-- termAll -->
+							<section class="round-box-ws terms">
+								<h1>약관동의</h1>
+								<div>
+									<table class="termAll">
+									<caption>약관동의</caption>
+									<colgroup>
+										<col width="50%" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th><label><input type="checkbox" id="allchk" name="allchk" class="checkbox">전체약관동의</label></th>
+											<td class="txt-right"><a href="javascript:void(0);" class="open-terms">약관보기</a><!-- [개발시 약관보기 hide일때 변경]<a href="javascript:void(0);" class="close-terms">약관보기</a> --></td>
+										</tr>
+									</tbody>
+									</table>
+								</div>
+								<div class="block"><!--  [개발시 약관보기 hide일때 변경]<div class="none"> -->
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 수집 &middot; 이용에 관한 사항</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" id="pop01" onClick="popupOpen(this);">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 수집 &middot; 이용 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak1_1" name="yak1" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak1_2" name="yak1" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													고유식별정보 수집 &middot; 이용 동의
+												</div>
+												<div class="agree-sel">
+													<label><input type="radio" id="yak2_1" name="yak2" class="radio"> 동의함</label>
+													<label><input type="radio" id="yak2_2" name="yak2" class="radio"> 동의하지 않음</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 수집 &middot; 이용에 관한 사항(선택)</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 수집 &middot; 이용 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak3_1" name="yak3" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak3_2" name="yak3" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													* 상품서비스 안내수단 <label><input type="checkbox" id="allchk2" name="allchk2" class="checkbox">전체선택</label>
+												</div>
+												<div class="agree-sel2">													
+													(<label><input type="checkbox" id="selChk1" name="selChk1" class="checkbox">전화</label>
+													<label><input type="checkbox" id="selChk2" name="selChk2" class="checkbox">문자메세지</label>
+													<label><input type="checkbox" id="selChk3" name="selChk3" class="checkbox">DM</label>
+													<label><input type="checkbox" id="selChk4" name="selChk4" class="checkbox">E-mail</label>)
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 조회에 관한 사항</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 조회 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak4_1" name="yak4" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak4_2" name="yak4" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													고유식별정보 수집 &middot; 이용 동의
+												</div>
+												<div class="agree-sel">
+													<label><input type="radio" id="yak5_1" name="yak5" class="radio"> 동의함</label>
+													<label><input type="radio" id="yak5_2" name="yak5" class="radio"> 동의하지 않음</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 제공에 관한 사항</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 제공 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak6_1" name="yak6" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak6_2" name="yak6" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													고유식별정보 수집 &middot; 이용 동의
+												</div>
+												<div class="agree-sel">
+													<label><input type="radio" id="yak7_1" name="yak7" class="radio"> 동의함</label>
+													<label><input type="radio" id="yak7_2" name="yak7" class="radio"> 동의하지 않음</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 제공에 관한 사항(선택)</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 제공 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak8_1" name="yak8" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak8_2" name="yak8" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</section>
+							<!-- //termAll -->
+							<a href="javascript:void(0);" class="btn_big_orange mgT15"><span class="next">다음</span></a>							
+						</div>
+						<!-- //약관동의 영역 -->
+					</div>
+					<!-- //대출정보 자세히 보기 영역 -->
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						대출일자 : 2015-01-15<br />
+						대출번호 : A6900030448879
+					</a>
+					<!-- 대출정보 자세히 보기 영역 -->
+					<div class="dropboad">
+						<div class="on-bd">					
+							<table class="board-view wid-full">
+								<caption>대출정보 확인</caption>
+								<colgroup>
+									<col width="110px" />
+									<col width="*" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row" >대출한도</th>
+										<td class="right">3,000,000원</td>
+									</tr>
+									<tr>
+										<th scope="row" >대출금액</th>
+										<td class="right">3,000,000원</td>
+									</tr>
+									<tr>
+										<th scope="row" >대출일자</th>
+										<td class="right">2015-01-28</td>
+									</tr>
+									<tr>
+										<th scope="row" >만기일자</th>
+										<td class="right">2018-01-28</td>
+									</tr>
+									<tr>
+										<th scope="row">정상/연체금리</th>
+										<td class="right">28.9% / 34.9%</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 약관동의 영역 -->
+						<div class="width-pd2 box-col-gray">													
+							<!-- termAll -->
+							<section class="round-box-ws terms">
+								<h1>약관동의</h1>
+								<div>
+									<table class="termAll">
+									<caption>약관동의</caption>
+									<colgroup>
+										<col width="50%" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th><label id="allchk"><input type="checkbox" id="allchk" name="allchk" class="checkbox">전체약관동의</label></th>
+											<td class="txt-right"><a href="javascript:void(0);" class="open-terms">약관보기</a><!-- [개발시 약관보기 hide일때 변경]<a href="javascript:void(0);" class="close-terms">약관보기</a> --></td>
+										</tr>
+									</tbody>
+									</table>
+								</div>
+								<div class="block"><!--  [개발시 약관보기 hide일때 변경]<div class="none"> -->
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 조회 수집 &middot; 이용에 관한 사항</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<div class="agree-sel">
+											<label><input type="radio" id="yak1_1" name="yak1" class="radio"> 동의함</label>
+											<label><input type="radio" id="yak1_2" name="yak1" class="radio"> 동의하지 않음</label>
+										</div>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 조회 수집 &middot; 이용 제공 동의서(금융거래 설정 등)</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												필수적 정보<sup>*</sup> 수집 &middot; 이용  &middot; 제공에 관한 사항
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak2_1" name="yak2" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak2_2" name="yak2" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													고유식별정보<sup>*</sup> 수집 &middot; 이용  &middot; 제공에 관한 사항
+												</div>
+												<div class="agree-sel">
+													<label><input type="radio" id="yak3_1" name="yak3" class="radio"> 동의함</label>
+													<label><input type="radio" id="yak3_2" name="yak3" class="radio"> 동의하지 않음</label>
+												</div>
+											</li>
+										</ul>
+										<div class="txt_s mgT5">
+											* 고유식별정보 : 주민등록번호, 여권번호, 외국인등록번호
+										</div>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>채권수임사실 통보생략</dt>
+											<dd><a href="javascript:void(0);" class="btn-view">내용보기</a></dd>
+										</dl>
+										<div class="agree-sel">
+											<label><input type="radio" id="yak4_1" name="yak4" class="radio"> 동의함</label>
+											<label><input type="radio" id="yak4_2" name="yak4" class="radio"> 동의하지 않음</label>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- //termAll -->
+							<a href="javascript:void(0);" class="btn_big_orange mgT15"><span class="next">다음</span></a>
+						</div>
+						<!-- //약관동의 영역 -->
+					</div>
+					<!-- //대출정보 자세히 보기 영역 -->
+				</li>
+				<li class="compl">
+					<a href="javascript:void(0);">
+						대출일자 : 2015-01-15<br />
+						대출번호 : A6900030448879
+					</a>
+				</li>
+			</ul>
+			<!-- //대출 목록 -->
+		</section>
+	</section>
+	<!-- //content -->
+</div>
+
+<!-- 약관 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit">
+		<h1>개인정보 수집 &middot; 이용 동의서</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 400px;">
+		<div class="layer-content-inner">
+			<p>웰컴크레디라인대부(주) 귀중</p>
+			<p>
+				귀사와의 모바일대출신청 관련하여 귀사가 본인으로부터 취득한<br/>
+				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			</p>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- //약관 레이어 -->
+<div id="mask"></div>
+</body>
+</html>
