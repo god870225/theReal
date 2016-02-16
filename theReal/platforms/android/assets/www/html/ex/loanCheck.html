@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<!-- IOS 상태바 색상 설정 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- IOS 상태바 색상 설정 -->
+<title>웰컴론 ㅣ 나의 대출정보확인</title>
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/welcome.css">
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body class="sub">
+<div id="wrap">
+	<!-- header -->
+	<header id="header" class="loan-color">
+		<h1 class="txt-out">웰컴론</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>대출정보조회</h2>
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:void(0);" class="back-to"><span></span>이전</a>
+		<script src="../../js/menu.js"></script> 
+		<!-- //menu -->
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>
+		<!-- 대출계좌선택 -->
+		<div class="loan-check ">
+			<table class="wid-full">
+				<caption>대출계좌선택</caption>
+				<colgroup>
+					<col width="100px" />
+					<col width="*" />
+					<col width="68px" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row" ><label for="loanAccount">대출계좌번호</label></th>
+						<td colspan="2">
+							<select name="loanAccount" id="loanAccount" title="대출계좌선택" style="width:100%" class="select">
+								<option value="">대출계좌선택</option>
+								<option value="">025-00-987601</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" >대출관리지점</th>
+						<td><span class="txt-small">평촌지점(고객센터)</span><br />031-000-0000</td>
+						<td><a href="javascript:void(0);" class="btn-call">통화연결</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- //대출계좌선택 -->
+		<!-- 대출정보 -->
+		<div class="width-pd2 box-col-gray no-sh">
+			<div class="round-box-w">
+				<table class="board-view wid-full round5">
+					<caption>개인정보 확인</caption>
+					<colgroup>
+						<col width="90px" />
+						<col width="*" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th colspan="2" class="strong-tit r5">대출금액 : 5,000,000원 (금 오백만원 정)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" >대출일자</th>
+							<td>2014.08.10</td>
+						</tr>
+						<tr>
+							<th scope="row" >만기일자</th>
+							<td>2014.08.10</td>
+						</tr>
+						<tr>
+							<th scope="row" >대출이용</th>
+							<td>신규대출</td>
+						</tr>
+						<tr>
+							<th scope="row" >연체이율</th>
+							<td>0.5%</td>
+						</tr>
+						<tr>
+							<th scope="row" >상환방법</th>
+							<td>원금자유상환</td>
+						</tr>
+						<tr>
+							<th scope="row" >차기결제일</th>
+							<td>2014.10.19</td>
+						</tr>
+						<tr>
+							<th scope="row" class="no-line-bottom">월액정액</th>
+							<td class="no-line-bottom">2,500,000원 (금 이백오십만원 정)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- //대출정보 -->
+		<!-- 결제금액확인 -->
+		<section class="loan-check-result">
+			<h1 class="sub-con-tit">납입금액확인</h1>
+			<div class="width-pd2">
+				<p class="txt-small mgB10"><label for="settleDate">결제 예정일</label></p>
+				<table>
+					<caption>결제 예정일 조회</caption>
+					<colgroup>
+						<col width="" />
+						<col width="" />
+						<col width="" />
+						<col width="50px" />
+					</colgroup>
+					<tbody>
+					<tr>
+						<td>
+							<select name="settleDate" id="settleDate" title="결제년도선택" class="select">
+								<option value="">선택</option>
+								<option value="">2015</option>
+							</select> 년
+						</td>
+						<td>
+							<select name="settleDate2" id="settleDate2" title="결제월선택" class="select">
+								<option value="">선택</option>
+								<option value="">10</option>
+							</select> 월
+						</td>
+						<td>
+							<select name="settleDate3" id="settleDate3" title="결제일선택" class="select">
+								<option value="">선택</option>
+								<option value="">30</option>
+							</select> 일
+						</td>
+						<td><a href="javascript:void(0);" class="btn-write" style="width:100%;">조회</a></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<table class="loan-amount lineT2 pdT20 pdB20">
+				<caption>결제금액</caption>
+				<colgroup>
+					<col width="100px" />
+					<col width="*" />
+				</colgroup>
+				<tbody>
+				<tr>
+					<th scope="row">결제금액</th>
+					<td  class="txt-right"><strong>3,000,000</strong> 원</td>
+				</tr>
+				</tbody>
+			</table>
+		</section>
+		<!-- //결제금액확인 -->
+	</section>
+	<!-- //content -->
+</div>
+<div id="mask"></div>
+</body>
+</html>

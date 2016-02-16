@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>웰컴론 ㅣ 휴대폰 자동대출</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/welcome.css">
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body class="sub3">
+<div id="wrap">
+	<!-- header -->
+	<header id="header">
+		<h1 class="txt-out">휴대폰 자동대출</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>주소찾기</h2>
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:void(0);" class="back-to"><span></span>이전</a>
+		<script src="../js/menu.js"></script> 
+		<!-- //menu -->
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>		
+		<!-- //step area -->
+		<section class="step-con">
+			<div class="certificate-box no-sh lineB0">
+				<table>
+					<caption>주소정보입력</caption>
+					<colgroup>
+						<col width="80px">
+						<col width="*">	
+					</colgroup>
+					<tbody>
+                    	<tr>
+							<th scope="row"><label for="sort1">주소구분</label></th>
+							<td>
+								<select name="sort1" id="sort1" style="width:100%;" title="지번주소 선택" class="select">
+									<option value="">지번주소</option>
+								</select>
+							</td>
+						</tr>
+                        <tr>
+							<th scope="row"><label for="sort2">시/도</label></th>
+							<td>
+								<select name="sort2" id="sort2" style="width:100%;" title="시/도 선택" class="select">
+									<option value="">선택하세요</option>
+								</select>
+							</td>
+						</tr>
+                        <tr>
+							<th scope="row"><label for="sort3">시군구</label></th>
+							<td>
+								<select name="sort3" id="sort3" style="width:100%;" title="시군구 선택" class="select">
+									<option value="">선택하세요</option>
+								</select>
+							</td>
+						</tr>
+                        <!-- 지번주소로 검색할 경우 S-->
+                        <tr>
+							<th scope="row"><label for="town">읍면동</label></th>
+							<td>
+								<input type="text" name="town" id="town" style="width:100%;" title="읍면동 입력" class="input mgT5" />
+							</td>
+						</tr>
+                        <!-- //지번주소로 검색할 경우 E-->
+                    	<!-- 도로명으로 검색할 경우 S
+                        <tr>
+							<th scope="row"><label for="road">도로명</label></th>
+							<td>
+								<input type="text" name="road" id="road" style="width:100%;" title="도로명 입력" class="input mgT5" />
+							</td>
+						</tr>
+                        <tr>
+							<th scope="row"><label for="building">건물명</label></th>
+							<td>
+								<input type="text" name="building" id="building" style="width:100%;" title="건물명 입력" class="input mgT5" />
+							</td>
+						</tr>-->
+					</tbody>
+				</table>				
+			</div><!-- //certificate-box no-sh -->
+			<div class="btn-area txt-center mgT5">
+				<a href="#" class="btn_big_gray">검색</a>
+			</div>
+            <!-- slct_addr S -->
+            <div class="slct_addr">
+            	<p class="txt-center">해당하는 주소를 선택하세요</p>
+                <ul><!-- D : 주소10개까지 노출 / 이후 더보기 -->
+                	<li><a href="#">서울특별시 서초구 방배4동 서울특별시 서초구 방배4동</a> <a href="#" class="btn-write">선택</a></li>
+                    <li><a href="#">서울특별시 서초구 방배4동</a> <a href="#" class="btn-write">선택</a></li>
+                    <li><a href="#">서울특별시 서초구 방배4동</a> <a href="#" class="btn-write">선택</a></li>
+                    <li><a href="#">서울특별시 서초구 방배4동</a> <a href="#" class="btn-write">선택</a></li>
+                    <li><a href="#">서울특별시 서초구 방배4동</a> <a href="#" class="btn-write">선택</a></li>
+                </ul>
+                <div class="btn-area txt-center mgT5">
+				<a href="#" class="btn_big_gray">더보기</a>
+				</div>
+            </div>
+            <!-- //slct_addr E -->
+		</section>
+	</section>
+	<!-- //content -->
+</div>
+
+<!-- 상품 내용 보기 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit wide">
+		<h1>신분증 촬영</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 160px;">
+		<div class="layer-content-inner">
+			<p class="alert_txt">
+					너무 어둡거나, 밝거나, 반사가 심할 경우<br /> 
+					인식이 어려울 수 있습니다.<br />
+					Frame 안에 신분증을 맞춰 주시면<br />
+					자동으로 인식하여 촬영 됩니다.
+			</p>
+			<div class="btn_area txt-center">
+				<a href="javascript:popupClose();" class="btn-view">확 인</a>			
+			</div>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- //상품 내용 보기 레이어 -->
+<div id="mask"></div>
+</body>
+</html>
