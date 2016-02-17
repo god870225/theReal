@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>더리얼마케팅 ㅣ 전자영수증</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/welcome.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body id="main">
+<div id="wrap">
+	<!-- header -->
+	<header id="header">		
+
+	</header>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="main-tit"><a href="javascript:void(0);" id="pop01" class="h1_link"><!--쉽고 간편한 영수증 조회<br /><span><strong>생활비 절감</strong><br/>여러가지 혜택을 통한 비용 절감</span>--></a></h1>
+		<div class="width-pd mgB15">
+		<!-- contents 바로가기 -->
+		<section id="conMenuList">
+			<h1 class="hidden">contents 바로가기</h1>
+			<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+			<script src="../js/menu.js"></script>
+			<ul class="main_list">
+				<li>
+					<a href="#" class="r_box" id="content1"><span>최근 <br />사용내역</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content2"><span>영수증 <br />확인</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content3"><span>가계부</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content4"><span>이벤트</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content5"><span>이벤트배너1</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content6"><span>이벤트배너1</span></a>
+				</li>
+				<li>
+					<a href="#" class="r_box" id="content7"><span>이벤트배너1</span></a>
+				</li>
+			</ul>
+		</section>
+		<!-- //contents 바로가기 -->
+		</div>
+	</section>
+	<!-- //content -->
+	<!-- footer -->
+	<footer id="footer">
+		<ul class="footer-util">
+			<li class="no-line"><a href="javascript:void(0);">이용약관</a></li>
+			<li><a href="javascript:void(0);" class="txt-orange">개인정보취급(처리)방침</a></li>
+			<li><a href="javascript:void(0);">이메일무단수집거부</a></li>
+		</ul>
+		<section class="txt-gray">
+			<h1 class="hidden">상담 안내</h1>
+			<address>
+
+			</address>
+			<p>Copyright (c) 2016 The REAL All rights reserved</p>
+		</section>
+	</footer>
+	<!-- //footer -->
+</div>
+<!-- 상품 내용 보기 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit wide">
+		<h1>알림</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 160px;">
+		<div class="layer-content-inner main_alert">
+			<p class="alert_txt font20">
+					레이어 팝업 이미지
+			</p>
+			<div class="btn_area txt-center">
+				<a href="#" class="btn-view" style="width:110px">예</a>			
+				<a href="#" class="btn-view" style="width:110px">아니오</a>			
+			</div>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- //상품 내용 보기 레이어 -->
+<div id="mask"></div>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#content1").click(function(){
+	    $.ajax({
+	        type: "post",
+	        url : "http://14.52.103.167:8080/receipt/theReal/divSearch.do",
+	        dataType:"json",
+	        data: {
+	        	startDate : '20160101',
+	        	endDate : '20160131',
+	        	eMail : 'god870225@naver.com',
+	        	divCd : 'A1',
+	        },
+	        success: whenSuccess3,
+	        error: whenError
+    	});	
+	});
+	
+})
+
+function whenSuccess3(resdata){
+	alert(resdata);
+}
+	
+function whenError(request,status,error){
+	alert("ERROR");
+}	
+</script>
+</body>
+</html>
