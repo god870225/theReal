@@ -39,32 +39,27 @@
 			<script src="../js/menu.js"></script>
 			<ul class="main_list">
 				<li>
-					<a href="#" class="r_box" id="content1"><span>최근 <br />사용내역</span>
-					<p class="mainUseList">2015-10-10:14:40 10,000</p>
-					<p class="mainUseList2">2015-10-10:14:40 20,000</p>
+					<a href="javascript:void(0)" class="r_box" id="content1"><span>최근 <br />사용내역</span>
+<!-- 					<p class="mainUseList"></p>
+					<p class="mainUseList2"></p> -->
 					</a>
 				</li>
 				<li>
-					<a href="#" class="r_box" id="content2"><span>영수증 <br />확인</span>
-					<p class="mainUseListA">2015-10-10:14:40 10,000</p>
-					<p class="mainUseListA2">2015-10-10:14:40 20,000</p>					
+					<a href="javascript:void(0)" class="r_box" id="content2"><span>영수증 <br />확인</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="r_box" id="content3"><span>가계부</span></a>
+					<a href="javascript:void(0)" class="r_box" id="content3"><span>가계부</span></a>
 				</li>
 				<li>
-					<a href="#" class="r_box" id="content4"><span>이벤트</span></a>
+					<a href="javascript:void(0)" class="r_box" id="content4"><span>이벤트</span></a>
 				</li>
 				<li>
-					<a href="#" class="r_box" id="content5"><span>이벤트배너1</span></a>
+					<a href="javascript:void(0)" class="r_box" id="content5"><img src="../images/banner/eventbanner.jpg" style="width: 100%; max-height: 145px" alt="img"></a>
 				</li>
-				<li>
-					<a href="#" class="r_box" id="content6"><span>이벤트배너1</span></a>
-				</li>
-				<li>
-					<a href="#" class="r_box" id="content7"><span>이벤트배너1</span></a>
-				</li>
+<!-- 				<li>
+					<a href="#" class="r_box" id="content5"><span></span></a>
+				</li> -->
 			</ul>
 		</section>
 		<!-- //contents 바로가기 -->
@@ -115,33 +110,53 @@
 <!-- //상품 내용 보기 레이어 -->
 <div id="mask"></div>
 <script type="text/javascript">
+
+var request = new Request();
+var idParam = request.getParameter('id');
+
 $(document).ready(function(){
+	startGetMainData();
 	
 	$("#content1").click(function(){
-	    $.ajax({
-	        type: "post",
-	        url : "http://14.52.103.167:8080/receipt/theReal/divSearch.do",
-	        dataType:"json",
-	        data: {
-	        	startDate : '20160101',
-	        	endDate : '20160131',
-	        	eMail : 'god870225@naver.com',
-	        	divCd : 'A1',
-	        },
-	        success: whenSuccess3,
-	        error: whenError
-    	});	
-	});
+		location.href='./stepA_01.html?id='+idParam;
+	})
 	
 })
 
-function whenSuccess3(resdata){
-	alert(resdata);
+function startGetMainData(){
+	
+    $.ajax({
+        type: "post",
+        url : "http://14.52.103.167:8080/receipt/theReal/appLoginSucess.do",
+        dataType:"json",
+        data: {
+			id : idParam	,
+        },
+        success: startGetMainDataSuc,
+        error: whenError
+	});			
+	
+}
+
+function startGetMainDataSuc(resdata){
+	console.log(resdata);
+	var str = "";
+	var resultData = resdata.resultMap;
+	if(resultData.length>0){
+		for(var i=0; i<resultData.length; i++){
+			console.log(resultData[i]);
+			str += '<p class="mainUseList">'+resultData[0].USE_DATE+' '+resultData[0].ETP_NM+' : '+resultData[0].PAY_AM+'</p>';
+			str += '<p class="mainUseList2">'+resultData[1].USE_DATE+' '+resultData[1].ETP_NM+' : '+resultData[1].PAY_AM+'</p>';
+		}
+		$("#content1").append(str);
+	}	
 }
 	
 function whenError(request,status,error){
 	alert("ERROR");
 }	
+
+
 </script>
 </body>
 </html>

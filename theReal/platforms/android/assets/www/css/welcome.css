@@ -6,18 +6,19 @@ body.sub2{background:#f8f8f8;}
 body.sub3{background:#fff;}
 
 /* header */
-#header {width:100%; height:61px; text-align:left; letter-spacing:-1px;background:#fff8f1;}
+/* #header {width:100%; height:40px; text-align:left; letter-spacing:-1px;background:#fff8f1;} */
+#header {width:100%; height:40px; text-align:left; letter-spacing:-1px;}
 #header.loan-color {background:#f0f9fe !important;}
 #header.certifi-color {background:#f8f8f8 !important;}
 #header > h1 {position:absolute;top:5px;right:9px;display:inline-block; width:21px; background:url(../images/common/logo.png) no-repeat; background-size:100%; height:29px;}
 #header p{padding-left:8px ;border-bottom:1px solid #e6e6e6;background: #f8f8f8; height:19px;line-height:19px;font-size:8px;}
 #header > h2 {color:#222; text-align:center; font:18px/43px nanumgothic_bold; letter-spacing:-1px;}
-#header .menu-open {position:absolute; top:29px; right:4%; width:25px; height:25px; background:url(../images/common/btn_menu.png) no-repeat 3px 5px; background-size:19px auto;}
-#header .back-to {position:absolute; top:28px; left:4%; display:inline-block; letter-spacing:0; font:9px/24px nanumgothic_bold; color:#666; width:44px; height:24px; background:#fff;border:1px solid #b0abb3;  text-align:center; border-radius:3px;}
+#header .menu-open {position:absolute; top:10px; right:4%; width:25px; height:25px; background:url(../images/common/btn_menu.png) no-repeat 3px 5px; background-size:19px auto;}
+#header .back-to {position:absolute; top:10px; left:4%; display:inline-block; letter-spacing:0; font:9px/24px nanumgothic_bold; color:#666; width:44px; height:24px; background:#fff;border:1px solid #b0abb3;  text-align:center; border-radius:3px;}
 #header .back-to span {display:inline-block;width:5px;height:8px;margin-top:2px;padding-right:5px; background:url(../images/common/btn_icon.png) no-repeat left center; background-size:5px auto;}
 #menuSlide {z-index:99999; display:none; text-align:left; position:absolute; right:0; top:0; width:100%; height:100%; min-height:500px;}
-#menuSlide nav {z-index:1; position:fixed;top:20px; right:0; font:14px/34px nanumgothic_bold; color:#fff; width:140px; height:100%; overflow:auto;}
-#menuSlide nav h1 {padding-left:40px;font:16px/42px nanumgothic_bold;background: #e41937; /* Old browsers */background: linear-gradient(to right, #e31836 0%, #f95822 100%); }
+#menuSlide nav {z-index:1; position:fixed;top:30%; right:20%; font:14px/34px nanumgothic_bold; color:#fff; width:60%; height:100%; overflow:auto;}
+#menuSlide nav h1 {padding-left:40px;font:16px/42px nanumgothic_bold;background: #e41937; /* Old browsers */    background: #1e74ba;}
 #menuSlide nav > a {position:absolute; top:9px; left:8px; width:24px; height:24px; background:url(../images/common/btn_close.png) no-repeat; background-size:24px auto;}
 #menuSlide nav ul li {background:#fff;border-bottom:1px solid #f8f8f8;}
 #menuSlide nav ul li:last-child {border-bottom:0;}
@@ -28,7 +29,8 @@ body.sub3{background:#fff;}
 #top_mar{height: 63px;}
 .sub-con-tit{color: #999;font:12px/21px nanumgothic_bold;height: 21px;padding-left:4%;background:#f1f1f1;display: block;border-bottom:1px solid #d4d4d4; }
 .sub-con-tit.bdT{border-top:1px solid #c5c5c5;}
-.sub-txt{color: #fb5b21;font-size:12px;margin-top:15px}
+/* .sub-txt{color: #fb5b21;font-size:12px;margin-top:15px} */
+.sub-txt{color: #fb5b21;font-size:12px;}
 
 /* step */
 .step-area{width:100%;color:#444;overflow:hidden;}
@@ -54,11 +56,11 @@ body.sub3{background:#fff;}
 .step-con header.loan-amount p > span .btn-cs{position: absolute;right:4%;top:5px;}
 
 .loan-list{border-bottom: 1px solid #cacaca;}
-.loan-list li > a {padding:4%;background:#fff url(../images/common/icon_loan.png) no-repeat right 15px;background-size:25px auto;font-size:15px;width:92%;display:block;border-top:1px solid #cacaca;}
+.loan-list li > a {padding:4%;background:#fff url(../images/common/icon_loan.png) no-repeat right 25px;background-size:25px auto;font-size:15px;width:92%;display:block;border-top:1px solid #cacaca;}
 .loan-list li .dropboad{display:none !important;}
 .loan-list li.on {background:#fff;} 
 .loan-list li.on .on-bd{border-left:1px solid #ff8932;border-right:1px solid #ff8932;border-bottom:1px solid #ff8932;box-sizing:border-box;} 
-.loan-list li.on > a {width:100%; background: #feefe1 url(../images/common/icon_loan.png) no-repeat right -35px;background-size:25px auto;border-top:1px solid #ff8932;border-left:1px solid #ff8932;border-right:1px solid #ff8932;color:#70413a !important;box-sizing:border-box;}
+.loan-list li.on > a {width:100%; background: #feefe1 url(../images/common/icon_loan.png) no-repeat right -25px;background-size:25px auto;border-top:1px solid #ff8932;border-left:1px solid #ff8932;border-right:1px solid #ff8932;color:#70413a !important;box-sizing:border-box;}
 .loan-list li.on .dropboad{display:block !important;}
 .loan-list li.compl > a {background: #f2f2f2 url(../images/common/icon_loan.png) no-repeat right -85px;background-size:25px auto;border-top:1px solid #cacaca;color:#70413a !important;border-left:0 !important;border-right:0 !important;}
 .loan-list .on-bd > .board-view{border-top: 1px solid #cacaca;}
