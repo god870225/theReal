@@ -31,7 +31,7 @@ body.sub3{background:#fff;}
 .sub-con-tit.bdT{border-top:1px solid #c5c5c5;}
 /* .sub-txt{color: #fb5b21;font-size:12px;margin-top:15px} */
 .sub-txt{color: #fb5b21;font-size:12px;}
-
+.emailSend {top:10px; left:4%; display:inline-block; letter-spacing:0; font:9px/24px nanumgothic_bold; color:#666; width:60px; height:24px; background:#fff;border:1px solid #b0abb3;  text-align:center; border-radius:3px;}
 /* step */
 .step-area{width:100%;color:#444;overflow:hidden;}
 .step-area ul{font-size: 13px;line-height:16px;}

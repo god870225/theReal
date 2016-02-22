@@ -131,7 +131,7 @@ input[type=text],input[type=password],input[type=url],textarea,input[type=submit
 .layer-popup .layer-tit h1{color:#222;font: 18px/41px nanumgothic_bold;letter-spacing:-1px;text-align: center;border-top-left-radius:5px;border-top-right-radius:5px;}
 .layer-content{padding:4%;font-size:15px; line-height:23px;}
 .layer-content2{padding:4%;font-size:9px; line-height:14px;}
-.layer-content-inner{overflow-y:scroll;overflow-x:hidden;height:97%;padding:0 5px 0 5px;line-height: 1.6em;}
+.layer-content-inner{overflow-y:scroll;overflow-x:hidden;height:90%;padding:0 5px 0 5px;line-height: 1.6em;}
 .layer-popup .btn-close{position:absolute;right:10px;top:10px;width:24px; height:24px; background:url(../images/common/btn_close_pop.png) no-repeat; background-size:24px auto;}
 
 /* wrapper layout */

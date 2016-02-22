@@ -9,6 +9,8 @@ $(window).load(function() {
     
 $(document).ready(function() {
     
+
+	
     //Scroll For Menu Elements on landing page
     function scrollToElement(selector, time, verticalOffset) {
         time = typeof(time) != 'undefined' ? time : 1000;

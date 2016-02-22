@@ -20,6 +20,7 @@
 <script type="text/javascript" src="../js/jqueryui.js"></script>
 <script type="text/javascript" src="../js/framework.plugins.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
 
 <style type="text/css">
 .placeholder { color: #aaa; }
@@ -38,7 +39,8 @@
         
 <div class="login-page">
     <div class="login-page-overlay"></div>
-    
+   	<header id="header">		
+	</header>
     <div class="login-page-wrapper">
         <h3>전자영수증</h3>
         <p>
@@ -60,7 +62,6 @@
 <script type="text/javascript">
  $(document).ready(function(){
 	  //$('input, textarea').placeholder();
-	 
 		$('input').keyup(function(e) {
 		    if (e.keyCode == 13){
 		    	goAjax();
@@ -93,7 +94,7 @@
 	function callAjax(){
 	     $.ajax({
 	      type: "post",
-	      url : "http://14.52.103.167:8080/receipt/theReal/loginChk.do",
+	      url : "http://"+commonIp('dev')+":8080/receipt/theReal/loginChk.do",
 	      data: {
 	      	id : $('#username').val(),
 	    			password : $('#password').val(),

@@ -127,7 +127,7 @@ function startGetMainData(){
 	
     $.ajax({
         type: "post",
-        url : "http://14.52.103.167:8080/receipt/theReal/appLoginSucess.do",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appLoginSucess.do",
         dataType:"json",
         data: {
 			id : idParam	,

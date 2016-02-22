@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <meta name="format-detection" content="telephone=no">
-<title>웰컴론 ㅣ 전자계약 목록조회 </title>
+<title>더리얼마케팅 전자영수증</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/welcome.css">
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
@@ -61,22 +61,22 @@
 </div>
 
 <!-- 약관 레이어 -->
-<section class="layer-popup" id="pop01Layer">
+<section class="layer-popup" id="multiPopLayer" >
 	<!-- 사이트 header -->
 	<header class="layer-tit">
-		<h1>개인정보 수집 &middot; 이용 동의서</h1>
+		<h1> 영수증 발급 내역 확인</h1>
 	</header>
 	<!-- //사이트 header -->	
 	<!-- 본문 컨텐츠 -->
-	<div class="layer-content2" style="height: 400px;">
+	<div class="layer-content2" style="height: 200px;">
 		<div class="layer-content-inner">
-			<p>웰컴크레디라인대부(주) 귀중</p>
-			<p>
-				귀사와의 모바일대출신청 관련하여 귀사가 본인으로부터 취득한<br/>
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/>
-			</p>
+<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
+			<p>웰컴크레디라인대부(주) 귀중</p> -->
 		</div>
+		<div class="btn_area txt-center">
+			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnYes">예</a>			
+			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
+		</div>			
 	</div>
 	<!-- //본문 컨텐츠 -->	
 	<!-- 팝업닫기버튼 -->
@@ -89,7 +89,7 @@
 
 var request = new Request();
 var idParam = request.getParameter('id');
-
+var seq = "";
 $(document).ready(function(){
 	
 	startGetA01Data();
@@ -105,13 +105,58 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+	
+	$(document).on('click','.emailSend',function(){
+		$(".layer-content-inner").empty();
+		seq = $(this).attr('id');
+		var eMailStr = '';
+		multiPoppupOpen(this);
+		eMailStr +='<p>□  상호명 : '+$("#etpNm"+seq).text()+'</p>';
+		eMailStr +='<p>□  상품내역 : '+$("#payGoods"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용내역 : '+$("#payAm"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용카드 : '+$("#payDiv"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용일시 : '+$("#useDate"+seq).val()+'</p>';
+		
+		$(".layer-content-inner").append(eMailStr);
+
+	});
+	
+	$(document).on('click','#btnYes',function(){
+		callEmailSend(seq);
+	});
+	$(document).on('click','#btnNo',function(){
+		popupClose();
+	});	
+	
 })
+
+function callEmailSend(seq){
+    $.ajax({
+     type: "post",
+     url : "http://"+commonIp('dev')+":8080/receipt/theReal/sendMail.do",
+     data: {
+        	 useDate : $('#useDate'+seq).val(),
+        	 payDiv : $('#payDiv'+seq).text(),
+        	 etpNm : $('#etpNm'+seq).text(),
+        	 payAm : $('#payAm'+seq).text(),
+        	 eMail : idParam,
+        	 payGoods : $('#payGoods'+seq).text(),
+     },
+     success: callEmailSendSuc,
+     error: whenError
+ 	});
+}
+
+function callEmailSendSuc(resdata){
+	alert("이메일전송이 되었습니다.");
+	popupClose();
+}
 
 function startGetA01Data(){
 	
     $.ajax({
         type: "post",
-        url : "http://14.52.103.167:8080/receipt/theReal/appA01.do",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appA01.do",
         dataType:"json",
         data: {
 			id : idParam	,
@@ -123,12 +168,12 @@ function startGetA01Data(){
 }
 
 function startGetA01DataSuc(resdata){
-	console.log(resdata);
+	//console.log(resdata);
 	var str = "";
 	var resultData = resdata.resultMap;
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
-			console.log(resultData[i]);
+			//console.log(resultData[i]);
 			if(i == 0){
 				str += '<li class="on">';
 			}else{
@@ -138,6 +183,8 @@ function startGetA01DataSuc(resdata){
  			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
 			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
 			str += '	</a>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			/* str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">'; */
 			str += '	<div class="dropboad">';
 			str += '		<div class="on-bd">';					
 			str += '			<table class="board-view wid-full">';
@@ -149,18 +196,22 @@ function startGetA01DataSuc(resdata){
 			str += '				<tbody>';
 			str += '					<tr>';
 			str += '						<th scope="row" >상호명</th>';
-			str += '						<td class="right">'+resultData[i].ETP_NM+'</td>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
 			str += '					</tr>';
 			str += '						<th scope="row" >상품내역</th>';
-			str += '						<td class="right">'+resultData[i].PAY_GOODS+'</td>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
 			str += '					</tr>';
 			str += '					<tr>';
 			str += '						<th scope="row" >사용내역</th>';
-			str += '						<td class="right">'+resultData[i].PAY_AM+'</td>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
 			str += '					</tr>';
 			str += '					<tr>';
 			str += '						<th scope="row" >사용카드</th>';
-			str += '						<td class="right">'+resultData[i].PAY_DIV+'</td>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>이메일보내기</a></td>';
 			str += '					</tr>';
 			str += '				</tbody>';
 			str += '			</table>';
