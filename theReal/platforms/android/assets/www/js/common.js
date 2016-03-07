@@ -5,13 +5,38 @@ $(function(){
 		$('#wrap').addClass('menu-on').find('#menuSlide').show();
 		return false;
 	});
-	$( '#menuSlide>nav>a, #menuSlide>div>p' ).click(function() {
+	$( '#menuSlide>nav>a, #menuClose').click(function() {
 		$(this).text('메뉴 열기');
 		$('#wrap').removeClass('menu-on').find('#menuSlide').hide();
 		return false;
 	});
+	
+ 	$( '#menuSlide>nav>ul>li>a' ).click(function() {
+ 		var request = new Request();
+ 		var idParam = request.getParameter('id');
+		var url = "";
+		if($(this).attr("id") == "menu01"){
+			url = '../html/main.html?id='+idParam
+			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menu02"){
+			url = '../html/stepA_01.html?id='+idParam
+			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menu03"){
+			url = '../html/stepB_01.html?id='+idParam
+			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menu04"){
+			url = '../html/main.html?id='+idParam
+			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menu05"){
+			url = '../html/main.html?id='+idParam
+			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menu06"){
+			url = '../html/main.html?id='+idParam
+			$(location).attr('href',url);
+		}
+	});	
 
-	// Image checkbox
+ 	// Image checkbox
 	$(".checkbox").each(function(){
         $(this).wrap( "<span class='custom-checkbox'></span>" );
         if($(this).is(':checked')){
@@ -33,7 +58,7 @@ $(function(){
         });
         $(radioButton).click(function(){
             if($(this).is(':checked')){
-                $(this).parent().addClass("selected");
+               $(this).parent().addClass("selected");
             }
             $(radioButton).not(this).each(function(){
                 $(this).parent().removeClass("selected");
@@ -80,7 +105,6 @@ $(function(){
 			  }
           }
     }); 
-			 
  }); 
 
 
@@ -115,6 +139,21 @@ function popupOpen(obj) {
 	}
 	popupObj.css("left",(($(window).width() - popupObj.outerWidth()) / 2) + $(window).scrollLeft());	
     popupObj.show();
+}
+
+function popupOpenId(popupId) {
+	var popupObj = $("#" + popupId + "Layer");
+	wrapWindowByMask();
+	popupObj.css("position", "absolute");
+	//영역 가운에데 레이어를 뛰우기 위해 위치 계산 
+	if($(window).height() < popupObj.height()){
+		popupObj.css("top", '63px');	
+		popupObj.find('.layer-content-inner').css('height', $(window).height()-150)
+	}else{
+		popupObj.css("top",(($(window).height() - popupObj.outerHeight()) / 2) + $(window).scrollTop());
+	}
+	popupObj.css("left",(($(window).width() - popupObj.outerWidth()) / 2) + $(window).scrollLeft());	
+	popupObj.show();
 }
 
 function multiPoppupOpen(obj) {
@@ -205,12 +244,37 @@ var Request = function()
     }
 }
 
+//개발IP셋팅
 function commonIp(div){
 	var commonIp = "";
 	if(div == "dev"){
-		commonIp = "221.148.29.120";
+		//commonIp = "121.138.82.229";
+		commonIp = "14.52.103.145";
 	}else{
 		commonIp = "221.148.29.120";
 	}
 	return commonIp; 
 }	
+
+//현재달의 마지막날(일자) 구하기
+function lastDay(){
+   var d,d2, s = "";           
+   d = new Date();             
+   d2 = new Date(d.getYear(),d.getMonth()+1,"");                      
+   s += d2.getDate();
+   return(s);                             
+}
+
+
+//현재달의 마지막날(일자) 구하기
+function lastDayStrDate(strDate){
+   var d,d2, s = "";           
+   //d = new Date();             
+   d2 = new Date(strDate.getYear(),strDate.getMonth()+1,"");                      
+   //s += d2.getYear()+ kind;                       
+   //s += (d2.getMonth()+1) + kind;  //여기에 꼭 +1이 있어야됨 생략하고 위에다가 +1하면 1월이 0으로 나옴
+   s += d2.getDate();
+   return(s);                             
+}
+
+

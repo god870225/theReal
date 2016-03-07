@@ -52,7 +52,7 @@
 					<a href="javascript:void(0)" class="r_box" id="content3"><span>가계부</span></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" class="r_box" id="content4"><span>이벤트</span></a>
+					<a href="javascript:void(0)" class="r_box" id="content4"><span>공지사항</span></a>
 				</li>
 				<li>
 					<a href="javascript:void(0)" class="r_box" id="content5"><img src="../images/banner/eventbanner.jpg" style="width: 100%; max-height: 145px" alt="img"></a>
@@ -119,12 +119,23 @@ $(document).ready(function(){
 	
 	$("#content1").click(function(){
 		location.href='./stepA_01.html?id='+idParam;
-	})
+	});
+	
+	$("#content2").click(function(){
+		location.href='./stepB_01.html?id='+idParam;
+	});
+	
+	$("#content3").click(function(){
+		alert("준비중");
+	});
+	
+	$("#content4").click(function(){
+		location.href='./stepD_01.html?id='+idParam;
+	});
 	
 })
 
 function startGetMainData(){
-	
     $.ajax({
         type: "post",
         url : "http://"+commonIp('dev')+":8080/receipt/theReal/appLoginSucess.do",
@@ -139,12 +150,12 @@ function startGetMainData(){
 }
 
 function startGetMainDataSuc(resdata){
-	console.log(resdata);
+	$(".mainUseList").empty();
+	$(".mainUseList2").empty();
 	var str = "";
 	var resultData = resdata.resultMap;
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
-			console.log(resultData[i]);
 			str += '<p class="mainUseList">'+resultData[0].USE_DATE+' '+resultData[0].ETP_NM+' : '+resultData[0].PAY_AM+'</p>';
 			str += '<p class="mainUseList2">'+resultData[1].USE_DATE+' '+resultData[1].ETP_NM+' : '+resultData[1].PAY_AM+'</p>';
 		}

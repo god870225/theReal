@@ -35,7 +35,7 @@ body.sub3{background:#fff;}
 /* step */
 .step-area{width:100%;color:#444;overflow:hidden;}
 .step-area ul{font-size: 13px;line-height:16px;}
-.step-area li{float:left;width:25.1%;background:#fff ;height:58px;line-height:1.15em;border-bottom:1px solid #f6b6c0;position:relative;}
+.step-area li{float:left;width:25.1%;background:#fff ;height:30px;line-height:1.15em;border-bottom:1px solid #f6b6c0;border-top:1px solid #f6b6c0;border-right:1px solid #f6b6c0;position:relative;}
 .step-area li .arrow{position: absolute;right:-9px;top:0;width:10px;height:58px;background: url(../images/common/bg_step.png) no-repeat left top;background-size:10px auto;display: block;z-index:10;}
 .step-area li p{position:relative;display:inline-block;padding:7px 0 5px 26px;/* border-left:1px solid #f6b6c0; */height:100%;}
 .step-area li > p > span{position:absolute;left:15px;top:7px;font-size:0.85em;color:#fb5b21;}
@@ -67,17 +67,18 @@ body.sub3{background:#fff;}
 
 /* preview */
 .previewBox{box-sizing:border-box;border-radius:5px;background:#fff;border:1px solid #eeece7;padding-bottom:15px;border-top:0 !important;}
-.previewControl{box-sizing:border-box;border-radius:4px;background:#ffefe2;height:29px;padding:3px 0;width:100%;border:1px solid #f2dac5;}
+.previewControl{box-sizing:border-box;border-radius:4px;height:29px;padding:3px 0;width:100%;border:1px solid #f2dac5;}
+/* .previewControl{box-sizing:border-box;border-radius:4px;background:#ffefe2;height:29px;padding:3px 0;width:100%;border:1px solid #f2dac5;} */
 .previewControl:after {display:block; clear:both; content:""}
-.previewControl li{float:left;width:16%;text-align:center;background: url(../images/bg_viwer_line.png) repeat-y left center;background-size:2px auto; }
-.previewControl li:first-child{background-image:none;width:20%;}
+.previewControl li{float:left;width:33%;text-align:center;background: url(../images/bg_viwer_line.png) repeat-y left center;background-size:2px auto; }
+.previewControl li:first-child{background-image:none;width:33%;}
 .control{display:inline-block;width:92%;height:21px;text-indent:-10000px;background:url("../images/icon_control.png") no-repeat;background-size:20px auto; border: 0 !important;}
 .control.btn-pre{background-position:center 0;}
 .control.btn-next{background-position:center -35px;}
 .control.zoomOut{background-position:center -72px;}
 .control.zoomIn{background-position:center -110px;}
 .control.fullScreen{background-position:center -147px;}
-.previewImg{background:#fff;text-align:center;width:100%;margin-top:10px;position: relative;overflow: hidden;height:270px;}
+.previewImg{background:#fff;text-align:center;width:100%;margin-top:10px;position: relative;overflow: hidden;height:100%;}
 .previewImg:after {display:block; clear:both; content:""}
 #pageInfo{line-height:22px;font-size:12px;color: #666;font-family:nanumgothic_bold;}
 #imgDiv {width:100%; float:left;position:relative;z-index:1;overflow:hidden;}
@@ -186,3 +187,172 @@ body.sub3{background:#fff;}
 .wrap_term + .wrap_term {padding-top:15px}
 .term_txt {}
 .term_txt h2, .term_txt .tit_h2 {display:block; color:#55474a; font-family:nanumgothic_bold; font-size:11px}
+
+
+/*달력*/
+/*Calendar*/
+
+.calendar{
+    margin-bottom:30px;
+}
+
+.calendar-titles a{
+    width:14.28%;
+    float:left;
+    text-align:center;
+    height:40px;
+    line-height:40px;
+    font-size:10px;
+    color:#1f1f1f;
+    font-weight:800;
+}
+
+.calendar-titles .light-titles{
+    opacity:0.5;
+}
+
+.calendar-days{
+    margin-top:-10px;
+    font-size:14px;
+    margin-bottom:30px;
+}
+
+.calendar-days a{
+    width:14.28%;
+    float:left;
+    height:60px;
+    line-height:60px;
+    text-align:center;
+    color:#1f1f1f;
+    font-weight:700;
+}
+
+.calendar-days a:hover{
+    color:rgba(41, 128, 185,1.0);
+}
+
+.calendar-day .light-day{
+    opacity:0.3;
+}
+
+.calendar-days i{
+    position:absolute;
+    font-size:10px;
+    margin-top:12px;
+    margin-left:-7px;
+  /*   z-index:-1; */
+}
+
+.clear-day i{
+  /*   opacity:0; */
+}
+
+.light-day{
+    opacity:0.5;
+}
+
+.light-day i{
+    /* display:none; */
+}
+
+.taken-day{
+    color:#FFFFFF!important;
+}
+
+.taken-day i{
+    color:#27ae60;
+}
+
+.close-day{
+    color:#FFFFFF!important;
+}
+
+.close-day i{
+    color:#c0392b;
+}
+
+.calendar-hours{
+    border-top:solid 1px rgba(0,0,0,0.1);
+}
+
+.calendar-hour{
+    height:80px;
+    border-bottom:solid 1px rgba(0,0,0,0.1);
+}
+
+.calendar-hour-clear:hover{
+    background-color: rgba(39, 174, 96, 0.1);  
+}
+
+.calendar-hour-taken:hover{
+    background-color: rgba(192, 57, 43,0.1);   
+}
+
+.calendar-hour strong{
+    color:#666666;
+    opacity:0.7;
+}
+
+.calendar-hours a:last-child{
+    border-bottom:none;
+}
+
+.calendar-hour .cal-time{
+    position:absolute;
+    margin-top:30px;
+    font-weight:400;
+    font-size:11px;
+    padding-left:20px;
+}
+
+.calendar-hour .cal-from{
+    position:absolute;
+    margin-top:18px;
+    font-size:11px;
+    font-weight:400;
+    padding-left:20px;
+}
+
+.calendar-hour .cal-to{
+    position:absolute;
+    margin-top:40px;
+    font-size:11px;
+    font-weight:400;
+    padding-left:20px;
+}
+
+.calendar-hour h4{
+    font-size:14px;
+    padding-left:100px;
+    padding-top:17px;
+    margin-bottom:2px;
+}
+
+.calendar-hour em{
+    font-style:normal;
+    font-size:11px;
+    padding-left:100px;
+    color:#666666;
+}
+
+.calendar-hour em i{
+    margin-right:10px;
+}
+.decoration{ 
+    position:relative;
+    z-index:9!important;
+	height:1px;
+	background-color:rgba(0,0,0,0.1);
+	margin-bottom:30px;
+	display:block;
+	clear:both;
+}
+
+.pageNavi { position: relative;margin: -1px 0 20px;}
+/* .pageNavi a { display: block; position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: url(../images/btn/ico_pageNavi_right.png) no-repeat center center; background-size: 9px 16px; border-left: 1px solid #ccc; text-indent: -99999em;}
+.pageNavi a:first-child { right: auto; left: 0; background-image: url(../images/btn/ico_pageNavi_left.png); border-left: 0; border-right: 1px solid #ccc;}
+ */
+ .pageNavi a { display: block; position: absolute; top: 0; right: 0; width: 40px; height: 40px; background: url(../images/btn/ico_pageNavi_right.png) no-repeat center center; background-size: 9px 16px; border-left: 1px solid #ccc; text-indent: -99999em;}
+.pageNavi a:first-child { right: auto; left: 0; background-image: url(../images/btn/ico_pageNavi_left.png); border-left: 0; border-right: 1px solid #ccc;}
+.pageNavi span { display: block; width: 100%; height: 38px; line-height: 38px; text-align: center; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}
+.pageNavi a img {width: 40px;height: 40px;border-left: 1px solid #ccc;}

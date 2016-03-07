@@ -14,19 +14,6 @@
 <script type="text/javascript" src="../js/html5shiv.js"></script>
 <![endif]-->
 <script type="text/javascript" >
-/* $(function(){
-	 //toggle
-	$(".loan-list li  > a").click(function(){ 
-		if($(this).parent().hasClass("on")){
-			$(this).parent().removeClass("on");
-		}else{
-			$(".loan-list li").removeClass("on");
-			$(this).parent().addClass("on");
-			$(".dropboad").hide();
-		}
-		return false;
-	});
-}); */
 </script>
 </head>
 <body class="sub">
@@ -180,6 +167,7 @@ function startGetA01DataSuc(resdata){
 				str += '<li>';
 			}
 			str += '	<a href="javascript:void(0);">';
+			/* str += '<img src="../images/icon/beer_icon.png" style="float: left;">'; */
  			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
 			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
 			str += '	</a>';
