@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>더리얼마케팅 전자영수증</title>
+
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/welcome.css">
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+
+<style type="text/css">
+.placeholder { color: #aaa; }
+</style>
+</head>
+<body class="sub">
+<div id="wrap">
+	<!-- header -->
+	<header id="header">
+	<h2>회원가입</h2>
+	</header>
+	<div id="top_mar" style="display:none;"></div>
+	<!-- //header -->
+	<!-- content -->
+	<section id="contents">
+		<h1 class="hidden">내용</h1>		
+		<section class="step-con">
+			<h1 class="hidden">대출정보확인 및 약관동의</h1>
+			<!-- 대출정보 -->
+			<!-- //대출정보 -->
+			<!-- 대출 목록 -->
+			<ul class="loan-list mgB20">
+				<li class="on">
+					<!-- 대출정보 자세히 보기 영역 -->
+					<div class="dropboad">
+						<!-- 약관동의 영역 -->
+						<div class="width-pd2 box-col-gray">													
+							<!-- termAll -->
+							<section class="round-box-ws terms">
+								<h1>약관동의</h1>
+								<div>
+									<table class="termAll">
+									<caption>약관동의</caption>
+									<colgroup>
+										<col width="50%" />
+										<col width="*" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th><label><input type="checkbox" id="allchk" name="allchk" class="checkbox">전체약관동의</label></th>
+											<td class="txt-right"><!-- <!-- <a href="javascript:void(0);" class="open-terms">약관보기</a> <a href="javascript:void(0);" class="close-terms">약관보기</a> --></td>
+										</tr>
+									</tbody>
+									</table>
+								</div>
+								<div class="block"><!--  [개발시 약관보기 hide일때 변경]<div class="none"> -->
+									<div class="agree-box line-t">
+										<dl>
+											<dt>전자영수증 이용약관</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" name="multiPop" id="multiPop01">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												전자영수증 이용약관 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak1_1" name="yak1" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak1_2" name="yak1" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>개인(신용)정보 수집 &middot; 이용</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" name="multiPop" id="multiPop02">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												개인(신용)정보 수집 &middot; 이용 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak2_1" name="yak2" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak2_2" name="yak2" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>서비스 제공을 위한 취급 위탁</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" name="multiPop" id="multiPop03">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												서비스 제공을 위한 취급 위탁에 대한 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak3_1" name="yak3" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak3_2" name="yak3" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>이메일 고지서, 이메일 소식지 수신 동의</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" name="multiPop" id="multiPop04">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												이메일 고지서 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak4_1" name="yak4" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak4_2" name="yak4" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+											<li>
+												<div class="agree-sub">
+													이메일 소식지 수신 동의
+												</div>
+												<div class="agree-sel">
+													<label><input type="radio" id="yak5_1" name="yak5" class="radio"> 동의함</label>
+													<label><input type="radio" id="yak5_2" name="yak5" class="radio"> 동의하지 않음</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="agree-box line-t">
+										<dl>
+											<dt>전자금융거래이용약관</dt>
+											<dd><a href="javascript:void(0);" class="btn-view" name="multiPop" id="multiPop06">내용보기</a></dd>
+										</dl>
+										<ul class="agree-sub-wrap">
+											<li>
+											<div class="agree-sub">
+												전자금융거래이용약관에 대한 동의
+											</div>
+											<div class="agree-sel">
+												<label><input type="radio" id="yak6_1" name="yak6" class="radio"> 동의함</label>
+												<label><input type="radio" id="yak6_2" name="yak6" class="radio"> 동의하지 않음</label>
+											</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</section>
+							<!-- //termAll -->
+							<a href="javascript:void(0);" class="btn_big_orange mgT15" id= "testBtn"><span class="next">다음</span></a>							
+						</div>
+						<!-- //약관동의 영역 -->
+					</div>
+					<!-- //대출정보 자세히 보기 영역 -->
+				</li>
+			</ul>
+			<!-- //대출 목록 -->
+		</section>
+	</section>
+	<!-- //content -->
+</div>
+
+<!-- 약관 레이어 -->
+<section class="layer-popup" id="multiPopLayer" >
+	<!-- 사이트 header -->
+	<header class="layer-tit">
+		<h1> 영수증 발급 내역 확인</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 200px;">
+		<div class="layer-content-inner" id= "agreeInfo">
+<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
+			<p>웰컴크레디라인대부(주) 귀중</p> -->
+		</div>
+		<div class="btn_area txt-center">
+			<a href="javascript:popupClose();" class="btn-view" style="width:110px" id="btnYes">확인</a>			
+		</div>			
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+
+<!-- 약관 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit">
+		<h1>개인정보 수집 &middot; 이용 동의서</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 400px;">
+		<div class="layer-content-inner">
+			<p>개인정보 수집 &middot; 이용 동의서</p>
+			<p>
+				test
+			</p>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- //약관 레이어 -->
+<div id="mask"></div>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('[name="multiPop"]').click(function(){
+		var test = $(this).attr("id");
+		multiPoppupOpen(this);
+		$("#agreeInfo").empty();
+	});
+	
+	$("#allchk").click(function(){
+		 if($(this).is(':checked')){
+			$('.agree-sel').each(function(index){
+				var idSeq = index+1;			
+				$('.radio[id="yak'+ idSeq +'_1"]').parent().addClass("selected");			
+			});
+		 }else{
+			$('.agree-sel').each(function(index){
+				var idSeq = index+1;			
+				$('.radio[id="yak'+ idSeq +'_1"]').parent().removeClass("selected");			
+			});
+		 }
+	});
+	
+	$("#testBtn").click(function(){
+		$('.agree-sel').each(function(index){
+			var idSeq = index+1;			
+			if(!$('.radio[id="yak'+ idSeq +'_1"]').parent().hasClass("selected")){
+				alert("동의해주시기바랍니다.");
+				return false;
+			};			
+		});
+	})
+})
+</script>
+</body>
+</html>
