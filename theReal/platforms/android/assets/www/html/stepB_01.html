@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<!-- IOS 상태바 색상 설정 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- IOS 상태바 색상 설정 -->
+<title>더리얼마케팅 전자영수증</title>
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/welcome.css">
+
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="../css/framework.css"> -->
+<link rel="stylesheet" type="text/css" href="../css/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="../css/swipebox.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<!-- <script type="text/javascript" src="../js/jqueryui.js"></script> -->
+<!-- <script type="text/javascript" src="../js/framework.plugins.js"></script> -->
+<!-- <script type="text/javascript" src="../js/custom.js"></script> -->
+
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body class="sub2">
+<div id="wrap">
+	<header id="header">
+<!-- 		<h1 class="txt-out">웰컴론</h1>
+		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
+		<h2>전자계약 목록조회</h2> -->
+		<!-- menu -->
+		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
+		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
+		<h2>전자영수증 내역 	조회</h2>
+		<script src="../js/menu.js"></script>
+	</header>
+	<!-- content -->
+	<section id="contents">
+		<section class="step-area">
+			<h1 class="hidden">전자영수증 탭</h1>		
+			<ul>
+				<li id="tabList" class="on"><p>리스트</p><span></span></li>
+				<li id="tabCal"><p>달력</p><span></span></li>
+				<li id="tabDiv"><p>분류</p><span></span></li>
+			</ul>		
+		</section>		
+		<!-- //step area -->
+		<section class="step-con">
+			<h1 class="hidden">전자영수증 조회</h1>
+				<ul class="previewControl">
+					<li id="prevBtn"><a href="javascript:void(0)"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>
+					<li id="pageInfo"></li>
+					<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnNext" /></li>
+				</ul>
+			<div class="width-pd2 box-col-gray">
+				<p class="sub-txt"></p>
+			</div>
+			<ul class="loan-list mgB20" id="listTab1" style="display: block;">
+				</ul>		
+<div class="one-half-responsive" id="listTab2" style="display: none" >
+<!--             <h3>Calendar Design</h3>
+            <p>
+                A calendar template, you can use to show schedules, events and whatever else you want! 
+                This is a calendar template. You can create months by simply adding days, years and more.
+            </p> -->
+            <!-- <div class="decoration"></div> -->
+            <!-- <h3 class="right-text half-bottom">January, 2025</h3> -->
+            <div class="calendar-titles">
+                <a class="light-titles" href="#">일</a>
+                <a href="#">월</a>
+                <a href="#">화</a>
+                <a href="#">수</a>
+                <a href="#">목</a>
+                <a href="#">금</a>
+                <a class="light-titles" href="#">토</a>
+            </div>
+            <div class="decoration half-bottom"></div>
+             <div class="calendar-days">
+           </div>
+<!-- 			<div class="calendar-days">
+			<a class="clear-day"><i></i></a>
+			<a name="calDay" id="1" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data01"></i>1</a>
+			<a name="calDay" id="2" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data02"></i>2</a>
+			<a name="calDay" id="3" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data03">총 1건</i>3</a>
+			<a name="calDay" id="4" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data04"></i>4</a>
+			<a name="calDay" id="5" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data05"></i>5</a><a name="calDay" id="6" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data06"></i>6</a><a name="calDay" id="7" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data07"></i>7</a><a name="calDay" id="8" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data08"></i>8</a><a name="calDay" id="9" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data9"></i>9</a><a name="calDay" id="10" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data10"></i>10</a><a name="calDay" id="11" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data11"></i>11</a><a name="calDay" id="12" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data12"></i>12</a><a name="calDay" id="13" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data13"></i>13</a><a name="calDay" id="14" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data14"></i>14</a><a name="calDay" id="15" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data15"></i>15</a><a name="calDay" id="16" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data16"></i>16</a><a name="calDay" id="17" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data17"></i>17</a><a name="calDay" id="18" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data18"></i>18</a><a name="calDay" id="19" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data19"></i>19</a><a name="calDay" id="20" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data20"></i>20</a><a name="calDay" id="21" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data21"></i>21</a><a name="calDay" id="22" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data22"></i>22</a><a name="calDay" id="23" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data23"></i>23</a><a name="calDay" id="24" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data24"></i>24</a><a name="calDay" id="25" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data25"></i>25</a><a name="calDay" id="26" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data26"></i>26</a><a name="calDay" id="27" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data27"></i>27</a><a name="calDay" id="28" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data28"></i>28</a><a name="calDay" id="29" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data29"></i>29</a></div>-->		           
+			        </div>			
+			<ul class="loan-list mgB20" id="listTab3" style="display: none;">
+
+				</ul>				        
+			        
+			         	
+					</section>
+				</section>	
+			</div>
+<!-- 약관 레이어 -->
+<section class="layer-popup" id="multiPopLayer" >
+	<!-- 사이트 header -->
+	<header class="layer-tit">
+		<h1> 영수증 발급 내역 확인</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 200px;">
+		<div class="layer-content-inner" id= "eMailInfo">
+<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
+			<p>웰컴크레디라인대부(주) 귀중</p> -->
+		</div>
+		<div class="btn_area txt-center">
+			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnYes">예</a>			
+			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
+		</div>			
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- 상품 내용 보기 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit wide">
+		<h1>알림</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 157px;">
+		<div class="layer-content-inner">
+			<p class="alert_txt">
+				현재 달보다 이후 달입니다.
+			</p>
+			<div class="btn_area txt-center">
+				<a href="javascript:void(0)" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
+			</div>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+<!-- 상품 내용 보기 레이어 -->
+<section class="layer-popup" id="pop02Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit wide">
+		<h1>알림</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 157px;">
+		<div class="layer-content-inner">
+			<p class="alert_txt">
+				이메일전송이 되었습니다.
+			</p>
+			<div class="btn_area txt-center">
+				<a href="javascript:void(0)" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
+			</div>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+
+<div id="mask"></div>
+<script type="text/javascript">
+
+var selectDate = new Date();
+var month = selectDate.getMonth()-1;
+var year= selectDate.getFullYear();
+var mon = (selectDate.getMonth()+1)>	9 ? ''+(selectDate.getMonth()+1) : '0'+(selectDate.getMonth()+1);
+var addCnt = 0;
+var ajaxStartDate = year+mon;
+$("#pageInfo").text(year + '-' + mon);
+
+var request = new Request();
+var idParam = request.getParameter('id');
+
+$(document).ready(function(){
+
+	$("#tabList").click(function(){
+		if($(this).hasClass("on")){
+			return;
+		}else{
+			$("li").removeClass("on");
+			$(this).addClass("on");
+			$("#listTab1").show();
+			$("#listTab2").hide();
+			$("#listTab3").hide();
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}
+	});
+	
+	$("#tabCal").click(function(){
+		$("li").removeClass("on");
+		$(this).addClass("on");
+		$("#listTab1").hide();
+		$("#listTab2").show();
+		$("#listTab3").hide();
+		startGetB01CalData();
+	});
+	
+	$("#tabDiv").click(function(){
+		$("li").removeClass("on");
+		$(this).addClass("on");
+		$("#listTab1").hide();
+		$("#listTab2").hide();
+		$("#listTab3").show();
+		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31","A1");
+	});
+	
+	$(document).on('click','#btnYes',function(){
+		popupClose();
+		callEmailSend(seq);
+	});
+	$(document).on('click','#btnNo',function(){
+		popupClose();
+	});		
+	
+	startGetB01Data();
+	
+	$(document).on('click','.loan-list li  > a',function(){
+		if($(this).parent().hasClass("on")){
+			$(this).parent().removeClass("on");
+		}else{
+			$(".loan-list li").removeClass("on");
+			$(this).parent().addClass("on");
+			$(".dropboad").hide();
+		}
+		return false;
+	});
+	
+	$(document).on('click','.emailSend',function(){
+		$("#eMailInfo").empty();
+		seq = $(this).attr('id');
+		var eMailStr = '';
+		multiPoppupOpen(this);
+		eMailStr +='<p>□  상호명 : '+$("#etpNm"+seq).text()+'</p>';
+		eMailStr +='<p>□  상품내역 : '+$("#payGoods"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용내역 : '+$("#payAm"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용카드 : '+$("#payDiv"+seq).text()+'</p>';
+		eMailStr +='<p>□  사용일시 : '+$("#useDate"+seq).val()+'</p>';
+		
+		$("#eMailInfo").append(eMailStr);
+
+	});	
+	
+	$(document).on('change','#divCd',function(){
+		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
+	});
+	
+	$(document).on('click','.btn_big_orange',function(){
+ 		addCnt++;
+ 		startGetB01AddData(selectDate);		
+	});
+			
+	$("#btnPrev").click(function(){
+		selectDate = new Date(selectDate.getFullYear(), (month-1), selectDate.getDate());
+		var startDate = new Date();
+		var endDate   = new Date();
+		startDate.setFullYear(selectDate.getFullYear());
+		endDate.setFullYear(selectDate.getFullYear());
+		startDate.setMonth((selectDate.getMonth()+1));
+		endDate.setMonth((selectDate.getMonth()+2));
+		month = selectDate.getMonth();
+		var startPrevYear = startDate.getFullYear();
+		var startPrevMonth = startDate.getMonth();
+		$("#pageInfo").text(startPrevYear+"-"+((startPrevMonth+1)>9 ? ''+(startPrevMonth+1) : '0'+(startPrevMonth+1) ));
+		var endPrevYear = endDate.getFullYear();
+		var endPrevMonth = endDate.getMonth();
+		ajaxStartDate = (startPrevYear)+((startPrevMonth+1)>9 ? ''+(startPrevMonth+1) : '0'+(startPrevMonth+1) );		
+		if($(".step-area").children().children().eq(0).hasClass("on")){
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+lastDayStrDate(startDate));	
+		}else if($(".step-area").children().children().eq(1).hasClass("on")){
+			startGetB01CalData();
+		}else if($(".step-area").children().children().eq(2).hasClass("on")){
+			startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+lastDayStrDate(startDate),"A1");
+		}
+		
+	});	
+			
+	$("#btnNext").click(function(){
+		selectDate = new Date(selectDate.getFullYear(), (month+1), selectDate.getDate());
+		var startDate = new Date();
+		var endDate   = new Date();
+		
+		startDate.setFullYear(selectDate.getFullYear());
+		endDate.setFullYear(selectDate.getFullYear());
+		startDate.setMonth((selectDate.getMonth()+1));
+		endDate.setMonth((selectDate.getMonth()+2));
+		var startNextYear = startDate.getFullYear();
+		var startNextMonth = startDate.getMonth();
+		var endNextYear = endDate.getFullYear();
+		var endNextMonth = endDate.getMonth();
+		
+ 		if((startNextYear)+((startNextMonth+1)>9 ? ''+(startNextMonth+1) : '0'+(startNextMonth+1) ) > (year)+(mon)){
+ 			popupOpenId("pop01");
+	 		month = (selectDate.getMonth()-1);
+			return;
+		}
+ 		
+ 		ajaxStartDate = (startNextYear)+((startNextMonth+1)>9 ? ''+(startNextMonth+1) : '0'+(startNextMonth+1) );
+ 		month = selectDate.getMonth();
+		$("#pageInfo").text(startNextYear+"-"+((startNextMonth+1)>9 ? ''+(startNextMonth+1) : '0'+(startNextMonth+1) ));
+		
+		if($(".step-area").children().children().eq(0).hasClass("on")){
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+lastDayStrDate(startDate));
+		}else if($(".step-area").children().children().eq(1).hasClass("on")){
+			startGetB01CalData();
+		}else if($(".step-area").children().children().eq(2).hasClass("on")){
+			startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+lastDayStrDate(startDate),"A1");
+		}
+		
+	});	
+})
+
+function startGetB01Data(){
+    $.ajax({
+        type: "post",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01.do",
+        dataType:"json",
+        data: {
+        	year : year	,
+        	mon : mon	,
+        	lsatDay : lastDay()	,
+        	id : idParam	,
+        },
+        success: startGetB01DataSuc,
+        error: whenError
+	});			
+	
+}
+
+function startGetB01DataSuc(resdata){
+	var str = "";
+	var resultData = resdata.resultMap;
+	$("#listTab1").empty();
+	if(resultData.length>0){
+		for(var i=0; i<resultData.length; i++){
+			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '	<a href="javascript:void(0);" id='+i+'">';
+ 			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
+			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
+			str += '	</a>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';					
+			str += '			<table class="board-view wid-full">';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id="'+i+'"><span></span>이메일보내기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';			
+		}
+		if(resultData.length == 10){
+			str += '<div class="btn-area txt-center">';
+			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '</div>';	
+		}
+		$("#listTab1").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+		
+	}else{
+		str += '<div class="previewImg">';
+		str += '	<div id="imgDiv">';
+		str += '		<div id="viewerScroller">';
+		str += '			<ul id="scrollList">';
+		str += '				<li><img src="../images/icon/empty_paper.png" alt="전자문서" width="294" /></li>';
+		//str += '				<li style="background:url(../images/icon/empty_paper.png) no-repeat center bottom; background-size:100% auto; background-position:left center;"></li>';
+		str += '			</ul>';
+		str += '		</div>';			
+		str += '	</div>';
+		str += '</div>';		
+		$("#listTab1").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
+	}		
+}
+	
+function startGetB01MonthData(startDate,endDate){
+	
+    $.ajax({
+        type: "post",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthList.do",
+        dataType:"json",
+        data: {
+        	startDate : startDate,
+        	endDate : endDate,
+        	id : idParam,
+        },
+        success: startGetB01MonthDataSuc,
+        error: whenError
+	});			
+	
+}	
+	
+function startGetB01MonthDataSuc(resdata){
+	
+	console.log(resdata);
+	
+	var str = "";
+	$("#listTab1").empty();
+	var resultData = resdata.resultMap;
+	if(resultData.length>0){
+		for(var i=0; i<resultData.length; i++){
+			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '	<a href="javascript:void(0);" id="aList'+i+'">';
+ 			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
+			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
+			str += '	</a>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';
+			str += '			<table class="board-view wid-full">';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id="'+i+'"><span></span>이메일보내기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';
+		}
+		if(resultData.length == 10){
+			str += '<div class="btn-area txt-center">';
+			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '</div>';	
+		}
+		$("#listTab1").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+		
+	}else{
+		str += '<div class="previewImg">';
+		str += '	<div id="imgDiv">';
+		str += '		<div id="viewerScroller">';
+		str += '			<ul id="scrollList">';
+		str += '				<li><img src="../images/icon/empty_paper.png" alt="전자문서" width="294" /></li>';
+		//str += '				<li style="background:url(../images/icon/empty_paper.png) no-repeat center bottom; background-size:100% auto; background-position:left center;"></li>';
+		str += '			</ul>';
+		str += '		</div>';			
+		str += '	</div>';
+		str += '</div>';		
+		$("#listTab1").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
+	}
+}	
+
+function startGetB01MonthDivData(startDate,endDate,divCd){
+	
+    $.ajax({
+        type: "post",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthDivList.do",
+        dataType:"json",
+        data: {
+        	startDate : startDate,
+        	endDate : endDate,
+        	eMail : idParam,
+        	divCd : divCd,
+        },
+        success: startGetB01MonthDivDataSuc,
+        error: whenError
+	});			
+	
+}	
+	
+function startGetB01MonthDivDataSuc(resdata){
+	
+	console.log(resdata);
+	var divCdSel = $("#divCd option").index($("#divCd option:selected"));
+	//$("#divCd").children().eq($("#divCd option").index($("#divCd option:selected"))).attr("selected","selected");
+	var str = "";
+	$("#listTab3").empty();
+	str += '<select name="divCd" id="divCd" style="width:28.5%" class="select">';
+	str += '<option value="A1">A1</option>';
+	str += '<option value="A2">A2</option>';
+	str += '<option value="A3">A3</option>';
+	str += '<option value="A4">A4</option>';
+	str += '</select>	';
+	var resultData = resdata.resultMap;
+	if(resultData.length>0){
+		for(var i=0; i<resultData.length; i++){
+			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '	<a href="javascript:void(0);" id="aList'+i+'">';
+ 			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
+			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
+			str += '	</a>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';
+			str += '			<table class="board-view wid-full">';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id="'+i+'"><span></span>이메일보내기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';
+		}
+		if(resultData.length == 10){
+			str += '<div class="btn-area txt-center">';
+			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '</div>';	
+		}
+		$("#listTab3").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+	}else{
+		str += '<div class="previewImg">';
+		str += '	<div id="imgDiv">';
+		str += '		<div id="viewerScroller">';
+		str += '			<ul id="scrollList">';
+		str += '				<li><img src="../images/icon/empty_paper.png" alt="전자문서" width="294" /></li>';
+		//str += '				<li style="background:url(../images/icon/empty_paper.png) no-repeat center bottom; background-size:100% auto; background-position:left center;"></li>';
+		str += '			</ul>';
+		str += '		</div>';			
+		str += '	</div>';
+		str += '</div>';		
+		$("#listTab3").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
+
+	}
+	if(divCdSel == "-1"){
+		$("#divCd").children().eq(0).attr("selected","selected");
+	}else{
+		$("#divCd").children().eq(divCdSel).attr("selected","selected");
+	}
+}	
+	
+function startGetB01AddData(selectDate){
+    $.ajax({
+     type: "post",
+     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthListAdd.do",
+     data: {
+        	 addStartCnt : addCnt*10,
+        	 addEndCnt : addCnt*20,
+         	startDate : ajaxStartDate+"01",
+        	endDate : ajaxStartDate+lastDay(selectDate),
+        	eMail : idParam,
+     },
+     success: startGetB01AddDataSuc,
+     error: whenError
+ 	});
+}
+	
+
+function startGetB01AddDataSuc(resdata){
+	console.log(resdata);
+	var resultData = resdata.resultMap;
+	var addMinCnt = addCnt*10;
+	var addMaxCnt = resultData.length+addCnt*10;
+	var str = "";
+	if(resultData.length>0){
+		console.log(resultData);
+		for(var i=0; i<resultData.length; i++){
+			str += '<li>';
+			str += '	<a href="javascript:void(0);" id="'+(addMinCnt+i)+'">';
+ 			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
+			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
+			str += '	</a>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+(addMinCnt+i)+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';
+			str += '			<table class="board-view wid-full">';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+(addMinCnt+i)+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+(addMinCnt+i)+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+(addMinCnt+i)+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+(addMinCnt+i)+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id="'+(addMinCnt+i)+'"><span></span>이메일보내기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';
+		}
+		if(resultData.length == 10){
+			$(".btn-area").remove();
+			str += '<div class="btn-area txt-center">';
+			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '</div>';	
+		}else{
+			$(".btn-area").remove();
+		}
+		$("#listTab1").append(str);
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");		
+	}
+}	
+	
+function whenError(request,status,error){
+	alert("ERROR");
+}	
+
+function callEmailSend(seq){
+    $.ajax({
+     type: "post",
+     url : "http://"+commonIp('dev')+":8080/receipt/theReal/sendMail.do",
+     data: {
+        	 useDate : $('#useDate'+seq).val(),
+        	 payDiv : $('#payDiv'+seq).text(),
+        	 etpNm : $('#etpNm'+seq).text(),
+        	 payAm : $('#payAm'+seq).text(),
+        	 eMail : idParam,
+        	 payGoods : $('#payGoods'+seq).text(),
+     },
+      beforeSend : function(){
+    	  wrapWindowByMask();	
+		  var maskHeight = $(document).height(); 
+          var maskWidth = $(window).width();
+    	  var loadingStr = "";
+    	  loadingStr += "<p style='text-align: center;margin-top: "+maskHeight/2+"px'>";
+    	  loadingStr += "<img style='width: 30%' src='../images/gallery/loader.gif'/>";
+    	  loadingStr += "</p>";
+    	  $('#mask').append(loadingStr);
+		},      
+     success: callEmailSendSuc,
+     error: whenError
+ 	});
+}
+
+function startGetB01CalData(){
+    $.ajax({
+        type: "post",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthCal.do",
+        /* dataType : "html", */
+        dataType:"json",
+        data: {
+        	startDate : ajaxStartDate+"01",
+        	endDate : ajaxStartDate+"31",
+        	eMail : idParam,
+        },
+        success: startGetB01CalDataSuc,
+        error: whenError
+    	});	
+}
+
+function startGetB01CalDataSuc(resdata){ //달력 함수
+console.log(resdata)
+	var tYear = ajaxStartDate.substring(0,4);
+	var tMonth = (month+1);
+	if(tMonth == "12"){
+		tMonth = "0";
+	}
+	$(".calendar-days").empty();
+	var nowDate = new Date();               //오늘 날짜 객체 선언
+	var nYear = nowDate.getFullYear();      //오늘의 년도
+	var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작
+	var nDate = nowDate.getDate();           //오늘의 날
+	var nNumday = nowDate.getDay();         //오늘의 요일 0=일요일...6=토요일
+	var endDay=new Array(31,28,31,30,31,30,31,31,30,31,30,31);      //각달의 마지막 날짜
+	var dayName=new Array("일", "월", "화", "수", "목", "금", "토"); // 숫자 요일을 문자 요일 바꿀 함수
+	var col=0;  //나중에 앞뒤 빈 날짜칸 계산 
+	var str = "";
+	if (tYear==null)   //null 일경우, 처음 페이지가 로드 될때의 년도는 
+		{tYear=nYear;} // 현재 년도를 가져오고
+
+	if (tMonth==null)   //null 일경우, 처음 페이지가 로드 될때의 월은
+		{tMonth=nMonth;}//현재 월을 가져오고
+		eDate= new Date();       // 변경된 날짜 객체 선언
+		eDate.setFullYear(tYear);// 변경된 년도 세팅
+		eDate.setMonth(tMonth);  // 변경된 월 세팅
+		eDate.setDate(1);        // 날짜는 1일로 설정해서
+		var fNumday=eDate.getDay();    // 첫번째 날짜 1일의 숫자 요일
+		var lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜
+
+		if ((eDate.getMonth()==1)&&(((eDate.getYear()%4==0)&&(eDate.getYear() %100 !=0))||eDate.getYear() % 400 ==0 ))
+			{lastDay=29;} // 0월 부터 시작하므로 1는 2월임. 윤달 계산 4년마다 29일 , 100년는 28일, 400년 째는 29일
+
+		for (i=0;i<fNumday;i++){          // 첫번째 날짜의 숫자 요일을 구해서 그전까지는 빈칸 처리
+			col++;                     
+			str += "<a class='clear-day'><i></i></a>";
+		}
+		for ( i=1; i<=lastDay; i++){       // 해당 월의 달력 
+			col++;
+		if(col%7 == 1 || col%7 == 0){
+			if(col<10){
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+			}else{
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+			}
+		}else{
+			if(col<10){
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+			}else{
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+			}
+		}
+		}   
+
+		var resultData = resdata.resultMap;
+		
+		for (i=col;i<dayName.length;i++){        //마지막 날에서 남은 요일의 빈 칸 만들기
+			str += "<a id='day1' class='' clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i></i></a>"; 
+		}
+		
+		$(".calendar-days").append(str);
+		
+/* 			if($('#btnTab2').hasClass('tab-active')){
+				alert("2");
+			} */
+		if(resultData.length>0){
+			for(var i=0; i<resultData.length; i++){
+				$("#data"+resultData[i].CNT_DATE).text("총 "+resultData[i].CONUT+"건"); //resultData[i].USE_DATE.substring(8,10);
+			}
+		}
+
+}
+
+function callEmailSendSuc(resdata){
+	wrapWindowByMask();	
+	popupOpenId("pop02");
+	//popupClose();
+}
+</script>
+
+</body>
+</html>
