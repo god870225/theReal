@@ -141,7 +141,7 @@ function startGetD01DataSuc(resdata){
  		//var lid4 = $("#contents"+listInfoId).val();
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
- 		var lid4 = lid3.replace("/receipt/","http://localhost:8080/receipt/");
+ 		var lid4 = lid3.replace("/receipt/","http://"+commonIp("dev")+":8080/receipt/");
  		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
