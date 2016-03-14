@@ -154,8 +154,41 @@
 									</div>
 								</div>
 							</section>
+		<section class="step-con">
+			<header>
+ 				<h1 class="hidden">약관동의 및 인증</h1>
+				<p><strong>회원가입을 위한 정보를 입력해주시기 바랍니다.</strong></p>
+			</header>
+			<section>
+            	<div class="certificate-box no-sh">
+                    <table>
+                        <caption>본인인증정보 입력</caption>
+                        <colgroup>
+                            <col width="87px">
+                            <col width="*">	
+                        </colgroup>
+                        <tbody>
+                        	<tr>
+                                <th scope="row" class="vTop"><label for="name">이메일</label></th>
+                                <td>
+                                    <input type="text" name="username" id="username" style="width:100%;" class="input" placeholder="Email" >
+                                </td>
+                            </tr>
+                        	<tr>
+                                <th scope="row" class="vTop"><label for="name">비밀번호</label></th>
+                                <td>
+                                    <input type="password" name="password" id="password" style="width:100%;" class="input" placeholder="Password" >
+									                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>				
+                </div>
+			</section>		
+			</section>					
 							<!-- //termAll -->
-							<a href="javascript:void(0);" class="btn_big_orange mgT15" id= "testBtn"><span class="next">다음</span></a>							
+							<a href="javascript:void(0);" class="btn_big_blue mgT15" id= "memberBtn"><span>간편가입하기</span></a>							
+							<a href="javascript:void(0);" class="btn_big_green mgT15" id= "loginBtn"><span>이전</span></a>							
 						</div>
 						<!-- //약관동의 영역 -->
 					</div>
@@ -237,16 +270,64 @@ $(document).ready(function(){
 		 }
 	});
 	
-	$("#testBtn").click(function(){
+	$("#memberBtn").click(function(){
 		$('.agree-sel').each(function(index){
 			var idSeq = index+1;			
 			if(!$('.radio[id="yak'+ idSeq +'_1"]').parent().hasClass("selected")){
 				alert("동의해주시기바랍니다.");
 				return false;
-			};			
+			}
 		});
-	})
+		if($('#username').val() == ""){
+			alert("이메일주소를 입력해주시기 바랍니다.");
+			$('#username').focus();
+			return;
+		}
+		if($('#password').val() == ""){
+			alert("비밀번호를 입력해주시기 바랍니다.");
+			$('#password').focus();
+			return;
+		}
+		callAjax();			
+	});
+	
+	 $("#loginBtn").click(function(){
+		 location.href='./html/login.html';
+	 })
+	 
 })
+
+   function callAjax(){
+        $.ajax({
+	        type: "post",
+	        url : "http://"+commonIp('dev')+":8080/receipt/theReal/memberChk.do",
+	        data: {
+	        	id : $('#username').val(),
+       			password : $('#password').val(),
+	        },
+	        success: whenSuccess,
+	        error: whenError
+     	});
+    }
+	
+    function whenSuccess(resdata){
+        if(resdata == 1){
+        	alert("이미 가입된 메일주소입니다.");
+        	 $('#username').val("");
+        	 $('#password').val("");
+        	 $('#username').focus();
+        	 return;
+        }else{
+        	alert("회원가입이 완료되었습니다.");
+        	var getId = $('#username').val();
+        	location.href='./main.html?id='+getId;
+        }
+        
+    }
+    
+    function whenError(){
+        alert("Error");
+    }
 </script>
 </body>
 </html>

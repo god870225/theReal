@@ -70,7 +70,7 @@
 				</table>			
 			</div>
 			<div class="btn-area txt-center">
-				<a href="#" class="btn_big_orange" id="goList">목록</a>
+				<a href="javascript:void(0)" class="btn_big_orange" id="goList">목록</a>
 			</div>
 		</section>		
 			
@@ -81,47 +81,19 @@
 				<ul class="cert-list" id="noticeList">
 				</ul>
 			</section>
-			<div class="pageNavi">
-				<a href="javascript:void(0);" id="btnPrev"></a>
-					<span id="pageNo"></span>
-				<a href="javascript:void(0);" id="btnNext"></a>
-			</div>  
 		</section>
 	</section>
 	<!-- //content -->
 </div>
 <div id="mask"></div>
 <script type="text/javascript">
-
-var pageCnt = 0;
-var totalCnt = 0;
-var pageStr = "";
-
+var request = new Request();
+var idParam = request.getParameter('id');
 $(document).ready(function(){
 	startGetD01Data();
 	
-	$("#btnPrev").click(function(){
-		if(pageCnt < 1){
-			alert("첫번째 페이지 입니다.");
-			return;
-		}
-		pageCnt --;
-		movePaging(pageCnt);
-	})
-	
-	$("#btnNext").click(function(){
-		if((pageCnt+1) == totalCnt){
-			alert("마지막 페이지 입니다.");
-			return;			
-		}
-		pageCnt ++;
-		movePaging(pageCnt);
-	})	
-	
 	$("#goList").click(function(){
-		$("#listArea").show();
-		$("#detailArea").hide();		
-		startGetD01Data();
+		location.href='./main.html?id='+idParam;
 	})	
 	
 	
@@ -144,21 +116,10 @@ $(document).ready(function(){
 	
 });
 
-function updateD01AddCnt(listInfoId){
-    $.ajax({
-     type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01AddCnt.do",
-     data: {
-     	IDX : listInfoId,
-     },     
-     error: whenError
- 	});
-}
-
 function startGetD01Data(){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01.do",
+     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appE01.do",
      success: startGetD01DataSuc,
      error: whenError
  	});
@@ -167,86 +128,25 @@ function startGetD01Data(){
 
 function startGetD01DataSuc(resdata){
 	var str = "";
-	pageStr = "";
-	pageCnt = 0;
-	totalCnt = 0;
 	$("#noticeList").empty();
-	$("#pageNo").empty();		
 	var resultData = resdata.resultMap;
-    totalCnt = resultData[0].TOTAL_COUNT;
-    totalCnt = (Math.ceil((totalCnt/10)));
 	if(resultData.length>0){
-		console.log("totalCnt:"+totalCnt);
-		for(var i=0; i<resultData.length; i++){
-			str += '<li id="'+resultData[i].SEQ+ '">';
-			//str += '<input type="hidden"  id="contents'+resultData[i].SEQ+ '" value="'+resultData[i].BOARD_CONTENTS+'"/>';
-			str += "<input type='hidden'  id='contents"+resultData[i].SEQ+ "' value='"+resultData[i].BOARD_CONTENTS+"'/>";
-			str += '<input type="hidden"  id="title'+resultData[i].SEQ+ '" value="'+resultData[i].BOARD_TITLE+'"/>';
-			str += '<input type="hidden"  id="creadtm'+resultData[i].SEQ+ '" value="'+resultData[i].CREA_DTM+'"/>';
-			str += '<input type="hidden"  id="hitcnt'+resultData[i].SEQ+ '" value="'+resultData[i].HIT_CNT+'"/>';
-			str += '	<table>';
-			str += '		<caption>공지사항</caption>';
-			str += '		<colgroup>';
-			str += '			<col width="*" />';
-			str += '			<col width="110px" />';
-			str += '		</colgroup>';
-			str += '		<thead>';
-			str += '		<tr>';
-			str += '			<th colspan="2">'+resultData[i].BOARD_TITLE+'</th>';
-			str += '		</tr>';
-			str += '		</thead>';
-			str += '		<tbody>';
-			str += '		<tr>';
-			str += '			<td>'+resultData[i].CREA_DTM+'</td>';
-			str += '			<td class="txt-right">조회수 :  '+resultData[i].HIT_CNT+'</td>';
-			str += '		</tr>';
-			str += '		</tbody>';
-			str += '	</table>';
-			str += '</li>';
-		}
-		$("#noticeList").append(str);
-		pageStr += "<strong>"+(pageCnt+1)+"</strong>/"+totalCnt+"</span>";
-		$("#pageNo").append(pageStr);		
-	}	
-}	
-
-function movePaging(cnt){
-	
-	var startCnt = ""; 
-	var endCnt = "";
-	if(cnt == 0){
-		startCnt = 1; 
-		endCnt = 10;
-	}else{
-		startCnt = cnt*10; 
-		endCnt = (startCnt+10);
-	}
-    $.ajax({
-        type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01Move.do",
-        dataType:"json",
-        data: {
-        	startNo : startCnt,
-        	endNo : endCnt,
-        },
-        success: successPaging,
-        error: whenError
-    	});	
-};
-
-function successPaging(resdata){
-	
-	var resultData = resdata.resultMap;
-	var str2 ="";
-	
-	pageStr = "";
-	str = "";
-
-	$("#noticeList").empty();
-	$("#pageNo").empty();
-	
-	if(resultData.length>0){
-		console.log("totalCnt:"+totalCnt);
+		
+		$("#listArea").hide();
+		$("#detailArea").show();
+ 		var listInfoId = resultData[0].SEQ;
+ 		var lid1 = resultData[0].BOARD_TITLE;
+ 		var lid2 = resultData[0].CREA_DTM;
+ 		var lid3 = resultData[0].BOARD_CONTENTS;
+ 		//var lid4 = $("#contents"+listInfoId).val();
+ 		$("#dtlTitle").text(lid1);
+ 		$("#dtlCreadtm").text(lid2);
+ 		var lid4 = lid3.replace("/receipt/","http://localhost:8080/receipt/");
+ 		console.log("lid4:"+lid4);
+		$("#dtlContents").html(lid4);
+		$("img").attr("style","width:100%");
+		updateD01AddCnt(listInfoId);		
+		
 		for(var i=0; i<resultData.length; i++){
 			str += '<li id="'+resultData[i].SEQ+ '">';
 			//str += '<input type="hidden"  id="contents'+resultData[i].SEQ+ '" value="'+resultData[i].BOARD_CONTENTS+'"/>';
@@ -277,8 +177,18 @@ function successPaging(resdata){
 		$("#noticeList").append(str);
 		pageStr += "<strong>"+(pageCnt+1)+"</strong>/"+totalCnt+"</span>";
 		$("#pageNo").append(pageStr);		
-	}
-	
+	}	
+}	
+
+function updateD01AddCnt(listInfoId){
+    $.ajax({
+     type: "post",
+     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01AddCnt.do",
+     data: {
+     	IDX : listInfoId,
+     },     
+     error: whenError
+ 	});
 }
 
 function whenError(request,status,error){
