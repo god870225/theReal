@@ -33,7 +33,11 @@ $(function(){
 		}else if($(this).attr("id") == "menu06"){
 			url = '../html/main.html?id='+idParam
 			$(location).attr('href',url);
+		}else if($(this).attr("id") == "menuLogout"){
+			url = '../html/login.html'
+			$(location).attr('href',url);
 		}
+		
 	});	
 
  	// Image checkbox
@@ -249,7 +253,10 @@ function commonIp(div){
 	var commonIp = "";
 	if(div == "dev"){
 		//commonIp = "121.138.82.229";
-		commonIp = "14.52.103.145";
+		//commonIp = "14.52.103.145";
+		//commonIp = "121.134.168.194";
+		//commonIp = "175.209.135.73";
+		commonIp = "121.138.82.220";
 	}else{
 		commonIp = "221.148.29.120";
 	}

@@ -9,7 +9,7 @@ str += '					<li><a href="javascript:void(0);" id="menu02">최근내역조회</a
 str += '					<li><a href="javascript:void(0);" id="menu03">영수증확인</a></li>'
 str += '					<li><a href="javascript:void(0);" id="menu04">가계부</a></li>'
 str += '					<li><a href="javascript:void(0);" id="menu05">이벤트</a></li>'
-str += '					<li><a href="javascript:void(0);" id="menuClose">종료</a></li>'
+str += '					<li><a href="javascript:void(0);" id="menuLogout">로그아웃</a></li>'
 str += '				</ul>'
 str += '			</nav>'
 str += '			<div><p class="txt-out">메뉴 닫기</p></div>'
