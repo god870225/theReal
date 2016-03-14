@@ -92,6 +92,8 @@ input[type=text],input[type=password],input[type=url],textarea,input[type=submit
 /* button */
 .btn-area{padding:15px 4%;}
 .btn_big_orange {display:inline-block; letter-spacing:-1px; font:18px/38px nanumgothic_bold; color:#fff; width:100%; height:38px; background:#ff8932;border:1px solid #ff8932;  text-align:center; border-radius:3px;}
+.btn_big_blue {display:inline-block; letter-spacing:-1px; font:18px/38px nanumgothic_bold; color:#fff; width:100%; height:38px; background:#0080c0;border:1px solid #0080c0;  text-align:center; border-radius:3px;}
+.btn_big_green {display:inline-block; letter-spacing:-1px; font:18px/38px nanumgothic_bold; color:#fff; width:100%; height:38px; background:#757575;border:1px solid #757575;  text-align:center; border-radius:3px;}
 .btn-write {display:inline-block; letter-spacing:-1px; font:14px/38px nanumgothic_bold; color:#fff; width:67px; height:38px; background:#ff8932;border:1px solid #ff8932;  text-align:center; border-radius:3px;box-sizing:border-box;}
 .btn-view {display:inline-block; letter-spacing:-1px; font:14px/38px nanumgothic_bold; color:#fff; width:67px; height:38px; background:#757575;border:1px solid #757575;  text-align:center; border-radius:3px;box-sizing:border-box;}
 .btn-view2 {display:inline-block; letter-spacing:-1px; font:12px/18px nanumgothic_bold; color:#fff; width:67px; height:20px; background:#757575;border:1px solid #757575;  text-align:center; border-radius:3px;box-sizing:border-box;}
