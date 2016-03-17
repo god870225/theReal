@@ -40,7 +40,7 @@
 		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
-		<h2>공지사항</h2>
+		<h2>이벤트</h2>
 		<script src="../js/menu.js"></script>
 	</header>
 	<div id="top_mar" style="display:none;"></div>
@@ -70,14 +70,14 @@
 				</table>			
 			</div>
 			<div class="btn-area txt-center">
-				<a href="javascript:void(0)" class="btn_big_orange" id="goList">목록</a>
+				<a href="javascript:void(0)" class="btn_big_orange" id="goHome">홈</a>
 			</div>
 		</section>		
 			
 		<section class="step-con" id="listArea" style="display: block">
 			<h1 class="hidden">공지사항</h1>
 			<section>
-				<h1 class="sub-con-tit bdT">공지사항</h1>
+				<h1 class="sub-con-tit bdT">이벤트</h1>
 				<ul class="cert-list" id="noticeList">
 				</ul>
 			</section>
@@ -92,7 +92,7 @@ var idParam = request.getParameter('id');
 $(document).ready(function(){
 	startGetD01Data();
 	
-	$("#goList").click(function(){
+	$("#goHome").click(function(){
 		location.href='./main.html?id='+idParam;
 	})	
 	

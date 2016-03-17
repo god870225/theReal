@@ -75,24 +75,18 @@
             <!-- <div class="decoration"></div> -->
             <!-- <h3 class="right-text half-bottom">January, 2025</h3> -->
             <div class="calendar-titles">
-                <a class="light-titles" href="#">일</a>
-                <a href="#">월</a>
-                <a href="#">화</a>
-                <a href="#">수</a>
-                <a href="#">목</a>
-                <a href="#">금</a>
-                <a class="light-titles" href="#">토</a>
+                <a class="light-titles" href="javascript:void(0)">일</a>
+                <a href="javascript:void(0)">월</a>
+                <a href="javascript:void(0)">화</a>
+                <a href="javascript:void(0)">수</a>
+                <a href="javascript:void(0)">목</a>
+                <a href="javascript:void(0)">금</a>
+                <a class="light-titles" href="javascript:void(0)">토</a>
             </div>
             <div class="decoration half-bottom"></div>
              <div class="calendar-days">
            </div>
-<!-- 			<div class="calendar-days">
-			<a class="clear-day"><i></i></a>
-			<a name="calDay" id="1" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data01"></i>1</a>
-			<a name="calDay" id="2" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data02"></i>2</a>
-			<a name="calDay" id="3" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data03">총 1건</i>3</a>
-			<a name="calDay" id="4" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data04"></i>4</a>
-			<a name="calDay" id="5" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data05"></i>5</a><a name="calDay" id="6" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data06"></i>6</a><a name="calDay" id="7" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data07"></i>7</a><a name="calDay" id="8" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data08"></i>8</a><a name="calDay" id="9" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data9"></i>9</a><a name="calDay" id="10" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data10"></i>10</a><a name="calDay" id="11" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data11"></i>11</a><a name="calDay" id="12" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data12"></i>12</a><a name="calDay" id="13" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data13"></i>13</a><a name="calDay" id="14" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data14"></i>14</a><a name="calDay" id="15" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data15"></i>15</a><a name="calDay" id="16" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data16"></i>16</a><a name="calDay" id="17" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data17"></i>17</a><a name="calDay" id="18" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data18"></i>18</a><a name="calDay" id="19" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data19"></i>19</a><a name="calDay" id="20" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data20"></i>20</a><a name="calDay" id="21" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data21"></i>21</a><a name="calDay" id="22" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data22"></i>22</a><a name="calDay" id="23" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data23"></i>23</a><a name="calDay" id="24" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data24"></i>24</a><a name="calDay" id="25" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data25"></i>25</a><a name="calDay" id="26" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data26"></i>26</a><a name="calDay" id="27" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data27"></i>27</a><a name="calDay" id="28" class="light-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data28"></i>28</a><a name="calDay" id="29" class="clear-day" href="#" onclick="goDailyList($(this).attr('id'))"><i id="data29"></i>29</a></div>-->		           
+		           
 			        </div>			
 			<ul class="loan-list mgB20" id="listTab3" style="display: none;">
 
@@ -727,6 +721,12 @@ function callEmailSend(seq){
 }
 
 function startGetB01CalData(){
+	if($("#listTab1").display == "block"){
+		$("#listTab1").hide();
+	}else{
+		$("#listTab1").hide();
+		$("#listTab2").show();
+	}
     $.ajax({
         type: "post",
         url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthCal.do",
@@ -750,6 +750,7 @@ console.log(resdata)
 		tMonth = "0";
 	}
 	$(".calendar-days").empty();
+	$(".sub-txt").empty();
 	var nowDate = new Date();               //오늘 날짜 객체 선언
 	var nYear = nowDate.getFullYear();      //오늘의 년도
 	var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작
@@ -782,15 +783,15 @@ console.log(resdata)
 			col++;
 		if(col%7 == 1 || col%7 == 0){
 			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
 			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
 			}
 		}else{
 			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
 			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
 			}
 		}
 		}   
@@ -798,7 +799,7 @@ console.log(resdata)
 		var resultData = resdata.resultMap;
 		
 		for (i=col;i<dayName.length;i++){        //마지막 날에서 남은 요일의 빈 칸 만들기
-			str += "<a id='day1' class='' clear-day' href='#' onclick=goDailyList($(this).attr('id'))><i></i></a>"; 
+			str += "<a id='day1' class='' clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i></i></a>"; 
 		}
 		
 		$(".calendar-days").append(str);
@@ -810,14 +811,41 @@ console.log(resdata)
 			for(var i=0; i<resultData.length; i++){
 				$("#data"+resultData[i].CNT_DATE).text("총 "+resultData[i].CONUT+"건"); //resultData[i].USE_DATE.substring(8,10);
 			}
+			$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");	
+		}else{
+			$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
 		}
+		
 
+}
+
+function goDailyList(id){
+	if(parseInt(id)<10){
+		id = "0"+id;
+	}
+    $.ajax({
+        type: "post",
+        url : "http://"+commonIp('dev')+":8080/receipt/theReal/AppB01MonthCalList.do",
+        dataType:"json",
+        data: {
+        	date : ajaxStartDate+id,
+        	eMail : idParam,
+        },
+        success: startGetB01DataSuc,
+        error: whenError
+    	});		
+	$("#listTab1").show();
+	$("#listTab2").hide();
+	$("#listTab3").hide();    
+}
+
+function test(resdata){
+	console.log(resdata);
 }
 
 function callEmailSendSuc(resdata){
 	wrapWindowByMask();	
 	popupOpenId("pop02");
-	//popupClose();
 }
 </script>
 

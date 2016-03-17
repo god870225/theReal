@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/welcome.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/owl.theme.css">
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
 <!--[if lt IE 9]>
@@ -23,13 +24,21 @@
 	<!-- //header -->
 	<!-- content -->
 	<section id="contents">
-	<h1 class="main-tit">
- 				<a href="javascript:void(0);" id="pop01" class="h1_link">
+	<h1 class="main-tit2">
+<!--  				<a href="javascript:void(0);" id="pop01" class="h1_link">
 				<span style="float: right; margin-right: 30px; margin-top: 30px">
-					<!--<strong class="main-tit-img">전자영수증 발급내역</strong>
-					<br/><strong class="main-tit-img-list">전자영수증 발급내역</strong> -->
+
+					<strong class="main-tit-img">전자영수증 발급내역</strong>
+					<br/><strong class="main-tit-img-list">전자영수증 발급내역</strong>
 				</span>
-			</a>
+			</a> -->
+			
+        <div class="coverpage-image indexbg1 coverpage-style-1">
+<!--             <p style="top:50%; margin-top:-50px;">
+                헤매지 말아요!
+            </p>
+            <a href="#" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button"id = "nextBtn1">다음</a> -->
+        </div>			
 		</h1>
 		<div class="width-pd mgB15">
 		<!-- contents 바로가기 -->
@@ -162,14 +171,11 @@ $(document).ready(function(){
 	});
 	
 	 $(".footer-util").children("li").children("a").click(function(){
-			 console.log(this);
-		 
 		 var footId = $(this).attr("id");
 		 $(".layer-tit").empty();
 		 $("#footerInfo").empty();
 		 var strTitle = "";
 		 var strContents = "";
-		 alert($(this).attr("name"))
 		 if(footId =="accTerms"){
 			 strTitle += '<h1>이용약관</h1>';
 			 strContents += '<p>이용약관</p>';
