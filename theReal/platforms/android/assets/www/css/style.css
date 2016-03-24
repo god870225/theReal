@@ -1161,7 +1161,7 @@ body{
 }
 
 .footer-socials a:hover{
-    transform:scale(1.15, 1.15  );
+    transform:scale(1.15, 1.15);
     color:#FFFFFF;
     transition:all 200ms ease;
 }
@@ -1241,23 +1241,3 @@ body{
 .header-clear2{
     height:85px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
