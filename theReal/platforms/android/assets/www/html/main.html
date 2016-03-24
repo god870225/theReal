@@ -159,7 +159,7 @@ $(document).ready(function(){
 	});
 	
 	$("#content3").click(function(){
-		alert("준비중");
+		location.href='./stepC_01.html?id='+idParam;
 	});
 	
 	$("#content4").click(function(){
@@ -210,7 +210,9 @@ function startGetMainDataSuc(resdata){
 	$(".mainUseList").empty();
 	$(".mainUseList2").empty();
 	var str = "";
+
 	var resultData = resdata.resultMap;
+
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
 			str += '<p class="mainUseList">'+resultData[0].USE_DATE+' '+resultData[0].ETP_NM+' : '+resultData[0].PAY_AM+'</p>';
