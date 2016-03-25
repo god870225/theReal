@@ -257,7 +257,8 @@ function commonIp(div){
 		//commonIp = "121.134.168.194";
 		//commonIp = "175.209.135.73";
 		//commonIp = "121.138.82.220";
-		commonIp = "192.168.0.39";
+		//commonIp = "192.168.0.39";
+		commonIp = "14.52.103.254";
 	}else{
 		commonIp = "221.148.29.120";
 	}
