@@ -50,17 +50,19 @@
         <input type="text"     class="login-username"  placeholder="ID" id="username" value="god870225@naver.com">
         <input type="password" class="login-password" placeholder="PW" id="password" value="tjfdbwls12">
         <div class="one-half">
-            <a href="#" class="button button-green" id="loginBtn">로그인</a>
+            <a href="javascript:void(0);" class="button button-green" id="loginBtn">로그인</a>
         </div>
         <div class="one-half last-column">
-            <a href="#" class="button button-blue" id="signBtn">회원가입</a>
+            <a href="javascript:void(0);" class="button button-blue" id="signBtn">회원가입</a>
         </div>
         <div class="clear"></div>
         <!-- <a class="forgot" href="#">비밀번호찾기</a> -->
     </div>            
 `</div>
+
 <script type="text/javascript">
  $(document).ready(function(){
+	 $.support.cors = true;
 	  //$('input, textarea').placeholder();
 		$('input').keyup(function(e) {
 		    if (e.keyCode == 13){
@@ -107,6 +109,13 @@
     function whenSuccess(resdata){
         if(resdata == 1){
         	var getId = $('#username').val();
+         	var storage = window.localStorage;
+/*          	
+			window.localStorage.setItem("id", $('#username').val());
+        	window.localStorage.setItem("pw", $('#password').val());
+        	var value = window.localStorage.getItem("id");
+        	var value2 = window.localStorage.getItem("pw");
+*/
     		location.href='./main.html?id='+getId;
         }else{
         	alert("회원정보를 잘못입력하였거나 회원이 아닙니다.");
@@ -118,8 +127,12 @@
         
     }
     
-    function whenError(){
-        alert("Error");
+    function whenError(request,status,error){
+    	console.log(request);
+    	console.log("request:"+request);
+    	console.log("status:"+status);
+    	console.log("error:"+error);
+    	alert("ERROR");
     }
 </script>
 </body>

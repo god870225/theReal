@@ -54,6 +54,7 @@ $(function(){
     //Image radio
 	function customRadio(radioName){
         var radioButton = $('.radio[name="'+ radioName +'"]');
+        
         $(radioButton).each(function(){
             $(this).wrap( "<span class='custom-radio'></span>" );
             if($(this).is(':checked')){
@@ -117,7 +118,10 @@ function wrapWindowByMask() {
     //화면의 높이와 너비를 구한다.
     var maskHeight = $(document).height(); 
     var maskWidth = $(window).width();
-
+    console.log("document).height():"+$(document).height());
+    console.log("document).width():"+$(document).width());
+    console.log("window).height():"+$(window).height());
+    console.log("window).width():"+$(window).width());
     //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
     $('#mask').css({
         'width' : maskWidth,
@@ -161,6 +165,7 @@ function popupOpenId(popupId) {
 }
 
 function multiPoppupOpen(obj) {
+	console.log(obj);
 	var popupId = $(obj).get(0).name;
 	var popupObj = $("#" + popupId + "Layer");
 	wrapWindowByMask();
@@ -257,8 +262,10 @@ function commonIp(div){
 		//commonIp = "121.134.168.194";
 		//commonIp = "175.209.135.73";
 		//commonIp = "121.138.82.220";
+		
 		//commonIp = "192.168.0.39";
-		commonIp = "14.52.103.239";
+		commonIp = "121.138.115.243";
+		//commonIp = "14.52.103.239";
 	}else{
 		commonIp = "221.148.29.120";
 	}
@@ -284,6 +291,113 @@ function lastDayStrDate(strDate){
    //s += (d2.getMonth()+1) + kind;  //여기에 꼭 +1이 있어야됨 생략하고 위에다가 +1하면 1월이 0으로 나옴
    s += d2.getDate();
    return(s);                             
+}
+
+
+var os, bw, version;
+
+function SysInfo(){
+	var agent = navigator.userAgent.toLowerCase();
+	console.log(agent);
+	try{
+	if (agent.indexOf("windows") > -1) {
+		os = "ms";
+	} else if (agent.indexOf("android") > -1) {
+		if (agent.indexOf("shw-m380w") > -1) {
+			os = "galexytab";
+		} else {
+			os = "android";
+		}
+	} else if (agent.indexOf("linux") > -1) {
+		os = "linux";
+	} else if (agent.indexOf("iphone") > -1) {
+		os = "iphone";
+	} else if (agent.indexOf("ipad") > -1) {
+		os = "ipad";
+	} else if (agent.indexOf("mac") > -1) {
+		os = "mac";
+	} else {
+		os = "unknown";
+	}
+
+	if (agent.indexOf("msie") > -1) {
+		bw = "ie";
+	} else if (agent.indexOf("chrome") > -1) {
+		bw = "chrome";
+	} else if (agent.indexOf("safari") > -1) {
+		bw = "safari";
+	} else if (agent.indexOf("opera") > -1) {
+		bw = "opera";
+	} else if (agent.indexOf("firefox") > -1) {
+		bw = "firefox";
+	} else {
+		bw = "unknown";
+	}
+	console.log("bw:"+bw);
+	console.log("os:"+os);
+	if (os == "ms" && bw == "ie") {
+		var start = agent.indexOf("msie");
+		var tmp = agent.substring(start);
+		var end = tmp.indexOf(";");
+		tmp = tmp.substring(0, end);
+		console.log("tmp:"+tmp);
+		tmp = tmp.substring(tmp.lastIndexOf(" "));
+		console.log("tmp:"+tmp);
+		version = tmp;
+		console.log("version:"+version);
+	} else {
+		version = 99999;
+	}
+	}catch(e){alert(e.description);}
+}
+
+function getOS(){
+	if(os=="ms"){
+		return "Microsft Window";
+	}else if(os=="android"){
+		return "Android";
+	}else if(os=="galexytab"){
+		return "Galexy TAB";
+	}else if(os=="linux"){
+		return "Linux";
+	}else if(os=="iphone"){
+		return "IOS(iPhone)";
+	}else if(os=="ipad"){
+		return "IOS(iPad)";
+	}else if(os=="mac"){
+		return "MAC OSX";
+	}else{
+		return "Unknown";
+	}
+}
+
+function getBw(){
+	if(bw=="ie"){
+		return "Internet Explorer";
+	}else if(bw=="chrome"){
+		return "Chrome";
+	}else if(bw=="safari"){
+		return "Safari";
+	}else if(bw=="opera"){
+		return "Opera";
+	}else if(bw=="firefox"){
+		return "Firefox";
+	}else{
+		return "Unknown"
+	}
+}
+
+function getVersion(){
+	if(version!=99999){
+		return version;
+	}else{
+		return "";
+	}
+}
+
+function getSysInfo(){
+	var v = getVersion();
+	return "<b>" + getOS() + " " + getBw() + (v!="" ? " " + v : "") + "</b>";
 }
 
 

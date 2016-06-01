@@ -34,10 +34,6 @@
 <body class="sub2">
 <div id="wrap">
 	<header id="header">
-<!-- 		<h1 class="txt-out">웰컴론</h1>
-		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
-		<h2>전자계약 목록조회</h2> -->
-		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
 		<h2>전자영수증 내역 	조회</h2>
@@ -57,7 +53,7 @@
 		<section class="step-con">
 			<h1 class="hidden">전자영수증 조회</h1>
 				<ul class="previewControl">
-					<li id="prevBtn"><a href="javascript:void(0)"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>
+					<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>
 					<li id="pageInfo"></li>
 					<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnNext" /></li>
 				</ul>
@@ -75,13 +71,13 @@
             <!-- <div class="decoration"></div> -->
             <!-- <h3 class="right-text half-bottom">January, 2025</h3> -->
             <div class="calendar-titles">
-                <a class="light-titles" href="javascript:void(0)">일</a>
-                <a href="javascript:void(0)">월</a>
-                <a href="javascript:void(0)">화</a>
-                <a href="javascript:void(0)">수</a>
-                <a href="javascript:void(0)">목</a>
-                <a href="javascript:void(0)">금</a>
-                <a class="light-titles" href="javascript:void(0)">토</a>
+                <a class="light-titles" href="javascript:void(0);">일</a>
+                <a href="javascript:void(0);">월</a>
+                <a href="javascript:void(0);">화</a>
+                <a href="javascript:void(0);">수</a>
+                <a href="javascript:void(0);">목</a>
+                <a href="javascript:void(0);">금</a>
+                <a class="light-titles" href="javascript:void(0);">토</a>
             </div>
             <div class="decoration half-bottom"></div>
              <div class="calendar-days">
@@ -106,12 +102,10 @@
 	<!-- 본문 컨텐츠 -->
 	<div class="layer-content2" style="height: 200px;">
 		<div class="layer-content-inner" id= "eMailInfo">
-<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
-			<p>웰컴크레디라인대부(주) 귀중</p> -->
 		</div>
 		<div class="btn_area txt-center">
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnYes">예</a>			
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnYes">예</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
 		</div>			
 	</div>
 	<!-- //본문 컨텐츠 -->	
@@ -133,7 +127,7 @@
 				현재 달보다 이후 달입니다.
 			</p>
 			<div class="btn_area txt-center">
-				<a href="javascript:void(0)" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
+				<a href="javascript:void(0);" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
 			</div>
 		</div>
 	</div>
@@ -156,7 +150,7 @@
 				이메일전송이 되었습니다.
 			</p>
 			<div class="btn_area txt-center">
-				<a href="javascript:void(0)" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
+				<a href="javascript:void(0);" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
 			</div>
 		</div>
 	</div>
@@ -181,7 +175,7 @@ var request = new Request();
 var idParam = request.getParameter('id');
 
 $(document).ready(function(){
-
+	$.support.cors = true;
 	$("#tabList").click(function(){
 		if($(this).hasClass("on")){
 			return;
@@ -196,27 +190,32 @@ $(document).ready(function(){
 	});
 	
 	$("#tabCal").click(function(){
+		
 		$("li").removeClass("on");
 		$(this).addClass("on");
 		$("#listTab1").hide();
 		$("#listTab2").show();
 		$("#listTab3").hide();
 		startGetB01CalData();
+		
 	});
 	
 	$("#tabDiv").click(function(){
+		
 		$("li").removeClass("on");
 		$(this).addClass("on");
 		$("#listTab1").hide();
 		$("#listTab2").hide();
 		$("#listTab3").show();
 		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31","A1");
+		
 	});
 	
 	$(document).on('click','#btnYes',function(){
 		popupClose();
 		callEmailSend(seq);
 	});
+	
 	$(document).on('click','#btnNo',function(){
 		popupClose();
 	});		
@@ -224,6 +223,7 @@ $(document).ready(function(){
 	startGetB01Data();
 	
 	$(document).on('click','.loan-list li  > a',function(){
+		
 		if($(this).parent().hasClass("on")){
 			$(this).parent().removeClass("on");
 		}else{
@@ -235,6 +235,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click','.emailSend',function(){
+		
 		$("#eMailInfo").empty();
 		seq = $(this).attr('id');
 		var eMailStr = '';
@@ -254,11 +255,14 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click','.btn_big_orange',function(){
+		
  		addCnt++;
  		startGetB01AddData(selectDate);		
+ 		
 	});
 			
 	$("#btnPrev").click(function(){
+		
 		selectDate = new Date(selectDate.getFullYear(), (month-1), selectDate.getDate());
 		var startDate = new Date();
 		var endDate   = new Date();
@@ -383,12 +387,12 @@ function startGetB01DataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>';			
+			str += '</li>';
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
-			str += '</div>';	
+			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '</div>';
 		}
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
@@ -401,9 +405,9 @@ function startGetB01DataSuc(resdata){
 		str += '				<li><img src="../images/icon/empty_paper.png" alt="전자문서" width="294" /></li>';
 		//str += '				<li style="background:url(../images/icon/empty_paper.png) no-repeat center bottom; background-size:100% auto; background-position:left center;"></li>';
 		str += '			</ul>';
-		str += '		</div>';			
+		str += '		</div>';
 		str += '	</div>';
-		str += '</div>';		
+		str += '</div>';
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
 	}		
@@ -422,7 +426,7 @@ function startGetB01MonthData(startDate,endDate){
         },
         success: startGetB01MonthDataSuc,
         error: whenError
-	});			
+	});
 	
 }	
 	
@@ -481,8 +485,8 @@ function startGetB01MonthDataSuc(resdata){
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
-			str += '</div>';	
+			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '</div>';
 		}
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
@@ -495,16 +499,16 @@ function startGetB01MonthDataSuc(resdata){
 		str += '				<li><img src="../images/icon/empty_paper.png" alt="전자문서" width="294" /></li>';
 		//str += '				<li style="background:url(../images/icon/empty_paper.png) no-repeat center bottom; background-size:100% auto; background-position:left center;"></li>';
 		str += '			</ul>';
-		str += '		</div>';			
+		str += '		</div>';
 		str += '	</div>';
-		str += '</div>';		
+		str += '</div>';
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
 	}
 }	
 
 function startGetB01MonthDivData(startDate,endDate,divCd){
-	
+
     $.ajax({
         type: "post",
         url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthDivList.do",
@@ -517,7 +521,7 @@ function startGetB01MonthDivData(startDate,endDate,divCd){
         },
         success: startGetB01MonthDivDataSuc,
         error: whenError
-	});			
+	});
 	
 }	
 	
@@ -583,7 +587,7 @@ function startGetB01MonthDivDataSuc(resdata){
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
 			str += '</div>';	
 		}
 		$("#listTab3").append(str);
@@ -679,7 +683,7 @@ function startGetB01AddDataSuc(resdata){
 		if(resultData.length == 10){
 			$(".btn-area").remove();
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0)" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
 			str += '</div>';	
 		}else{
 			$(".btn-area").remove();
@@ -783,15 +787,15 @@ console.log(resdata)
 			col++;
 		if(col%7 == 1 || col%7 == 0){
 			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
 			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
 			}
 		}else{
 			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
 			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
 			}
 		}
 		}   
@@ -799,7 +803,7 @@ console.log(resdata)
 		var resultData = resdata.resultMap;
 		
 		for (i=col;i<dayName.length;i++){        //마지막 날에서 남은 요일의 빈 칸 만들기
-			str += "<a id='day1' class='' clear-day' href='javascript:void(0)' onclick=goDailyList($(this).attr('id'))><i></i></a>"; 
+			str += "<a id='day1' class='' clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i></i></a>"; 
 		}
 		
 		$(".calendar-days").append(str);

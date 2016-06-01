@@ -21,9 +21,6 @@
 <div id="wrap">
 	<!-- header -->
 	<header id="header">
-<!-- 		<h1 class="txt-out">웰컴론</h1>
-		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
-		<h2>전자계약 목록조회</h2> -->
 		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
@@ -59,12 +56,10 @@
 	<!-- 본문 컨텐츠 -->
 	<div class="layer-content2" style="height: 200px;">
 		<div class="layer-content-inner">
-<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
-			<p>웰컴크레디라인대부(주) 귀중</p> -->
 		</div>
 		<div class="btn_area txt-center">
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnYes">예</a>			
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnYes">예</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
 		</div>			
 	</div>
 	<!-- //본문 컨텐츠 -->	
@@ -87,8 +82,9 @@ var mon = (selectDate.getMonth()+1)>	9 ? ''+(selectDate.getMonth()+1) : '0'+(sel
 
 $(document).ready(function(){
 	//drawChart();
-	startGetA01Data();
+	//startGetA01Data();
 	 //toggle
+	 $.support.cors = true;
 	$(document).on('click','.loan-list li  > a',function(){
 	/* $(".loan-list li  > a").click(function(){  */
 		if($(this).parent().hasClass("on")){
@@ -233,12 +229,12 @@ google.charts.setOnLoadCallback(drawChart);
  		    var jsonData = $.ajax({
 				url : "http://"+commonIp('dev')+":8080/receipt/theReal/appChartTest2.do",		
 		        dataType:"json",
-        data: {
-			id : idParam	,
-        	year : year	,
-        	mon : mon	,
-        	lsatDay : lastDay()	,
-        },	
+		        data: {
+					id : idParam	,
+		        	year : year	,
+		        	mon : mon	,
+		        	lsatDay : lastDay()	,
+		        },	
 		        async: false
 		    }).responseText;
 	    var data = new google.visualization.DataTable(jsonData);

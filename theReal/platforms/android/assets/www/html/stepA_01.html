@@ -8,22 +8,19 @@
 <title>더리얼마케팅 전자영수증</title>
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/welcome.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="../js/html5shiv.js"></script>
 <![endif]-->
-<script type="text/javascript" >
+<script type ="text/javascript" >
 </script>
 </head>
 <body class="sub">
 <div id="wrap">
 	<!-- header -->
 	<header id="header">
-<!-- 		<h1 class="txt-out">웰컴론</h1>
-		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
-		<h2>전자계약 목록조회</h2> -->
-		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
 		<h2>전자영수증 내역 	조회</h2>
@@ -42,6 +39,10 @@
 			</div>
 			<ul class="loan-list mgB20">
 			</ul>
+<div class ="indexbg4" style="position: fixed; bottom: 5px; right: 5px;">
+<a href ="#">
+</a>
+</div>
 		</section>
 	</section>
 	<!-- //content -->
@@ -57,12 +58,10 @@
 	<!-- 본문 컨텐츠 -->
 	<div class="layer-content2" style="height: 200px;">
 		<div class="layer-content-inner">
-<!-- 			<p>웰컴크레디라인대부(주) 귀중</p>
-			<p>웰컴크레디라인대부(주) 귀중</p> -->
 		</div>
 		<div class="btn_area txt-center">
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnYes">예</a>			
-			<a href="javascript:void(0)" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnYes">예</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnNo">아니오</a>			
 		</div>			
 	</div>
 	<!-- //본문 컨텐츠 -->	
@@ -78,7 +77,7 @@ var request = new Request();
 var idParam = request.getParameter('id');
 var seq = "";
 $(document).ready(function(){
-	
+	$.support.cors = true;
 	startGetA01Data();
 	 //toggle
 	$(document).on('click','.loan-list li  > a',function(){
@@ -207,6 +206,11 @@ function startGetA01DataSuc(resdata){
 			str += '	</div>';
 			str += '</li>';			
 		}
+/* 			str += '<div class = "indexbg4"style="position: fixed;">';
+/* 			str += '<!-- <div class="indexbg1">'; -->
+			str += '<!-- <a href="#">'; -->
+			str += '<!-- <img src="../images/banner/eventbanner.jpg" title="위로 가기"> --><!-- </a> ';--> 
+			str += '</div>'; */			
 		$(".loan-list").append(str);
 		$(".sub-txt").text("최근영수증 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
 	}	

@@ -22,10 +22,6 @@
 
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
-<!-- <script type="text/javascript" src="../js/jqueryui.js"></script> -->
-<!-- <script type="text/javascript" src="../js/framework.plugins.js"></script> -->
-<!-- <script type="text/javascript" src="../js/custom.js"></script> -->
-
 
 <!--[if lt IE 9]>
 <script type="text/javascript" src="../../js/html5shiv.js"></script>
@@ -34,9 +30,6 @@
 <body class="sub">
 <div id="wrap">
 	<header id="header">
-<!-- 		<h1 class="txt-out">웰컴론</h1>
-		<p>웰컴크레디라인대부㈜ 2011-서울구로-0035(대부업) 2013-서울구로-072(대부중개업)</p>
-		<h2>전자계약 목록조회</h2> -->
 		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
@@ -52,7 +45,7 @@
 		<section class="step-con" id="detailArea" style="display: none;">
 			<div class="width-pd mgT20">
 				<table class="board-view wid-full info_check_tbl">
-					<caption>전자 계약서 작성 내용 확인</caption>
+					<caption></caption>
 					<colgroup>
 						<col width="*">
 					</colgroup>
@@ -70,7 +63,7 @@
 				</table>			
 			</div>
 			<div class="btn-area txt-center">
-				<a href="#" class="btn_big_orange" id="goList">목록</a>
+				<a href="javascript:void(0)" class="btn_big_orange" id="goList">목록</a>
 			</div>
 		</section>		
 			
@@ -98,8 +91,8 @@ var totalCnt = 0;
 var pageStr = "";
 
 $(document).ready(function(){
+	$.support.cors = true;
 	startGetD01Data();
-	
 	$("#btnPrev").click(function(){
 		if(pageCnt < 1){
 			alert("첫번째 페이지 입니다.");

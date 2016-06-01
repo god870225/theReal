@@ -48,7 +48,7 @@
             <p style="top:50%; margin-top:-50px;">
                 헤매지 말아요!
             </p>
-            <a href="#" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button"id = "nextBtn1">다음</a>
+            <a href="javascript:void(0)" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button"id = "nextBtn1">다음</a>
         </div>
     </div>
 
@@ -59,7 +59,7 @@
             <p style="left:50%; margin-left:-140px; top:50%; margin-top:-20px;">
                 헤매지 말아요!
             </p>
-            <a href="#" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button" id = "nextBtn2">다음</a>
+            <a href="javascript:void(0)" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button" id = "nextBtn2">다음</a>
         </div>
     </div>
 
@@ -70,20 +70,29 @@
             <p style="left:50%; margin-left:-140px; top:50%; margin-top:-20px;">
                 헤매지 말아요!
             </p>
-            <a href="#" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button" id = "startBtn">서비스 시작하기</a>
+            <a href="javascript:void(0)" style="top:75%; margin-top:50px; left:50%; margin-left:-50px;" class="coverpage-button" id = "startBtn">서비스 시작하기</a>
         </div>
     </div>
 
 </div> 
 <div id="addDivBtn">
 		<!-- <a class="button center-button2 button-green detected-button" href="#" id="addBtn2" >다음</a> -->
-		<a class="button center-button2 button-blue detected-button" href="#" id="loginBtn" >로그인</a>
+		<a class="button center-button2 button-blue detected-button" href="javascript:void(0)" id="loginBtn" >로그인</a>
 </div>
 <script type="text/javascript">
 /* $(function() {
 	}); */
- $(document).ready(function(){
 
+		//window.localStorage.clear();	
+var id = window.localStorage.getItem("id");
+var pw = window.localStorage.getItem("pw");
+	
+ $(document).ready(function(){
+	 
+	if(id != "" || id != null){
+		callAjax();
+	}
+	
 	$("#startBtn").click(function(){
 		//location.href='/receipt/theReal/index.do';
 		location.href='./html/login.html';
@@ -96,6 +105,7 @@
 		 $('.owl-page').eq(0).removeClass("active");
 		 $('.owl-page').eq(1).addClass("active");
 	 })
+	 
 	 $("#nextBtn2").click(function(){
 		 var move2 =$(".owl-item").width()*2;
 		 var moveSize2 = "translate3d(-"+move2+"px, 0px, 0px)";
@@ -108,7 +118,42 @@
 		 //location.href='/receipt/theReal/index.do';
 		 location.href='./html/login.html';
 	 })
+	 
 })
 
+	function callAjax(){
+	     $.ajax({
+	      type: "post",
+	      url : "http://"+commonIp('dev')+":8080/receipt/theReal/loginChk.do",
+	      data: {
+	      	id : id,
+	      	password : pw,
+	      },
+	      success: whenSuccess,
+	      error: whenError
+	  	});
+	 }
+	
+    function whenSuccess(resdata){
+        if(resdata == 1){
+    		location.href='./html/main.html?id='+id;
+        }
+    }
+    
+    function whenError(){
+        alert("Error");
+    }
+
+  //개발IP셋팅
+    function commonIp(div){
+    	var commonIp = "";
+    	if(div == "dev"){
+    		commonIp = "192.168.0.39";
+    	}else{
+    		commonIp = "221.148.29.120";
+    	}
+    	return commonIp; 
+    }	    
+    
 </script>
 </body>

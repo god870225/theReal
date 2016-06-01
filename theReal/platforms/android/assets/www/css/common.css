@@ -140,7 +140,6 @@ input[type=text],input[type=password],input[type=url],textarea,input[type=submit
 div#wrap {width:100%;height:100%; overflow:hidden;}
 div#wrap.menu-on {position:absolute; overflow:hidden;}
 
-/* 150821 휴대폰 자동대출 추가 */
 .select {-webkit-appearance: listbox; background:#fff url(../images/common/bg_selec.png) 100% 50% no-repeat; background-size:18px auto}
 .mgT5 {margin-top:5px !important}
 .mgT30 {margin-top:30px !important}
