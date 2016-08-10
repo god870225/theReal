@@ -251,7 +251,9 @@ $(document).ready(function(){
 	});	
 	
 	$(document).on('change','#divCd',function(){
+		
 		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
+		
 	});
 	
 	$(document).on('click','.btn_big_orange',function(){
@@ -288,6 +290,7 @@ $(document).ready(function(){
 	});	
 			
 	$("#btnNext").click(function(){
+		
 		selectDate = new Date(selectDate.getFullYear(), (month+1), selectDate.getDate());
 		var startDate = new Date();
 		var endDate   = new Date();
@@ -323,6 +326,7 @@ $(document).ready(function(){
 })
 
 function startGetB01Data(){
+	
     $.ajax({
         type: "post",
         url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01.do",
@@ -340,16 +344,20 @@ function startGetB01Data(){
 }
 
 function startGetB01DataSuc(resdata){
+	
 	var str = "";
 	var resultData = resdata.resultMap;
 	$("#listTab1").empty();
+	
 	if(resultData.length>0){
+		
 		for(var i=0; i<resultData.length; i++){
 			if(i == 0){
 				str += '<li class="on">';
 			}else{
 				str += '<li>';
 			}
+			
 			str += '	<a href="javascript:void(0);" id='+i+'">';
  			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
 			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
@@ -389,15 +397,18 @@ function startGetB01DataSuc(resdata){
 			str += '	</div>';
 			str += '</li>';
 		}
+		
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
 			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
 			str += '</div>';
 		}
+		
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
 		
 	}else{
+		
 		str += '<div class="previewImg">';
 		str += '	<div id="imgDiv">';
 		str += '		<div id="viewerScroller">';
@@ -408,8 +419,10 @@ function startGetB01DataSuc(resdata){
 		str += '		</div>';
 		str += '	</div>';
 		str += '</div>';
+		
 		$("#listTab1").append(str);
 		$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
+		
 	}		
 }
 	
@@ -431,8 +444,6 @@ function startGetB01MonthData(startDate,endDate){
 }	
 	
 function startGetB01MonthDataSuc(resdata){
-	
-	console.log(resdata);
 	
 	var str = "";
 	$("#listTab1").empty();
@@ -527,7 +538,6 @@ function startGetB01MonthDivData(startDate,endDate,divCd){
 	
 function startGetB01MonthDivDataSuc(resdata){
 	
-	console.log(resdata);
 	var divCdSel = $("#divCd option").index($("#divCd option:selected"));
 	//$("#divCd").children().eq($("#divCd option").index($("#divCd option:selected"))).attr("selected","selected");
 	var str = "";
@@ -630,7 +640,6 @@ function startGetB01AddData(selectDate){
  	});
 }
 	
-
 function startGetB01AddDataSuc(resdata){
 	console.log(resdata);
 	var resultData = resdata.resultMap;
@@ -725,6 +734,7 @@ function callEmailSend(seq){
 }
 
 function startGetB01CalData(){
+	
 	if($("#listTab1").display == "block"){
 		$("#listTab1").hide();
 	}else{
@@ -747,14 +757,17 @@ function startGetB01CalData(){
 }
 
 function startGetB01CalDataSuc(resdata){ //달력 함수
-console.log(resdata)
+
 	var tYear = ajaxStartDate.substring(0,4);
 	var tMonth = (month+1);
+	
 	if(tMonth == "12"){
 		tMonth = "0";
 	}
+	
 	$(".calendar-days").empty();
 	$(".sub-txt").empty();
+	
 	var nowDate = new Date();               //오늘 날짜 객체 선언
 	var nYear = nowDate.getFullYear();      //오늘의 년도
 	var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작
@@ -764,16 +777,17 @@ console.log(resdata)
 	var dayName=new Array("일", "월", "화", "수", "목", "금", "토"); // 숫자 요일을 문자 요일 바꿀 함수
 	var col=0;  //나중에 앞뒤 빈 날짜칸 계산 
 	var str = "";
+	
 	if (tYear==null)   //null 일경우, 처음 페이지가 로드 될때의 년도는 
 		{tYear=nYear;} // 현재 년도를 가져오고
 
 	if (tMonth==null)   //null 일경우, 처음 페이지가 로드 될때의 월은
 		{tMonth=nMonth;}//현재 월을 가져오고
-		eDate= new Date();       // 변경된 날짜 객체 선언
-		eDate.setFullYear(tYear);// 변경된 년도 세팅
+		eDate= new Date();          // 변경된 날짜 객체 선언
+		eDate.setFullYear(tYear);    // 변경된 년도 세팅
 		eDate.setMonth(tMonth);  // 변경된 월 세팅
-		eDate.setDate(1);        // 날짜는 1일로 설정해서
-		var fNumday=eDate.getDay();    // 첫번째 날짜 1일의 숫자 요일
+		eDate.setDate(1);        		 // 날짜는 1일로 설정해서
+		var fNumday=eDate.getDay();    			// 첫번째 날짜 1일의 숫자 요일
 		var lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜
 
 		if ((eDate.getMonth()==1)&&(((eDate.getYear()%4==0)&&(eDate.getYear() %100 !=0))||eDate.getYear() % 400 ==0 ))
@@ -783,21 +797,22 @@ console.log(resdata)
 			col++;                     
 			str += "<a class='clear-day'><i></i></a>";
 		}
+			
 		for ( i=1; i<=lastDay; i++){       // 해당 월의 달력 
 			col++;
-		if(col%7 == 1 || col%7 == 0){
-			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+			if(col%7 == 1 || col%7 == 0){
+				if(i<10){
+					str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				}else{
+					str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				}
 			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='light-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				if(i<10){
+					str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
+				}else{
+					str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
+				}
 			}
-		}else{
-			if(col<10){
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data0"+i+"'></i>"+i+"</a>";
-			}else{
-				str += "<a name = 'calDay' id='"+i+"' class='clear-day' href='javascript:void(0);' onclick=goDailyList($(this).attr('id'))><i id= 'data"+i+"'></i>"+i+"</a>";
-			}
-		}
 		}   
 
 		var resultData = resdata.resultMap;
@@ -808,9 +823,12 @@ console.log(resdata)
 		
 		$(".calendar-days").append(str);
 		
-/* 			if($('#btnTab2').hasClass('tab-active')){
-				alert("2");
-			} */
+		/* 			
+		if($('#btnTab2').hasClass('tab-active')){
+						alert("2");
+		} 
+		*/
+		
 		if(resultData.length>0){
 			for(var i=0; i<resultData.length; i++){
 				$("#data"+resultData[i].CNT_DATE).text("총 "+resultData[i].CONUT+"건"); //resultData[i].USE_DATE.substring(8,10);
@@ -819,14 +837,15 @@ console.log(resdata)
 		}else{
 			$(".sub-txt").text($("#pageInfo").text()+"월 영수증 내역조회가 존재하지 않습니다.");
 		}
-		
 
 }
 
 function goDailyList(id){
+	
 	if(parseInt(id)<10){
 		id = "0"+id;
 	}
+	
     $.ajax({
         type: "post",
         url : "http://"+commonIp('dev')+":8080/receipt/theReal/AppB01MonthCalList.do",
@@ -838,9 +857,10 @@ function goDailyList(id){
         success: startGetB01DataSuc,
         error: whenError
     	});		
+    
 	$("#listTab1").show();
 	$("#listTab2").hide();
-	$("#listTab3").hide();    
+	$("#listTab3").hide();
 }
 
 function test(resdata){
@@ -851,6 +871,7 @@ function callEmailSendSuc(resdata){
 	wrapWindowByMask();	
 	popupOpenId("pop02");
 }
+
 </script>
 
 </body>
