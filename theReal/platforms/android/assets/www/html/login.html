@@ -71,6 +71,7 @@
 		});
 		
 		$("#loginBtn").click(function(){
+			alert("login"+commonIp('dev'));
 			goAjax();
 	 })
 	 
@@ -109,7 +110,7 @@
     function whenSuccess(resdata){
         if(resdata == 1){
         	var getId = $('#username').val();
-         	var storage = window.localStorage;
+         	//var storage = window.localStorage;
 /*          	
 			window.localStorage.setItem("id", $('#username').val());
         	window.localStorage.setItem("pw", $('#password').val());
