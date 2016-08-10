@@ -269,6 +269,7 @@ function commonIp(div){
 	}else{
 		commonIp = "221.148.29.120";
 	}
+	alert(commonIp);
 	return commonIp; 
 }	
 
