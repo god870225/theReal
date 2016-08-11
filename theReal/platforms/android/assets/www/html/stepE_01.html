@@ -117,7 +117,7 @@ $(document).ready(function(){
 function startGetD01Data(){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appE01.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/appE01.do",
      success: startGetD01DataSuc,
      error: whenError
  	});
@@ -181,7 +181,7 @@ function startGetD01DataSuc(resdata){
 function updateD01AddCnt(listInfoId){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01AddCnt.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/appD01AddCnt.do",
      data: {
      	IDX : listInfoId,
      },     

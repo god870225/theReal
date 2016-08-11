@@ -140,7 +140,7 @@ $(document).ready(function(){
 function updateD01AddCnt(listInfoId){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01AddCnt.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/appD01AddCnt.do",
      data: {
      	IDX : listInfoId,
      },     
@@ -151,7 +151,7 @@ function updateD01AddCnt(listInfoId){
 function startGetD01Data(){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/appD01.do",
      success: startGetD01DataSuc,
      error: whenError
  	});
@@ -216,7 +216,7 @@ function movePaging(cnt){
 	}
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appD01Move.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appD01Move.do",
         dataType:"json",
         data: {
         	startNo : startCnt,

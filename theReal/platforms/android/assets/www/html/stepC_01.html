@@ -124,7 +124,7 @@ $(document).ready(function(){
 function callEmailSend(seq){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/sendMail.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/sendMail.do",
      data: {
         	 useDate : $('#useDate'+seq).val(),
         	 payDiv : $('#payDiv'+seq).text(),
@@ -147,7 +147,7 @@ function startGetA01Data(){
 	
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appA01.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appA01.do",
         dataType:"json",
         data: {
 			id : idParam	,
@@ -227,7 +227,7 @@ google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(drawChart);
 	function drawChart() {
  		    var jsonData = $.ajax({
-				url : "http://"+commonIp('dev')+":8080/receipt/theReal/appChartTest2.do",		
+ 				url : "http://"+commonIp('dev')+":8080/theReal/receipt/appChartTest2.do",		
 		        dataType:"json",
 		        data: {
 					id : idParam	,

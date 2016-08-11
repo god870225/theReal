@@ -329,7 +329,7 @@ function startGetB01Data(){
 	
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appB01.do",
         dataType:"json",
         data: {
         	year : year	,
@@ -430,7 +430,7 @@ function startGetB01MonthData(startDate,endDate){
 	
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthList.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appB01MonthList.do",
         dataType:"json",
         data: {
         	startDate : startDate,
@@ -522,7 +522,7 @@ function startGetB01MonthDivData(startDate,endDate,divCd){
 
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthDivList.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appB01MonthDivList.do",
         dataType:"json",
         data: {
         	startDate : startDate,
@@ -627,7 +627,7 @@ function startGetB01MonthDivDataSuc(resdata){
 function startGetB01AddData(selectDate){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthListAdd.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/appB01MonthListAdd.do",
      data: {
         	 addStartCnt : addCnt*10,
         	 addEndCnt : addCnt*20,
@@ -709,7 +709,7 @@ function whenError(request,status,error){
 function callEmailSend(seq){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/receipt/theReal/sendMail.do",
+     url : "http://"+commonIp('dev')+":8080/theReal/receipt/sendMail.do",
      data: {
         	 useDate : $('#useDate'+seq).val(),
         	 payDiv : $('#payDiv'+seq).text(),
@@ -743,7 +743,7 @@ function startGetB01CalData(){
 	}
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/appB01MonthCal.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appB01MonthCal.do",
         /* dataType : "html", */
         dataType:"json",
         data: {
@@ -848,7 +848,7 @@ function goDailyList(id){
 	
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/receipt/theReal/AppB01MonthCalList.do",
+        url : "http://"+commonIp('dev')+":8080/theReal/receipt/AppB01MonthCalList.do",
         dataType:"json",
         data: {
         	date : ajaxStartDate+id,
