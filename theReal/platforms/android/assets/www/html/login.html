@@ -47,8 +47,14 @@
             쉽고 편한 영수증 보관/<br/>
             가계부를 통한 생활비 절감
         </p>
-        <input type="text"     class="login-username"  placeholder="ID" id="username" value="god870225@naver.com">
-        <input type="password" class="login-password" placeholder="PW" id="password" value="tjfdbwls12">
+	<select name="divCd" id="divCd" style="width:50%; height: 15%;"   class="select">
+		<option value="">선택</option>
+		<option value="na">나병준</option>
+		<option value="kim">김재명</option>
+		<option value="seol">설유진</option>
+	</select>
+        <input type="text"     class="login-username"  placeholder="ID" id="username" value="">
+        <input type="password" class="login-password" placeholder="PW" id="password" value="">
         <div class="one-half">
             <a href="javascript:void(0);" class="button button-green" id="loginBtn">로그인</a>
         </div>
@@ -62,6 +68,24 @@
 
 <script type="text/javascript">
  $(document).ready(function(){
+	 
+		$(document).on('change','#divCd',function(){
+			var nameVal =$(this).val();
+				if( nameVal=="na"){
+					$("#username").val("merium80@naver.com");
+					$("#password").val("nabang");
+				}else if(nameVal =="kim"){
+					$("#username").val("mckiro@naver.com");
+					$("#password").val("1111");
+				}else if(nameVal =="seol"){
+					$("#username").val("god870225@naver.com");
+					$("#password").val("1234");
+				}else{
+					$("#username").val("");
+					$("#password").val("");
+				}
+		});
+	 
 	 $.support.cors = true;
 	  //$('input, textarea').placeholder();
 /* 		$('input').keyup(function(e) {

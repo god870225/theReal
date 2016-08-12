@@ -266,19 +266,21 @@ $(document).ready(function(){
 			if(!$('.radio[id="yak'+ idSeq +'_1"]').parent().hasClass("selected")){
 				alert("동의해주시기바랍니다.");
 				return false;
+			}else{
+				if($('#username').val() == ""){
+					alert("이메일주소를 입력해주시기 바랍니다.");
+					$('#username').focus();
+					return;
+				}
+				else if($('#password').val() == ""){
+					alert("비밀번호를 입력해주시기 바랍니다.");
+					$('#password').focus();
+					return;
+				}else{
+					callAjax();			
+				}
 			}
 		});
-		if($('#username').val() == ""){
-			alert("이메일주소를 입력해주시기 바랍니다.");
-			$('#username').focus();
-			return;
-		}
-		if($('#password').val() == ""){
-			alert("비밀번호를 입력해주시기 바랍니다.");
-			$('#password').focus();
-			return;
-		}
-		callAjax();			
 	});
 	
 	 $("#loginBtn").click(function(){
