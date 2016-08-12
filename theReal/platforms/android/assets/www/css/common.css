@@ -270,4 +270,4 @@ div#wrap.menu-on {position:absolute; overflow:hidden;}
 
 
 .table_type table {width: 100%;}
-.table_type table td {padding: 5px 0;border-bottom: 1px solid #ccc;}
+.table_type table td {padding: 5px 0;border-bottom: 1px solid #ccc; font-size:11px; }
