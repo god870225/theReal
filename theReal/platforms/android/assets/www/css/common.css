@@ -267,3 +267,7 @@ div#wrap.menu-on {position:absolute; overflow:hidden;}
 .sum dt,.sum dd{float:left;width:50%;font-size:15px;font-weight:bold}
 .sum dd{text-align:right}
 .sum dd span{color:#fb5b21;font-size:20px;letter-spacing:-1px}
+
+
+.table_type table {width: 100%;}
+.table_type table td {padding: 5px 0;border-bottom: 1px solid #ccc;}
