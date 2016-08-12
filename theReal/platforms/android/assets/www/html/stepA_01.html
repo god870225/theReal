@@ -38,55 +38,6 @@
 				<p class="sub-txt"></p>
 			</div>
 			<ul class="loan-list mgB20">
-			                    <div class="table_type">
-                        <table>
-                            <caption>최근 지출 내역</caption>
-                            <tbody>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                                <tr>
-                                    <td>12/28</td>
-                                    <td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>
-                                    <td>삼성법인(2087)</td>
-                                    <td>동남집</td>
-                                    <td>67,000원</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
 			</ul>
 <div class ="indexbg4" style="position: fixed; bottom: 5px; right: 5px;">
 <a href ="#">
@@ -202,8 +153,36 @@ function startGetA01Data(){
 	
 }
 
-function startGetA01DataSuc2(resdata){
-
+function startGetA01DataSuc(resdata){
+			//console.log(resdata);
+			var str = "";
+			var resultData = resdata.resultMap;
+			if(resultData.length>0){
+				for(var i=0; i<resultData.length; i++){
+					//console.log(resultData[i]);
+					str += '<li class="table_type">';
+					str +=     '<table>';
+					str +=         '<caption>최근 지출 내역</caption>';
+					str +=         '<tbody>';
+					str +=             '<tr>';
+					str +=                 '<td>12/28</td>';
+					str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
+					str +=                 '<td>삼성법인(2087)</td>';
+					str +=                 '<td>동남집</td>';
+					str +=                 '<td>67,000원</td>';
+					str +=             '</tr>';
+					str +=         '</tbody>';
+					str +=     '</table>';
+					str += '</li>';		
+				}
+		/* 			str += '<div class = "indexbg4"style="position: fixed;">';
+		/* 			str += '<!-- <div class="indexbg1">'; -->
+					str += '<!-- <a href="#">'; -->
+					str += '<!-- <img src="../images/banner/eventbanner.jpg" title="위로 가기"> --><!-- </a> ';--> 
+					str += '</div>'; */			
+				$(".loan-list").append(str);
+				$(".sub-txt").text("최근영수증 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+			}	
 }
 
 function startGetA01DataSuc2(resdata){
