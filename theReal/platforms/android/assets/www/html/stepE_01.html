@@ -105,7 +105,7 @@ $(document).ready(function(){
  		//var lid4 = $("#contents"+listInfoId).val();
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
- 		var lid4 = $("#contents"+listInfoId).val().replace("/receipt/","http://localhost:80/receipt/");
+ 		var lid4 = $("#contents"+listInfoId).val().replace("/receipt/",commonIp()+"/receipt/");
  		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
@@ -117,7 +117,7 @@ $(document).ready(function(){
 function startGetD01Data(){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":80/theReal/receipt/appE01.do",
+     url : commonIp()+"/theReal/receipt/appE01.do",
      success: startGetD01DataSuc,
      error: whenError
  	});
@@ -139,7 +139,7 @@ function startGetD01DataSuc(resdata){
  		//var lid4 = $("#contents"+listInfoId).val();
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
- 		var lid4 = lid3.replace("/receipt/","http://"+commonIp("dev")+":80/receipt/");
+ 		var lid4 = lid3.replace("/receipt/",commonIp()+"/receipt/");
  		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
@@ -181,7 +181,7 @@ function startGetD01DataSuc(resdata){
 function updateD01AddCnt(listInfoId){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":80/theReal/receipt/appD01AddCnt.do",
+     url : commonIp()+"/theReal/receipt/appD01AddCnt.do",
      data: {
      	IDX : listInfoId,
      },     

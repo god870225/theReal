@@ -121,7 +121,7 @@
 		alert(commonIp('dev'));
 	     $.ajax({
 	      type: "post",
-	      url : "http://"+commonIp('dev')+":80/theReal/receipt/loginChk.do",
+	      url : commonIp()+"/theReal/receipt/loginChk.do",
 	      data: {
 	      	id : $('#username').val(),
 	    			password : $('#password').val(),

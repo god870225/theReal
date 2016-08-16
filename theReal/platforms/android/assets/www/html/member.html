@@ -292,7 +292,7 @@ $(document).ready(function(){
    function callAjax(){
         $.ajax({
 	        type: "post",
-	        url : "http://"+commonIp('dev')+":80/theReal/receipt/memberChk.do",
+	        url : commonIp()+"/theReal/receipt/memberChk.do",
 	        data: {
 	        	id : $('#username').val(),
        			password : $('#password').val(),

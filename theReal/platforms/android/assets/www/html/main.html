@@ -194,7 +194,7 @@ $(document).ready(function(){
 function startGetMainData(){
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":80/theReal/receipt/appLoginSucess.do",
+        url : commonIp()+"/theReal/receipt/appLoginSucess.do",
         dataType:"json",
         data: {
 			id : idParam	,
