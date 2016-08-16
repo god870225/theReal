@@ -133,13 +133,14 @@
     function whenSuccess(resdata){
         if(resdata == 1){
         	var getId = $('#username').val();
-         	//var storage = window.localStorage;
-/*          	
+         	var storage = window.localStorage;
+         	
 			window.localStorage.setItem("id", $('#username').val());
         	window.localStorage.setItem("pw", $('#password').val());
         	var value = window.localStorage.getItem("id");
         	var value2 = window.localStorage.getItem("pw");
-*/
+			alert("value:"+value);
+			alert("value2:"+value2);
     		location.href='./main.html?id='+getId;
         }else{
         	alert("회원정보를 잘못입력하였거나 회원이 아닙니다.");

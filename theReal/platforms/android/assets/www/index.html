@@ -82,16 +82,16 @@
 <script type="text/javascript">
 /* $(function() {
 	}); */
-
-		//window.localStorage.clear();	
-/* var id = window.localStorage.getItem("id");
-var pw = window.localStorage.getItem("pw");
- */	
+	//	window.localStorage.clear();	
+var id = window.localStorage.getItem("id");
+var pw = window.localStorage.getItem("pw");	
  $(document).ready(function(){
-	 
-/* 	if(id != "" || id != null){
+  	var storage = window.localStorage;
+ 	
+
+ 	if(id != "" || id != null){
 		callAjax();
-	} */
+	}
 	
 	$("#startBtn").click(function(){
 		//location.href='/receipt/theReal/index.do';
@@ -124,7 +124,8 @@ var pw = window.localStorage.getItem("pw");
 	function callAjax(){
 	     $.ajax({
 	      type: "post",
-	      url : "http://"+commonIp('dev')+":8080/receipt/theReal/loginChk.do",
+	      //url : "http://"+commonIp('dev')+":8080/receipt/theReal/loginChk.do",
+	      url : commonIp()+"/theReal/receipt/loginChk.do",
 	      data: {
 	      	id : id,
 	      	password : pw,
@@ -143,18 +144,19 @@ var pw = window.localStorage.getItem("pw");
     function whenError(){
         alert("Error");
     }
-
+    
   //개발IP셋팅
-    function commonIp(div){
+    function commonIp(){
     	var commonIp = "";
-    	if(div == "dev"){
-    		//commonIp = "14.32.121.176";
-    		commonIp = "117.52.97.40";
+    	var dev = false;
+    	if(dev){
+    		commonIp = "http://192.168.0.39:8080";
+    		//commonIp = "117.52.97.40";
     	}else{
-    		commonIp = "221.148.29.120";
+    		commonIp = "http://117.52.97.40:80";
     	}
     	return commonIp; 
-    }	    
+    }	
     
 </script>
 </body>
