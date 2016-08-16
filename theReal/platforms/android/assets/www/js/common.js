@@ -164,6 +164,21 @@ function popupOpenId(popupId) {
 	popupObj.show();
 }
 
+function popupOpenId2(popupId) {
+	var popupObj = $("#" + popupId + "Layer");
+	wrapWindowByMask();
+	popupObj.css("position", "absolute");
+	//영역 가운에데 레이어를 뛰우기 위해 위치 계산 
+	if($(window).height() < popupObj.height()){
+		popupObj.css("top", '63px');	
+		popupObj.find('.layer-content-inner').css('height', $(window).height()-150)
+	}else{
+		popupObj.css("top",(($(window).height() - popupObj.outerHeight()) / 2) + $(window).scrollTop());
+	}
+	popupObj.css("left",(($(window).width() - popupObj.outerWidth()) / 2) + $(window).scrollLeft());	
+	popupObj.show();
+}
+
 function multiPoppupOpen(obj) {
 	console.log(obj);
 	var popupId = $(obj).get(0).name;
@@ -184,6 +199,11 @@ function multiPoppupOpen(obj) {
 function popupClose() {
     $('.layer-popup').hide();
     $('#mask').hide();
+}
+
+function popupClose2() {
+	$('.layer-popup2').hide();
+	$('#mask').hide();
 }
 
 /*  150828 추가 */
