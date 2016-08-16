@@ -108,19 +108,20 @@ $(document).ready(function(){
 	$.support.cors = true;
 	startGetA01Data();
 	 //toggle
-	$(document).on('click','.loan-list li  > a',function(){
-	/* $(".loan-list li  > a").click(function(){  */
-		if($(this).parent().hasClass("on")){
-			$(this).parent().removeClass("on");
+	//$(document).on('click','.loan-list li  > a',function(){
+	$(document).on('click','.table_type',function(){
+		var test = $(this).attr("id");
+		if($("#"+test).next('li').hasClass("on")){
+			$("#"+test).next('li').removeClass("on");
 		}else{
-			$(".loan-list li").removeClass("on");
-			$(this).parent().addClass("on");
+			$('li').removeClass("on");
+			$("#"+test).next('li').addClass("on");
 			$(".dropboad").hide();
 		}
 		return false;
 	});
 	
-	$(document).on('click','.table_type',function(){
+/* 	$(document).on('click','.table_type',function(){
 		$(".layer-content-inner").empty();
 		popupOpenId2("multiPop");
 		var eMailStr = '';
@@ -173,7 +174,7 @@ $(document).ready(function(){
 			$(".layer-content-inner").append(eMailStr);	
 		}
 	});			
-	
+ */	
 	
 	$(document).on('click','.emailSend',function(){
 		$(".layer-content-inner").empty();
@@ -264,7 +265,49 @@ function startGetA01DataSuc(resdata){
 					str +=             '</tr>';
 					str +=         '</tbody>';
 					str +=     '</table>';
+					
 					str += '</li>';		
+					
+					if(i == 0){
+						str += '<li class="on">';
+					}else{
+						str += '<li>';
+					}
+					/* str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">'; */
+					str += '	<div class="dropboad">';
+					str += '		<div class="on-bd">';					
+					str += '			<table class="board-view wid-full">';
+					str += '				<caption>사용내역 확인</caption>';
+					str += '				<colgroup>';
+					str += '					<col width="110px" />';
+					str += '					<col width="*" />';
+					str += '				</colgroup>';
+					str += '				<tbody>';
+					str += '					<tr>';
+					str += '						<th scope="row" >상호명</th>';
+					str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+					str += '					</tr>';
+					str += '						<th scope="row" >상품내역</th>';
+					str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+					str += '					</tr>';
+					str += '					<tr>';
+					str += '						<th scope="row" >사용내역</th>';
+					str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+					str += '					</tr>';
+					str += '					<tr>';
+					str += '						<th scope="row" >사용카드</th>';
+					str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+					str += '					</tr>';
+					str += '					<tr>';
+					str += '						<th scope="row" ></th>';
+					str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>이메일보내기</a></td>';
+					str += '					</tr>';
+					str += '				</tbody>';
+					str += '			</table>';
+					str += '		</div>';
+					str += '	</div>';
+					str += '</li>';							
+					
 				}
 		/* 			str += '<div class = "indexbg4"style="position: fixed;">';
 		/* 			str += '<!-- <div class="indexbg1">'; -->
