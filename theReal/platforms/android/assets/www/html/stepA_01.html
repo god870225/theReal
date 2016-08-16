@@ -121,7 +121,7 @@ $(document).ready(function(){
 		return false;
 	});
 	
-/* 	$(document).on('click','.table_type',function(){
+ 	$(document).on('click','.emailSend',function(){
 		$(".layer-content-inner").empty();
 		popupOpenId2("multiPop");
 		var eMailStr = '';
@@ -174,9 +174,9 @@ $(document).ready(function(){
 			$(".layer-content-inner").append(eMailStr);	
 		}
 	});			
- */	
+
 	
-	$(document).on('click','.emailSend',function(){
+/* 	$(document).on('click','.emailSend',function(){
 		$(".layer-content-inner").empty();
 		seq = $(this).attr('id');
 		var eMailStr = '';
@@ -189,7 +189,7 @@ $(document).ready(function(){
 		
 		$(".layer-content-inner").append(eMailStr);
 
-	});
+	}); */
 	
 	$(document).on('click','#btnYes',function(){
 		callEmailSend(seq);
@@ -276,7 +276,7 @@ function startGetA01DataSuc(resdata){
 					/* str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">'; */
 					str += '	<div class="dropboad">';
 					str += '		<div class="on-bd">';					
-					str += '			<table class="board-view wid-full">';
+					str += '			<table class="board-view wid-full" style="font-size:11px";>';
 					str += '				<caption>사용내역 확인</caption>';
 					str += '				<colgroup>';
 					str += '					<col width="110px" />';
@@ -300,7 +300,7 @@ function startGetA01DataSuc(resdata){
 					str += '					</tr>';
 					str += '					<tr>';
 					str += '						<th scope="row" ></th>';
-					str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>이메일보내기</a></td>';
+					str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>상세보기</a></td>';
 					str += '					</tr>';
 					str += '				</tbody>';
 					str += '			</table>';
