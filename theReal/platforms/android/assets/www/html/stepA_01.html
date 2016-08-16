@@ -48,6 +48,30 @@
 	<!-- //content -->
 </div>
 
+<!-- 상품 내용 보기 레이어 -->
+<section class="layer-popup" id="pop01Layer">
+	<!-- 사이트 header -->
+	<header class="layer-tit wide">
+		<h1>알림</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 157px;">
+		<div class="layer-content-inner">
+			<p class="alert_txt">
+				현재 달보다 이후 달입니다.
+			</p>
+			<div class="btn_area txt-center">
+				<a href="javascript:void(0);" class="btn-view width_auto" onclick="javascript:popupClose();">확인</a>			
+			</div>
+		</div>
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose();" class="btn-close txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+
 <!-- 약관 레이어 -->
 <section class="layer-popup" id="multiPopLayer" >
 	<!-- 사이트 header -->
@@ -91,6 +115,11 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+	
+	$(document).on('click','.table_type',function(){
+		alert($(this).attr('id'));
+		multiPoppupOpen(this);
+	});		
 	
 	$(document).on('click','.emailSend',function(){
 		$(".layer-content-inner").empty();
@@ -160,7 +189,7 @@ function startGetA01DataSuc(resdata){
 			if(resultData.length>0){
 				for(var i=0; i<resultData.length; i++){
 					//console.log(resultData[i]);
-					str += '<li class="table_type">';
+					str += '<li class="table_type" name="multiPop" id="table'+i+'">';
 					str +=     '<table>';
 					str +=         '<caption>최근 지출 내역</caption>';
 					str += '				<colgroup>';

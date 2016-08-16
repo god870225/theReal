@@ -118,6 +118,7 @@
 	}
 
 	function callAjax(){
+		alert(commonIp('dev'));
 	     $.ajax({
 	      type: "post",
 	      url : "http://"+commonIp('dev')+":8080/theReal/receipt/loginChk.do",
