@@ -59,7 +59,7 @@ body.sub3{background:#fff;}
 .loan-list li > a {padding:4%;background:#fff url(../images/common/icon_loan.png) no-repeat right 25px;background-size:25px auto;font-size:15px;width:92%;display:block;border-top:1px solid #cacaca;}
 .loan-list li .dropboad{display:none !important;}
 .loan-list li.on {background:#fff;} 
-.loan-list li.on .on-bd{border-left:1px solid #ff8932;border-right:1px solid #ff8932;border-bottom:1px solid #ff8932;box-sizing:border-box;} 
+.loan-list li.on .on-bd{/* border-left:1px solid #ff8932;border-right:1px solid #ff8932;border-bottom:1px solid #ff8932; */box-sizing:border-box;} 
 .loan-list li.on > a {width:100%; background: #feefe1 url(../images/common/icon_loan.png) no-repeat right -25px;background-size:25px auto;border-top:1px solid #ff8932;border-left:1px solid #ff8932;border-right:1px solid #ff8932;color:#70413a !important;box-sizing:border-box;}
 .loan-list li.on .dropboad{display:block !important;}
 .loan-list li.compl > a {background: #f2f2f2 url(../images/common/icon_loan.png) no-repeat right -85px;background-size:25px auto;border-top:1px solid #cacaca;color:#70413a !important;border-left:0 !important;border-right:0 !important;}
