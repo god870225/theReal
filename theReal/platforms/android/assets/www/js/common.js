@@ -254,7 +254,7 @@ var Request = function()
 }
 
 //개발IP셋팅
-function commonIp(div){
+function commonIp2(div){
 	var commonIp = "";
 	if(div == "dev"){
 		//commonIp = "121.138.82.229";
@@ -262,13 +262,26 @@ function commonIp(div){
 		//commonIp = "121.134.168.194";
 		//commonIp = "175.209.135.73";
 		//commonIp = "121.138.82.220";
-		//commonIp = "192.168.0.39";
+		commonIp = "192.168.0.39";
 		//commonIp = "14.32.121.176";
-		commonIp = "117.52.97.40";
+		//commonIp = "117.52.97.40";
 		//commonIp = "121.138.115.243";
 		//commonIp = "14.52.103.239";
 	}else{
 		commonIp = "221.148.29.120";
+	}
+	return commonIp; 
+}	
+
+//개발IP셋팅
+function commonIp(){
+	var commonIp = "";
+	var dev = true;
+	if(dev){
+		commonIp = "http://192.168.0.39:8080";
+		//commonIp = "117.52.97.40";
+	}else{
+		commonIp = "http://117.52.97.40:80";
 	}
 	return commonIp; 
 }	
