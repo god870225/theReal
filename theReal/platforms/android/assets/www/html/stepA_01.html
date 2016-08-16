@@ -148,7 +148,7 @@ $(document).ready(function(){
 function callEmailSend(seq){
     $.ajax({
      type: "post",
-     url : "http://"+commonIp('dev')+":8080/theReal/receipt/sendMail.do",
+     url : "http://"+commonIp('dev')+":80/theReal/receipt/sendMail.do",
      data: {
         	 useDate : $('#useDate'+seq).val(),
         	 payDiv : $('#payDiv'+seq).text(),
@@ -171,7 +171,7 @@ function startGetA01Data(){
 	
     $.ajax({
         type: "post",
-        url : "http://"+commonIp('dev')+":8080/theReal/receipt/appA01.do",
+        url : "http://"+commonIp('dev')+":80/theReal/receipt/appA01.do",
         dataType:"json",
         data: {
 			id : idParam	,
