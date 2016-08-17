@@ -132,7 +132,7 @@ $(document).ready(function(){
 		eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
 		eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnNext" /></li>';
 		eMailStr +='</ul>';
-		eMailStr +='<img src="../images/receipt/test.png" style="width: 100%; max-height: 100%" alt="img">';
+		eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
 		
 		$(".layer-content-inner").append(eMailStr);		
 	});		
@@ -151,7 +151,7 @@ $(document).ready(function(){
 			eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
 			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnNext" /></li>';
 			eMailStr +='</ul>';
-			eMailStr +='<img src="../images/receipt/test.png" style="width: 100%; max-height: 100%" alt="img">';
+			eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
 			$(".layer-content-inner").append(eMailStr);	
 		}
 	});		
@@ -170,7 +170,7 @@ $(document).ready(function(){
 			eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
 			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnNext" /></li>';
 			eMailStr +='</ul>';
-			eMailStr +='<img src="../images/receipt/test.png" style="width: 100%; max-height: 100%" alt="img">';
+			eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
 			$(".layer-content-inner").append(eMailStr);	
 		}
 	});			
