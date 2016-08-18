@@ -25,7 +25,7 @@ $(function(){
 			url = '../html/stepB_01.html?id='+idParam
 			$(location).attr('href',url);
 		}else if($(this).attr("id") == "menu04"){
-			url = '../html/main.html?id='+idParam
+			url = '../html/stepC_01.html?id='+idParam
 			$(location).attr('href',url);
 		}else if($(this).attr("id") == "menu05"){
 			url = '../html/stepD_01.html?id='+idParam
