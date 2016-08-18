@@ -35,11 +35,11 @@ body.sub3{background:#fff;}
 /* step */
 .step-area{width:100%;color:#444;overflow:hidden;}
 .step-area ul{font-size: 13px;line-height:16px;}
-.step-area li{float:left;width:25.1%;background:#fff ;height:30px;line-height:1.15em;border-bottom:1px solid #f6b6c0;border-top:1px solid #f6b6c0;border-right:1px solid #f6b6c0;position:relative;}
+.step-area li{float:left;width:24.8%;background:#fff ;height:30px;line-height:1.15em;border-bottom:1px solid #f6b6c0;border-top:1px solid #f6b6c0;border-right:1px solid #f6b6c0;position:relative;}
 .step-area li .arrow{position: absolute;right:-9px;top:0;width:10px;height:58px;background: url(../images/common/bg_step.png) no-repeat left top;background-size:10px auto;display: block;z-index:10;}
 .step-area li p{position:relative;display:inline-block;padding:7px 0 5px 26px;/* border-left:1px solid #f6b6c0; */height:100%;}
 .step-area li > p > span{position:absolute;left:15px;top:7px;font-size:0.85em;color:#fb5b21;}
-.step-area li:first-child{width:24.7% !important;} 
+.step-area li:first-child{width:24.8% !important;} 
 .step-area li:first-child p{padding-left:22px;}
 .step-area li:first-child  > p > span{left:10px;}
 .step-area li.on{background:#e00d2f;font:13px/16px nanumgothic_bold !important;color:#fff;border-bottom:1px solid #e00d2f;}
