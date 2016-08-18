@@ -249,7 +249,7 @@ function startGetA01DataSuc(resdata){
 					str +=     '<table>';
 					str +=         '<caption>최근 지출 내역</caption>';
 					str += '				<colgroup>';
-					str += '					<col width="10%" />';
+					str += '					<col width="20%" />';
 					str += '					<col width="10%" />';
 					str += '					<col width="20%" />';
 					str += '					<col width="*" />';
@@ -257,7 +257,7 @@ function startGetA01DataSuc(resdata){
 					str += '				</colgroup>';
 					str +=         '<tbody>';
 					str +=             '<tr>';
-					str +=                 '<td>12/28</td>';
+					str +=                 '<td>'+resultData[i].USE_DATE+'</td>';
 					str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
 					str +=                 '<td>'+resultData[i].PAY_DIV+'</td>';
 					str +=                 '<td>'+resultData[i].ETP_NM+'</td>';

@@ -24,7 +24,7 @@
 		<!-- menu -->
 		<a href="javascript:void(0);" class="menu-open txt-out">메뉴 열기</a>
 		<a href="javascript:history.go(-1);" class="back-to"><span></span>이전</a>
-		<h2>전자영수증 내역 	조회</h2>
+		<h2>전자영수증 내역 	통계</h2>
 		<script src="../js/menu.js"></script> 
 		<!-- //menu -->
 	</header>
@@ -32,11 +32,23 @@
 	<!-- //header -->
 	<!-- content -->
 	<section id="contents">
+		<section class="step-area">
+			<h1 class="hidden">전자영수증 탭</h1>		
+			<ul>
+				<li id="tabToday"><p>당일</p><span></span></li>
+				<li id="tabWeek" class="on"><p>1주일</p><span></span></li>
+				<li id="tabMonth"><p>1달</p><span></span></li>
+				<!-- <li id="tabDiv"><p>기간설정</p><span></span></li> -->
+			</ul>		
+		</section>			
+			<div class="width-pd2">
+				<p class="sub-txt">기간입력</p>
+			</div>			
 		<!-- //step area -->
 		<section class="step-con">
 			<h1 class="hidden">전자영수증 조회</h1>
+			
 			<div class="width-pd2 box-col-gray">
-				<p class="sub-txt"></p>
 				<div id="piechart_3d" style="width: 310px; height: 200px;"></div>
 			</div>
 			<ul class="loan-list mgB20">
@@ -80,151 +92,78 @@ var month = selectDate.getMonth()-1;
 var year= selectDate.getFullYear();
 var mon = (selectDate.getMonth()+1)>	9 ? ''+(selectDate.getMonth()+1) : '0'+(selectDate.getMonth()+1);
 
+var nowDate = new Date();               //오늘 날짜 객체 선언
+var nYear = nowDate.getFullYear();      //오늘의 년도
+var nMonth = (nowDate.getMonth()+1) ;       //오늘의 월 ※ 0월부터 시작
+nMonth = ((nMonth)>9 ? ''+(nMonth) : '0'+(nMonth) );
+var nDate = nowDate.getDate();           //오늘의 날
+var nowFullDate = nYear+nMonth+nDate;
+
 $(document).ready(function(){
 	//drawChart();
 	//startGetA01Data();
 	 //toggle
 	 $.support.cors = true;
-	$(document).on('click','.loan-list li  > a',function(){
-	/* $(".loan-list li  > a").click(function(){  */
-		if($(this).parent().hasClass("on")){
-			$(this).parent().removeClass("on");
-		}else{
-			$(".loan-list li").removeClass("on");
-			$(this).parent().addClass("on");
-			$(".dropboad").hide();
-		}
-		return false;
-	});
-	
-	$(document).on('click','.emailSend',function(){
-		$(".layer-content-inner").empty();
-		seq = $(this).attr('id');
-		var eMailStr = '';
-		multiPoppupOpen(this);
-		eMailStr +='<p>□  상호명 : '+$("#etpNm"+seq).text()+'</p>';
-		eMailStr +='<p>□  상품내역 : '+$("#payGoods"+seq).text()+'</p>';
-		eMailStr +='<p>□  사용내역 : '+$("#payAm"+seq).text()+'</p>';
-		eMailStr +='<p>□  사용카드 : '+$("#payDiv"+seq).text()+'</p>';
-		eMailStr +='<p>□  사용일시 : '+$("#useDate"+seq).val()+'</p>';
+	 //nowWeek();
+		$("#tabToday").click(function(){
+			if($(this).hasClass("on")){
+				return;
+			}else{
+				$("li").removeClass("on");
+				$(this).addClass("on");
+			}
+			
+			$(".sub-txt").text(nYear+"년 "+nMonth+"월 "+nDate+"일 ~ "+nYear+"년 "+nMonth+"월 "+nDate+"일");
+			
+		});
 		
-		$(".layer-content-inner").append(eMailStr);
-
-	});
-	
-	$(document).on('click','#btnYes',function(){
-		callEmailSend(seq);
-	});
-	$(document).on('click','#btnNo',function(){
-		popupClose();
-	});	
+		$("#tabWeek").click(function(){
+			
+			$("li").removeClass("on");
+			$(this).addClass("on");
+			nowWeek();
+		});
+		
+		$("#tabMonth").click(function(){
+			
+			$("li").removeClass("on");
+			$(this).addClass("on");
+			nowMonth();
+			
+		});
 	
 })
 
-function callEmailSend(seq){
-    $.ajax({
-     type: "post",
-     url : commonIp()+"/theReal/receipt/sendMail.do",
-     data: {
-        	 useDate : $('#useDate'+seq).val(),
-        	 payDiv : $('#payDiv'+seq).text(),
-        	 etpNm : $('#etpNm'+seq).text(),
-        	 payAm : $('#payAm'+seq).text(),
-        	 eMail : idParam,
-        	 payGoods : $('#payGoods'+seq).text(),
-     },
-     success: callEmailSendSuc,
-     error: whenError
- 	});
-}
 
-function callEmailSendSuc(resdata){
-	alert("이메일전송이 되었습니다.");
-	popupClose();
-}
+function nowWeek(){
+	var weekDate = new Date(Date.parse(nowDate) - 7 * 1000 * 60 * 60 * 24); //일주일전
+	var wYear = weekDate.getFullYear();      //오늘의 년도
+	var wMonth = (weekDate.getMonth()+1) ;       //오늘의 월 ※ 0월부터 시작
+	var wDate = weekDate.getDate();           //오늘의 날
+	wMonth = ((wMonth)>9 ? ''+(wMonth) : '0'+(wMonth) );
+	$(".sub-txt").text(wYear+"년 "+wMonth+"월 "+wDate+"일 ~ "+nYear+"년 "+nMonth+"월 "+nDate+"일");
+	var weekFullDate = wYear+wMonth+wDate;
+	//drawChart(idParam,weekFullDate,nowFullDate);
+};
 
-function startGetA01Data(){
-	
-    $.ajax({
-        type: "post",
-        url :commonIp()+"/theReal/receipt/appA01.do",
-        dataType:"json",
-        data: {
-			id : idParam	,
-        },
-        success: startGetA01DataSuc,
-        error: whenError
-	});			
-	
-}
 
-function startGetA01DataSuc(resdata){
-	//console.log(resdata);
-	var str = "";
-	var resultData = resdata.resultMap;
-	console.log("resultData:"+resultData);
-	console.log("resultData.length:"+resultData.length);
-	if(resultData.length>0){
-		for(var i=0; i<resultData.length; i++){					
-			//console.log(resultData[i]);
-			if(i == 0){
-				str += '<li class="on">';
-			}else{
-				str += '<li>';
-			}
-			str += '	<a href="javascript:void(0);">';
-			/* str += '<img src="../images/icon/beer_icon.png" style="float: left;">'; */
- 			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
-			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
-			str += '	</a>';
-			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
-			/* str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">'; */
-			str += '	<div class="dropboad">';
-			str += '		<div class="on-bd">';					
-			str += '			<table class="board-view wid-full">';
-			str += '				<caption>사용내역 확인</caption>';
-			str += '				<colgroup>';
-			str += '					<col width="110px" />';
-			str += '					<col width="*" />';
-			str += '				</colgroup>';
-			str += '				<tbody>';
-			str += '					<tr>';
-			str += '						<th scope="row" >상호명</th>';
-			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
-			str += '					</tr>';
-			str += '						<th scope="row" >상품내역</th>';
-			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
-			str += '					</tr>';
-			str += '					<tr>';
-			str += '						<th scope="row" >사용내역</th>';
-			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
-			str += '					</tr>';
-			str += '					<tr>';
-			str += '						<th scope="row" >사용카드</th>';
-			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
-			str += '					</tr>';
-			str += '					<tr>';
-			str += '						<th scope="row" ></th>';
-			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>이메일보내기</a></td>';
-			str += '					</tr>';
-			str += '				</tbody>';
-			str += '			</table>';
-			str += '		</div>';
-			str += '	</div>';
-			str += '</li>';			
-		}
-		$(".loan-list").append(str);
-		$(".sub-txt").text("최근영수증 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
-	}	
-}
-	
-function whenError(request,status,error){
-	alert("ERROR");
-}	
+function nowMonth(){
+	selectDate = new Date(selectDate.getFullYear(), month, selectDate.getDate());
+	var startDate = new Date();
+	startDate.setFullYear(selectDate.getFullYear());
+	startDate.setMonth((selectDate.getMonth()+1));
+	var startPrevYear = startDate.getFullYear();
+	var startPrevMonth = startDate.getMonth();
+	startPrevMonth = ((startPrevMonth)>9 ? ''+(startPrevMonth) : '0'+(startPrevMonth) );
+	$(".sub-txt").text(startPrevYear+"년 "+startPrevMonth+"월 "+nDate+"일 ~ "+nYear+"년 "+nMonth+"월 "+nDate+"일");
+	var monthFullDate = startPrevYear+startPrevMonth+nDate;
+	drawChart2(idParam,monthFullDate,nowFullDate);
+};
 
 
 google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(drawChart);
+	//function drawChart(idParam,pastFullDate,nowFullDate) {
 	function drawChart() {
  		    var jsonData = $.ajax({
  				url : commonIp()+"/theReal/receipt/appChartTest2.do",		
@@ -232,8 +171,9 @@ google.charts.setOnLoadCallback(drawChart);
 		        data: {
 					id : idParam	,
 		        	year : year	,
-		        	mon : mon	,
-		        	lsatDay : lastDay()	,
+		        	mon : nowFullDate	,
+		        	//lsatDay : day	,
+		        	lsatDay : nowFullDate	,
 		        },	
 		        async: false
 		    }).responseText;
@@ -247,6 +187,30 @@ google.charts.setOnLoadCallback(drawChart);
   var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
   chart.draw(data, options);
 }
+	
+	function drawChart2(idParam,pastFullDate,nowFullDate) {
+ 		    var jsonData = $.ajax({
+ 				url : commonIp()+"/theReal/receipt/appChartTest2.do",		
+		        dataType:"json",
+		        data: {
+					id : idParam	,
+		        	year : year	,
+		        	mon : pastFullDate	,
+		        	//lsatDay : day	,
+		        	lsatDay : nowFullDate	,
+		        },	
+		        async: false
+		    }).responseText;
+	    var data = new google.visualization.DataTable(jsonData);
+	
+  var options = {
+    //title: year+mon+'이용내역',
+    is3D: true,
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+  chart.draw(data, options);
+} 
 </script>
 </body>
 </html>

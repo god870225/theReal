@@ -59,6 +59,7 @@
 				</ul>
 			<div class="width-pd2 box-col-gray">
 				<p class="sub-txt"></p>
+				<br/><a href="javascript:void(0);" class="btn-write2" id="orderDate">최근일자순</a>&nbsp;&nbsp;<a href="javascript:void(0);" class="btn-write2" id="orderHighPay">높은가격순</a>&nbsp;&nbsp;<a href="javascript:void(0);	" class="btn-write2" id="orderLowPay">낮은가격순</a>
 			</div>
 			<ul class="loan-list mgB20" id="listTab1" style="display: block;">
 				</ul>		
@@ -160,6 +161,28 @@
 	<!-- //팝업닫기버튼 -->	
 </section>
 
+<!-- 약관 레이어 -->
+<section class="layer-popup2" id="multiPop2Layer" >
+	<!-- 사이트 header -->
+	<header class="layer-tit2">
+		<h1> 영수증 발급 내역 확인</h1>
+	</header>
+	<!-- //사이트 header -->	
+	<!-- 본문 컨텐츠 -->
+	<div class="layer-content2" style="height: 100%;">
+		<div class="layer-content-inner">
+		</div>
+		<div class="btn_area txt-center">
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnEmail">이메일보내기</a>			
+			<a href="javascript:void(0);" class="btn-view" style="width:110px" id="btnClose">닫기</a>			
+		</div>			
+	</div>
+	<!-- //본문 컨텐츠 -->	
+	<!-- 팝업닫기버튼 -->
+	<a href="javascript:popupClose2();" class="btn-close2 txt-out">레이어팝업 닫기</a>
+	<!-- //팝업닫기버튼 -->	
+</section>
+
 <div id="mask"></div>
 <script type="text/javascript">
 
@@ -170,9 +193,12 @@ var mon = (selectDate.getMonth()+1)>	9 ? ''+(selectDate.getMonth()+1) : '0'+(sel
 var addCnt = 0;
 var ajaxStartDate = year+mon;
 $("#pageInfo").text(year + '-' + mon);
-
+var resultCnt = 0;
+var curCnt = 0;
 var request = new Request();
 var idParam = request.getParameter('id');
+var seq = "";
+var orderByCd = "A1"
 
 $(document).ready(function(){
 	$.support.cors = true;
@@ -185,6 +211,7 @@ $(document).ready(function(){
 			$("#listTab1").show();
 			$("#listTab2").hide();
 			$("#listTab3").hide();
+			$(".btn-write2").show();
 			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
 		}
 	});
@@ -196,6 +223,7 @@ $(document).ready(function(){
 		$("#listTab1").hide();
 		$("#listTab2").show();
 		$("#listTab3").hide();
+		$(".btn-write2").hide();
 		startGetB01CalData();
 		
 	});
@@ -207,11 +235,55 @@ $(document).ready(function(){
 		$("#listTab1").hide();
 		$("#listTab2").hide();
 		$("#listTab3").show();
+		$(".btn-write2").hide();
 		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31","A1");
 		
 	});
 	
-	$(document).on('click','#btnYes',function(){
+	$("#orderDate").click(function(){
+		orderByCd = "A1";
+		if($("#tabList").hasClass("on")){
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}else if($("#tabCal").hasClass("on")){
+			startGetB01CalData();
+		}else{
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}
+		
+	});
+	
+	$("#orderHighPay").click(function(){
+		orderByCd = "B1";
+		if($("#tabList").hasClass("on")){
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}else if($("#tabCal").hasClass("on")){
+			startGetB01CalData();
+		}else{
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}	
+	});
+	
+	$("#orderLowPay").click(function(){
+		orderByCd = "C1";
+		if($("#tabList").hasClass("on")){
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}else if($("#tabCal").hasClass("on")){
+			startGetB01CalData();
+		}else{
+			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+		}		
+	});
+	
+ 	$(document).on('click','#btnEmail',function(){
+		//popupClose();
+		seq = $(this).attr('id');
+		callEmailSend(seq);
+	});
+	
+	$(document).on('click','#btnClose',function(){
+		popupClose();
+	});		
+/* 	$(document).on('click','#btnYes',function(){
 		popupClose();
 		callEmailSend(seq);
 	});
@@ -220,9 +292,11 @@ $(document).ready(function(){
 		popupClose();
 	});		
 	
+	 */
+	
 	startGetB01Data();
 	
-	$(document).on('click','.loan-list li  > a',function(){
+/* 	$(document).on('click','.loan-list li  > a',function(){
 		
 		if($(this).parent().hasClass("on")){
 			$(this).parent().removeClass("on");
@@ -232,8 +306,76 @@ $(document).ready(function(){
 			$(".dropboad").hide();
 		}
 		return false;
+	}); */
+
+	$(document).on('click','.table_type',function(){
+		var test = $(this).attr("id");
+		if($("#"+test).next('li').hasClass("on")){
+			$("#"+test).next('li').removeClass("on");
+		}else{
+			$('li').removeClass("on");
+			$("#"+test).next('li').addClass("on");
+			$(".dropboad").hide();
+		}
+		return false;
 	});
 	
+ 	$(document).on('click','.emailSend',function(){
+		$(".layer-content-inner").empty();
+		popupOpenId2("multiPop2");
+		var eMailStr = '';
+		curCnt = parseInt($(this).attr("id").replace("table",""))+1;
+		eMailStr +='<ul class="previewControl">';
+		eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnRecPrev" /></a></li>';
+		//eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+		eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+		eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnRecNext" /></li>';
+		eMailStr +='</ul>';
+		eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
+		
+		$(".layer-content-inner").append(eMailStr);		
+	});
+ 	
+	
+	$(document).on('click','#prevRecBtn',function(){
+ 		if(curCnt ==1){
+			alert("처음 영수증입니다.");
+		}else{
+			$(".layer-content-inner").empty();			
+			curCnt--;
+			var eMailStr = '';
+			eMailStr +='<ul class="previewControl">';
+			eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>';
+			//eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+			eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnRecNext" /></li>';
+			eMailStr +='</ul>';
+			eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
+			$(".layer-content-inner").append(eMailStr);	
+		}
+	});		
+	
+	$(document).on('click','#nextRecBtn',function(){
+ 		if(curCnt ==10){
+			alert("마지막 영수증입니다.");
+		}else{
+			$(".layer-content-inner").empty();
+			curCnt++;
+			console.log(curCnt);
+			var eMailStr = '';
+			eMailStr +='<ul class="previewControl">';
+			eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>';
+			//eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+			eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
+			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnRecNext" /></li>';
+			eMailStr +='</ul>';
+			eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
+			$(".layer-content-inner").append(eMailStr);	
+		}
+	});		 	
+	
+	
+/* 	
 	$(document).on('click','.emailSend',function(){
 		
 		$("#eMailInfo").empty();
@@ -249,7 +391,7 @@ $(document).ready(function(){
 		$("#eMailInfo").append(eMailStr);
 
 	});	
-	
+	 */
 	$(document).on('change','#divCd',function(){
 		
 		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
@@ -336,6 +478,7 @@ function startGetB01Data(){
         	mon : mon	,
         	lsatDay : lastDay()	,
         	id : idParam	,
+        	orderByCd : orderByCd
         },
         success: startGetB01DataSuc,
         error: whenError
@@ -347,12 +490,78 @@ function startGetB01DataSuc(resdata){
 	
 	var str = "";
 	var resultData = resdata.resultMap;
+	resultCnt = resultData.length;
 	$("#listTab1").empty();
 	
 	if(resultData.length>0){
 		
 		for(var i=0; i<resultData.length; i++){
+			
+			str += '<li class="table_type" name="multiPop" id='+i+'>';
+			str +=     '<table>';
+			str +=         '<caption>최근 지출 내역</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="20%" />';
+			str += '					<col width="10%" />';
+			str += '					<col width="20%" />';
+			str += '					<col width="*" />';
+			str += '					<col width="15%" />';
+			str += '				</colgroup>';
+			str +=         '<tbody>';
+			str +=             '<tr>';
+			str +=                 '<td>'+resultData[i].USE_DATE+'</td>';
+			str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
+			str +=                 '<td>'+resultData[i].PAY_DIV+'</td>';
+			str +=                 '<td>'+resultData[i].ETP_NM+'</td>';
+			str +=                 '<td>'+resultData[i].PAY_AM+'원</td>';
+			str +=             '</tr>';
+			str +=         '</tbody>';
+			str +=     '</table>';
+			
+			str += '</li>';		
+			
 			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';					
+			str += '			<table class="board-view wid-full" style="font-size:11px";>';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>상세보기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';				
+			
+/* 			if(i == 0){
 				str += '<li class="on">';
 			}else{
 				str += '<li>';
@@ -395,7 +604,7 @@ function startGetB01DataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>';
+			str += '</li>'; */
 		}
 		
 		if(resultData.length == 10){
@@ -436,6 +645,7 @@ function startGetB01MonthData(startDate,endDate){
         	startDate : startDate,
         	endDate : endDate,
         	id : idParam,
+        	orderByCd : orderByCd
         },
         success: startGetB01MonthDataSuc,
         error: whenError
@@ -448,9 +658,75 @@ function startGetB01MonthDataSuc(resdata){
 	var str = "";
 	$("#listTab1").empty();
 	var resultData = resdata.resultMap;
+	resultCnt = resultData.length;
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
+
+			str += '<li class="table_type" name="multiPop" id='+i+'>';
+			str +=     '<table>';
+			str +=         '<caption>최근 지출 내역</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="20%" />';
+			str += '					<col width="10%" />';
+			str += '					<col width="20%" />';
+			str += '					<col width="*" />';
+			str += '					<col width="15%" />';
+			str += '				</colgroup>';
+			str +=         '<tbody>';
+			str +=             '<tr>';
+			str +=                 '<td>'+resultData[i].USE_DATE+'</td>';
+			str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
+			str +=                 '<td>'+resultData[i].PAY_DIV+'</td>';
+			str +=                 '<td>'+resultData[i].ETP_NM+'</td>';
+			str +=                 '<td>'+resultData[i].PAY_AM+'원</td>';
+			str +=             '</tr>';
+			str +=         '</tbody>';
+			str +=     '</table>';
+			
+			str += '</li>';		
+			
 			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';					
+			str += '			<table class="board-view wid-full" style="font-size:11px";>';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>상세보기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';					
+			
+			/* 			if(i == 0){
 				str += '<li class="on">';
 			}else{
 				str += '<li>';
@@ -492,7 +768,7 @@ function startGetB01MonthDataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>';
+			str += '</li>'; */
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
@@ -529,6 +805,7 @@ function startGetB01MonthDivData(startDate,endDate,divCd){
         	endDate : endDate,
         	eMail : idParam,
         	divCd : divCd,
+        	orderByCd : orderByCd
         },
         success: startGetB01MonthDivDataSuc,
         error: whenError
@@ -549,9 +826,75 @@ function startGetB01MonthDivDataSuc(resdata){
 	str += '<option value="A4">A4</option>';
 	str += '</select>	';
 	var resultData = resdata.resultMap;
+	resultCnt = resultData.length;
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
+			
+			str += '<li class="table_type" name="multiPop" id='+i+'>';
+			str +=     '<table>';
+			str +=         '<caption>최근 지출 내역</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="20%" />';
+			str += '					<col width="10%" />';
+			str += '					<col width="20%" />';
+			str += '					<col width="*" />';
+			str += '					<col width="15%" />';
+			str += '				</colgroup>';
+			str +=         '<tbody>';
+			str +=             '<tr>';
+			str +=                 '<td>'+resultData[i].USE_DATE+'</td>';
+			str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
+			str +=                 '<td>'+resultData[i].PAY_DIV+'</td>';
+			str +=                 '<td>'+resultData[i].ETP_NM+'</td>';
+			str +=                 '<td>'+resultData[i].PAY_AM+'원</td>';
+			str +=             '</tr>';
+			str +=         '</tbody>';
+			str +=     '</table>';
+			
+			str += '</li>';		
+			
 			if(i == 0){
+				str += '<li class="on">';
+			}else{
+				str += '<li>';
+			}
+			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';					
+			str += '			<table class="board-view wid-full" style="font-size:11px";>';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+i+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+i+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+i+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+i+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id='+i+'><span></span>상세보기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';
+			str += '</li>';						
+			
+/* 			if(i == 0){
 				str += '<li class="on">';
 			}else{
 				str += '<li>';
@@ -593,7 +936,7 @@ function startGetB01MonthDivDataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>';
+			str += '</li>'; */
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
@@ -634,6 +977,7 @@ function startGetB01AddData(selectDate){
          	startDate : ajaxStartDate+"01",
         	endDate : ajaxStartDate+lastDay(selectDate),
         	eMail : idParam,
+        	orderByCd : orderByCd
      },
      success: startGetB01AddDataSuc,
      error: whenError
@@ -643,13 +987,70 @@ function startGetB01AddData(selectDate){
 function startGetB01AddDataSuc(resdata){
 	console.log(resdata);
 	var resultData = resdata.resultMap;
+	resultCnt = resultData.length;
 	var addMinCnt = addCnt*10;
 	var addMaxCnt = resultData.length+addCnt*10;
 	var str = "";
 	if(resultData.length>0){
 		console.log(resultData);
 		for(var i=0; i<resultData.length; i++){
-			str += '<li>';
+			str += '<li class="table_type" name="multiPop" id="'+(addMinCnt+i)+'">';
+			str +=     '<table>';
+			str +=         '<caption>최근 지출 내역</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="20%" />';
+			str += '					<col width="10%" />';
+			str += '					<col width="20%" />';
+			str += '					<col width="*" />';
+			str += '					<col width="15%" />';
+			str += '				</colgroup>';
+			str +=         '<tbody>';
+			str +=             '<tr>';
+			str +=                 '<td>'+resultData[i].USE_DATE+'</td>';
+			str +=                 '<td><img src="../images/icon/coffe_icon.png" alt="아이콘" style="max-width: 100%; height: 50%;"></td>';
+			str +=                 '<td>'+resultData[i].PAY_DIV+'</td>';
+			str +=                 '<td>'+resultData[i].ETP_NM+'</td>';
+			str +=                 '<td>'+resultData[i].PAY_AM+'원</td>';
+			str +=             '</tr>';
+			str +=         '</tbody>';
+			str +=     '</table>';
+			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+(addMinCnt+i)+'">';
+			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+(addMinCnt+i)+'">';
+			str += '	<div class="dropboad">';
+			str += '		<div class="on-bd">';					
+			str += '			<table class="board-view wid-full" style="font-size:11px";>';
+			str += '				<caption>사용내역 확인</caption>';
+			str += '				<colgroup>';
+			str += '					<col width="110px" />';
+			str += '					<col width="*" />';
+			str += '				</colgroup>';
+			str += '				<tbody>';
+			str += '					<tr>';
+			str += '						<th scope="row" >상호명</th>';
+			str += '						<td class="right" id="etpNm'+(addMinCnt+i)+'">'+resultData[i].ETP_NM+'</td>';
+			str += '					</tr>';
+			str += '						<th scope="row" >상품내역</th>';
+			str += '						<td class="right" id="payGoods'+(addMinCnt+i)+'">'+resultData[i].PAY_GOODS+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용내역</th>';
+			str += '						<td class="right" id="payAm'+(addMinCnt+i)+'">'+resultData[i].PAY_AM+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" >사용카드</th>';
+			str += '						<td class="right" id="payDiv'+(addMinCnt+i)+'">'+resultData[i].PAY_DIV+'</td>';
+			str += '					</tr>';
+			str += '					<tr>';
+			str += '						<th scope="row" ></th>';
+			str += '						<td class="right"><a href="javascript:void(0);" class="emailSend" name="multiPop" id="'+(addMinCnt+i)+'"><span></span>상세보기</a></td>';
+			str += '					</tr>';
+			str += '				</tbody>';
+			str += '			</table>';
+			str += '		</div>';
+			str += '	</div>';			
+			str += '</li>';		
+
+/* 			str += '<li>';
 			str += '	<a href="javascript:void(0);" id="'+(addMinCnt+i)+'">';
  			str += '		사용일자 : '+resultData[i].USE_DATE+'<br />';
 			str += '		사용금액 : '+resultData[i].PAY_AM+'원';
@@ -687,7 +1088,7 @@ function startGetB01AddDataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>';
+			str += '</li>'; */
 		}
 		if(resultData.length == 10){
 			$(".btn-area").remove();
@@ -750,6 +1151,7 @@ function startGetB01CalData(){
         	startDate : ajaxStartDate+"01",
         	endDate : ajaxStartDate+"31",
         	eMail : idParam,
+        	orderByCd : orderByCd
         },
         success: startGetB01CalDataSuc,
         error: whenError
@@ -853,6 +1255,7 @@ function goDailyList(id){
         data: {
         	date : ajaxStartDate+id,
         	eMail : idParam,
+        	orderByCd : orderByCd
         },
         success: startGetB01DataSuc,
         error: whenError
