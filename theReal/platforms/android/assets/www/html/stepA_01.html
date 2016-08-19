@@ -162,7 +162,6 @@ $(document).ready(function(){
 		}else{
 			$(".layer-content-inner").empty();
 			curCnt++;
-			console.log(curCnt);
 			var eMailStr = '';
 			eMailStr +='<ul class="previewControl">';
 			eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>';
@@ -238,13 +237,11 @@ function startGetA01Data(){
 }
 
 function startGetA01DataSuc(resdata){
-			//console.log(resdata);
 			var str = "";
 			var resultData = resdata.resultMap;
 			resultCnt = resultData.length;
 			if(resultData.length>0){
 				for(var i=0; i<resultData.length; i++){
-					//console.log(resultData[i]);
 					str += '<li class="table_type" name="multiPop" id="table'+i+'">';
 					str +=     '<table>';
 					str +=         '<caption>최근 지출 내역</caption>';
@@ -320,12 +317,10 @@ function startGetA01DataSuc(resdata){
 }
 
 function startGetA01DataSuc2(resdata){
-	//console.log(resdata);
 	var str = "";
 	var resultData = resdata.resultMap;
 	if(resultData.length>0){
 		for(var i=0; i<resultData.length; i++){
-			//console.log(resultData[i]);
 			if(i == 0){
 				str += '<li class="on">';
 			}else{

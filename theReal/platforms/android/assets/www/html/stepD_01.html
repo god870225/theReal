@@ -129,7 +129,6 @@ $(document).ready(function(){
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
  		var lid4 = $("#contents"+listInfoId).val().replace("/receipt/",commonIp()+"/receipt/");
- 		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
 		updateD01AddCnt(listInfoId);
@@ -169,7 +168,6 @@ function startGetD01DataSuc(resdata){
     totalCnt = resultData[0].TOTAL_COUNT;
     totalCnt = (Math.ceil((totalCnt/10)));
 	if(resultData.length>0){
-		console.log("totalCnt:"+totalCnt);
 		for(var i=0; i<resultData.length; i++){
 			str += '<li id="'+resultData[i].SEQ+ '">';
 			//str += '<input type="hidden"  id="contents'+resultData[i].SEQ+ '" value="'+resultData[i].BOARD_CONTENTS+'"/>';
@@ -239,7 +237,6 @@ function successPaging(resdata){
 	$("#pageNo").empty();
 	
 	if(resultData.length>0){
-		console.log("totalCnt:"+totalCnt);
 		for(var i=0; i<resultData.length; i++){
 			str += '<li id="'+resultData[i].SEQ+ '">';
 			//str += '<input type="hidden"  id="contents'+resultData[i].SEQ+ '" value="'+resultData[i].BOARD_CONTENTS+'"/>';

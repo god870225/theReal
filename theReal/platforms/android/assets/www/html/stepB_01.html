@@ -199,13 +199,14 @@ var request = new Request();
 var idParam = request.getParameter('id');
 var seq = "";
 var orderByCd = "A1"
-
+var orderCalId = 0;
 $(document).ready(function(){
 	$.support.cors = true;
 	$("#tabList").click(function(){
 		if($(this).hasClass("on")){
 			return;
 		}else{
+			addCnt = 0;
 			$("li").removeClass("on");
 			$(this).addClass("on");
 			$("#listTab1").show();
@@ -217,7 +218,7 @@ $(document).ready(function(){
 	});
 	
 	$("#tabCal").click(function(){
-		
+		addCnt = 0;
 		$("li").removeClass("on");
 		$(this).addClass("on");
 		$("#listTab1").hide();
@@ -229,49 +230,58 @@ $(document).ready(function(){
 	});
 	
 	$("#tabDiv").click(function(){
-		
+		addCnt = 0;
 		$("li").removeClass("on");
 		$(this).addClass("on");
 		$("#listTab1").hide();
 		$("#listTab2").hide();
 		$("#listTab3").show();
-		$(".btn-write2").hide();
+		$(".btn-write2").show();
 		startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31","A1");
 		
 	});
 	
 	$("#orderDate").click(function(){
 		orderByCd = "A1";
+		addCnt = 0;
 		if($("#tabList").hasClass("on")){
 			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
 		}else if($("#tabCal").hasClass("on")){
-			startGetB01CalData();
+			goDailyList(orderCalId);
 		}else{
-			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+			startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
 		}
 		
 	});
 	
 	$("#orderHighPay").click(function(){
 		orderByCd = "B1";
+		addCnt = 0;
 		if($("#tabList").hasClass("on")){
 			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
 		}else if($("#tabCal").hasClass("on")){
-			startGetB01CalData();
+			goDailyList(orderCalId);
 		}else{
-			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+			startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
 		}	
 	});
 	
 	$("#orderLowPay").click(function(){
 		orderByCd = "C1";
+		addCnt = 0;
 		if($("#tabList").hasClass("on")){
 			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
 		}else if($("#tabCal").hasClass("on")){
-			startGetB01CalData();
+			goDailyList(orderCalId);
 		}else{
-			startGetB01MonthData(ajaxStartDate+"01",ajaxStartDate+"31");	
+			startGetB01MonthDivData(ajaxStartDate+"01",ajaxStartDate+"31",$("#divCd option:selected").val());
 		}		
+	});
+	
+ 	$(document).on('click','#divAddBtn',function(){
+ 		addCnt++;
+ 		divCd = $("#divCd option:selected").val();
+ 		startGetB01AddData(selectDate);		
 	});
 	
  	$(document).on('click','#btnEmail',function(){
@@ -337,7 +347,7 @@ $(document).ready(function(){
 	});
  	
 	
-	$(document).on('click','#prevRecBtn',function(){
+	$(document).on('click','#btnRecPrev',function(){
  		if(curCnt ==1){
 			alert("처음 영수증입니다.");
 		}else{
@@ -348,20 +358,19 @@ $(document).ready(function(){
 			eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>';
 			//eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
 			eMailStr +='<li id="pageInfo">'+curCnt+'/'+resultCnt+'</li>';
-			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnRecNext" /></li>';
+			eMailStr +='<li id="nextBtn"><input type="button" value="다음" class="control btn-next"  id="btnRecPrev" /></li>';
 			eMailStr +='</ul>';
 			eMailStr +='<img src="../images/receipt/rec'+curCnt+'.png" style="width: 100%; max-height: 100%" alt="img">';
 			$(".layer-content-inner").append(eMailStr);	
 		}
 	});		
 	
-	$(document).on('click','#nextRecBtn',function(){
+	$(document).on('click','#btnRecNext',function(){
  		if(curCnt ==10){
 			alert("마지막 영수증입니다.");
 		}else{
 			$(".layer-content-inner").empty();
 			curCnt++;
-			console.log(curCnt);
 			var eMailStr = '';
 			eMailStr +='<ul class="previewControl">';
 			eMailStr +='<li id="prevBtn"><a href="javascript:void(0);"><input type="button" value="이전"  class="control btn-pre"  id="btnPrev" /></a></li>';
@@ -398,8 +407,8 @@ $(document).ready(function(){
 		
 	});
 	
-	$(document).on('click','.btn_big_orange',function(){
-		
+	$(document).on('click','#addBtn',function(){
+		divCd = "";
  		addCnt++;
  		startGetB01AddData(selectDate);		
  		
@@ -520,11 +529,11 @@ function startGetB01DataSuc(resdata){
 			
 			str += '</li>';		
 			
-			if(i == 0){
+/* 			if(i == 0){
 				str += '<li class="on">';
-			}else{
+			}else{ */
 				str += '<li>';
-			}
+//			}
 			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
 			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
 			str += '	<div class="dropboad">';
@@ -609,12 +618,12 @@ function startGetB01DataSuc(resdata){
 		
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange" id ="addBtn">더보기</a>';
 			str += '</div>';
 		}
 		
 		$("#listTab1").append(str);
-		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");
 		
 	}else{
 		
@@ -685,11 +694,11 @@ function startGetB01MonthDataSuc(resdata){
 			
 			str += '</li>';		
 			
-			if(i == 0){
+/* 			if(i == 0){
 				str += '<li class="on">';
-			}else{
+			}else{ */
 				str += '<li>';
-			}
+//			}
 			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
 			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
 			str += '	<div class="dropboad">';
@@ -768,15 +777,15 @@ function startGetB01MonthDataSuc(resdata){
 			str += '			</table>';
 			str += '		</div>';
 			str += '	</div>';
-			str += '</li>'; */
+			str += '</li>';*/
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange" id ="addBtn">더보기</a>';
 			str += '</div>';
 		}
 		$("#listTab1").append(str);
-		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");
 		
 	}else{
 		str += '<div class="previewImg">';
@@ -853,11 +862,11 @@ function startGetB01MonthDivDataSuc(resdata){
 			
 			str += '</li>';		
 			
-			if(i == 0){
+/* 			if(i == 0){
 				str += '<li class="on">';
-			}else{
+			}else{ */
 				str += '<li>';
-			}
+//			}
 			str += '<input type="hidden" value="'+resultData[i].PAY_AM+'" id="payAm'+i+'">';
 			str += '<input type="hidden" value="'+resultData[i].USE_DATE+'" id="useDate'+i+'">';
 			str += '	<div class="dropboad">';
@@ -940,11 +949,11 @@ function startGetB01MonthDivDataSuc(resdata){
 		}
 		if(resultData.length == 10){
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange" id="divAddBtn">더보기</a>';
 			str += '</div>';	
 		}
 		$("#listTab3").append(str);
-		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData.length+"건, 총"+resultData[0].TOTAL_AM+"원)");
+		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");
 	}else{
 		str += '<div class="previewImg">';
 		str += '	<div id="imgDiv">';
@@ -977,7 +986,8 @@ function startGetB01AddData(selectDate){
          	startDate : ajaxStartDate+"01",
         	endDate : ajaxStartDate+lastDay(selectDate),
         	eMail : idParam,
-        	orderByCd : orderByCd
+        	orderByCd : orderByCd,
+        	divCd : divCd
      },
      success: startGetB01AddDataSuc,
      error: whenError
@@ -985,14 +995,12 @@ function startGetB01AddData(selectDate){
 }
 	
 function startGetB01AddDataSuc(resdata){
-	console.log(resdata);
 	var resultData = resdata.resultMap;
 	resultCnt = resultData.length;
 	var addMinCnt = addCnt*10;
 	var addMaxCnt = resultData.length+addCnt*10;
 	var str = "";
 	if(resultData.length>0){
-		console.log(resultData);
 		for(var i=0; i<resultData.length; i++){
 			str += '<li class="table_type" name="multiPop" id="'+(addMinCnt+i)+'">';
 			str +=     '<table>';
@@ -1093,12 +1101,20 @@ function startGetB01AddDataSuc(resdata){
 		if(resultData.length == 10){
 			$(".btn-area").remove();
 			str += '<div class="btn-area txt-center">';
-			str += '	<a href="javascript:void(0);" class="btn_big_orange">더보기</a>';
+			str += '	<a href="javascript:void(0);" class="btn_big_orange" id ="addBtn">더보기</a>';
 			str += '</div>';	
 		}else{
 			$(".btn-area").remove();
 		}
-		$("#listTab1").append(str);
+		
+		if($("#tabList").hasClass("on")){
+			$("#listTab1").append(str);
+		}else if($("#tabCal").hasClass("on")){
+			$("#listTab2").append(str);
+		}else{
+			$("#listTab3").append(str);
+		}		
+		
 		$(".sub-txt").text($("#pageInfo").text()+"월 내역조회 ("+resultData[0].TOTAL_CNT+"건, 총"+resultData[0].TOTAL_AM+"원)");		
 	}
 }	
@@ -1247,7 +1263,7 @@ function goDailyList(id){
 	if(parseInt(id)<10){
 		id = "0"+id;
 	}
-	
+	orderCalId = id;
     $.ajax({
         type: "post",
         url : commonIp()+"/theReal/receipt/AppB01MonthCalList.do",
@@ -1264,10 +1280,11 @@ function goDailyList(id){
 	$("#listTab1").show();
 	$("#listTab2").hide();
 	$("#listTab3").hide();
+	$("#listTab3").hide();
+	$(".btn-write2").show();
 }
 
 function test(resdata){
-	console.log(resdata);
 }
 
 function callEmailSendSuc(resdata){

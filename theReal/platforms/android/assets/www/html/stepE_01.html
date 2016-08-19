@@ -106,7 +106,6 @@ $(document).ready(function(){
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
  		var lid4 = $("#contents"+listInfoId).val().replace("/receipt/",commonIp()+"/receipt/");
- 		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
 		updateD01AddCnt(listInfoId);
@@ -140,7 +139,6 @@ function startGetD01DataSuc(resdata){
  		$("#dtlTitle").text(lid1);
  		$("#dtlCreadtm").text(lid2);
  		var lid4 = lid3.replace("/receipt/",commonIp()+"/receipt/");
- 		console.log("lid4:"+lid4);
 		$("#dtlContents").html(lid4);
 		$("img").attr("style","width:100%");
 		updateD01AddCnt(listInfoId);		
