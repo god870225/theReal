@@ -118,10 +118,6 @@ function wrapWindowByMask() {
     //화면의 높이와 너비를 구한다.
     var maskHeight = $(document).height(); 
     var maskWidth = $(window).width();
-    console.log("document).height():"+$(document).height());
-    console.log("document).width():"+$(document).width());
-    console.log("window).height():"+$(window).height());
-    console.log("window).width():"+$(window).width());
     //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
     $('#mask').css({
         'width' : maskWidth,
@@ -180,7 +176,6 @@ function popupOpenId2(popupId) {
 }
 
 function multiPoppupOpen(obj) {
-	console.log(obj);
 	var popupId = $(obj).get(0).name;
 	var popupObj = $("#" + popupId + "Layer");
 	wrapWindowByMask();
@@ -332,7 +327,6 @@ var os, bw, version;
 
 function SysInfo(){
 	var agent = navigator.userAgent.toLowerCase();
-	console.log(agent);
 	try{
 	if (agent.indexOf("windows") > -1) {
 		os = "ms";
@@ -367,18 +361,13 @@ function SysInfo(){
 	} else {
 		bw = "unknown";
 	}
-	console.log("bw:"+bw);
-	console.log("os:"+os);
 	if (os == "ms" && bw == "ie") {
 		var start = agent.indexOf("msie");
 		var tmp = agent.substring(start);
 		var end = tmp.indexOf(";");
 		tmp = tmp.substring(0, end);
-		console.log("tmp:"+tmp);
 		tmp = tmp.substring(tmp.lastIndexOf(" "));
-		console.log("tmp:"+tmp);
 		version = tmp;
-		console.log("version:"+version);
 	} else {
 		version = 99999;
 	}
