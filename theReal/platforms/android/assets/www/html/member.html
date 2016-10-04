@@ -270,14 +270,20 @@ $(document).ready(function(){
 				if($('#username').val() == ""){
 					alert("이메일주소를 입력해주시기 바랍니다.");
 					$('#username').focus();
-					return;
+					return false;
 				}
 				else if($('#password').val() == ""){
 					alert("비밀번호를 입력해주시기 바랍니다.");
 					$('#password').focus();
-					return;
+					return false;
 				}else{
-					callAjax();			
+					if(!isValidFormPassword($('#password').val(),false)){
+						alert("비밀번호를 다시 입력해주시기 바랍니다.");
+						return false;
+					}else{
+						callAjax();	
+						return false;
+					}
 				}
 			}
 		});
@@ -320,6 +326,30 @@ $(document).ready(function(){
     function whenError(){
         alert("Error");
     }
+    
+    function isValidFormPassword(pw, is_special) {
+    	var check = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,16}$/;
+    	var msg = "";
+    	var resultBool = true;
+    	if(is_special) {
+    		check = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/;
+    		if (!check.test(pw)) {
+    			resultBool =false;
+    		}
+    	}
+    	else {
+    		if (!check.test(pw)) {
+    			resultBool =false;
+    		}
+    	}
+     
+    	if (pw.length < 6 || pw.length > 16) {
+    		resultBool =false;
+    	}
+    	
+        return resultBool;
+    }    
+    
 </script>
 </body>
 </html>
