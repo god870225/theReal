@@ -291,7 +291,7 @@ function commonIp2(div){
 //개발IP셋팅
 function commonIp(){
 	var commonIp = "";
-	var dev = false;
+	var dev = true;
 	if(dev){
 		commonIp = "http://192.168.0.39:8080";
 		//commonIp = "117.52.97.40";
